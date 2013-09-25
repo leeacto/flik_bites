@@ -19,8 +19,6 @@ development:
   encoding: unicode
   database: final_project_development
   pool: 5
-  username: final_project
-  password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -48,13 +46,10 @@ test:
   encoding: unicode
   database: final_project_test
   pool: 5
-  username: final_project
-  password:
 
 production:
   adapter: postgresql
   encoding: unicode
   database: final_project_production
   pool: 5
-  username: final_project
-  password:
+  
