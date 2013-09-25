@@ -3,8 +3,9 @@ require 'spec_helper'
 describe Dish do
 
   it "has a valid factory" do
+    FactoryGirl.create(:dish).should be_valid
   end
-  
+
   it "is invalid without a name" do
     pending
   end
