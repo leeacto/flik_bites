@@ -2,23 +2,28 @@ require 'spec_helper'
 
 describe Dish do
 
+  before(:each) do
+    @dish = FactoryGirl.create(:dish)
+  end
+
   it "has a valid factory" do
-    FactoryGirl.create(:dish).should be_valid
+    @dish.should be_valid
   end
 
   it "is invalid without a name" do
-    pending
+    FactoryGirl.build(:dish, :name => nil).should_not be_valid
   end
 
   it "is invalid without a category" do
-    pending
+    FactoryGirl.build(:dish, :category => nil).should_not be_valid
   end
 
-  it "has many photos" do
-    pending
+  it "should respond to photos" do
+    @dish.should respond_to(:photos)
   end
 
-  it "belongs to a restaurant" do
-    pending
+  it "should respond to a restaurant" do
+    @dish.should respond_to(:restaurant)
   end
+
 end
