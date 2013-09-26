@@ -5,4 +5,8 @@ class DishesController < ApplicationController
     @dishes = @restaurant.dishes
   end
 
+  def show
+    @dish = Dish.where(:url => params[:dishname].downcase).first
+  end
+
 end
