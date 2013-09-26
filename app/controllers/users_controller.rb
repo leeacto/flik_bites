@@ -22,7 +22,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-  	@user = User.find(current_user.id)
+    if current_user
+  	 @user = User.find(current_user.id)
+     render 'edit'
+    else
+      flash[:error] = "Please log in to edit your account"
+      redirect_to login_path
+    end
   end
 
   def update
@@ -35,7 +41,7 @@ class UsersController < ApplicationController
     end
   end
 
-   private
+  private
 
   def user_attributes
   	params.require(:user).permit(:first_name,:last_name,:zipcode,:username, :email, :password_confirmation, :password)

@@ -8,7 +8,7 @@ feature 'Create User Form' do
 end
 
 feature 'Create User' do
-	it "should save to database" do
+	it "if user fills out with propper info should save" do
 		visit new_user_path
 		expect {
 			fill_in 'user_first_name', with: 'first'
