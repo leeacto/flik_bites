@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
 	    session[:user_id] = @user.id
-	    redirect_to '/'
+	    redirect_to root_path
 	  else
 	  	flash[:error] = "There was an error with your request"
 	    redirect_to new_user_path
