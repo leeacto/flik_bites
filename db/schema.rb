@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130925230915) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "dishes", force: true do |t|
     t.string   "name"
     t.string   "category"
@@ -40,6 +37,7 @@ ActiveRecord::Schema.define(version: 20130925230915) do
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url"
   end
 
   add_index "restaurants", ["city"], name: "index_restaurants_on_city", using: :btree
