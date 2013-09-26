@@ -1,18 +1,12 @@
+<div class="pure-u-1"> 
 <h1>Login</h1>
 <p><%= flash[:error] %></p> 
 <%= current_user.id if current_user %>
-<%= form_for :session, url: sessions_path do |f| %>
-  <p>
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </p>
-
-  <p>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
-
-  <p>
-    <%= f.submit "Login" %>
-  </p>
-<% end %>
+  <%= form_for :session, url: sessions_path,:html => {class: 'pure-form'} do |f| %>
+  <fieldset>
+      <%= f.text_field :username, placeholder: 'username' %>
+      <%= f.password_field :password,placeholder: 'password' %>
+      <%= f.submit "Login",class: 'pure-button'%>
+</fieldset>
+  <% end %>
+</div>
