@@ -6,7 +6,30 @@ class DishesController < ApplicationController
   end
 
   def show
-    @dish = Dish.where(:url => params[:dishname].downcase).first
+    for_url = params[:dishname].gsub(" ", "").downcase
+    @dish = Dish.where(:url => for_url).first
   end
 
+  def new
+    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
+  end
+
+  def create
+    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
+    @dish = @restaurant.dishes.new(dish_attributes)
+
+    if @dish.save
+      redirect_to @restaurant 
+    else
+      render :new
+    end
+  end
+
+  def 
+
+  private
+
+  def dish_attributes
+    params.require(:dish).permit(:name, :category, :description, :price, :url)
+  end
 end
