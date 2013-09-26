@@ -20,4 +20,24 @@ class UsersController < ApplicationController
   def show
   	@user = User.find_by_username(params[:user])
   end
+
+  def edit
+  	@user = User.find(current_user.id)
+  end
+
+  def update
+  	@user = User.find(params[:id])
+    if @user.update_attributes(user_attributes)
+      redirect_to "/users/#{@user.username}"
+    else
+    	@error = 'Profile Not Saved'
+      render 'edit'
+    end
+  end
+
+   private
+
+  def user_attributes
+  	params.require(:user).permit(:first_name,:last_name,:zipcode,:username, :email, :password_confirmation, :password)
+  end
 end

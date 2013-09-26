@@ -1,1 +1,7 @@
-Unhappy? <p><%= link_to 'deactivate account', accounts_path(@user), :data => { :confirm => "Are you sure you want to deactivate?" },method: 'PUT'%></p>
+
+<% if current_user && current_user.id == @user.id%>
+	<%= link_to 'Edit Profile', edit_user_path(@user)%>
+	<br>
+	<br>
+	Unhappy? <p><%= link_to 'deactivate account', accounts_path(@user), :data => { :confirm => "Are you sure you want to deactivate?" },method: 'PUT'%></p>
+<% end %>

@@ -23,16 +23,47 @@ feature 'Create User' do
 	end
 end
 
-feature 'Deactivate User' do
-	it "should see a deactivate account link" do
-		@user = User.create!(:username => "TestUserName",
+feature 'Edit user information' do 
+	before(:each) do
+			@user = User.create!(:username => "TestUserName",
 										  		 :first_name => "TestFirst", 
 										  		 :last_name => "TestLast", 
 										  		 :zipcode => "60060", 
 										  		 :email => "user@example.com",
 										  		 :password => "foobar",
 										  		 :password_confirmation => "foobar")
+		visit "/login"
+		fill_in 'session_username', with: 'TestUserName'
+		fill_in 'session_password', with: "foobar"
+
+		click_button 'Login'
+	end
+	it "should see a deactivate account link" do
+	
+
 		visit '/users/TestUserName'
+
 		page.should have_content "deactivate account"
+	end
+
+	it "user shour see the edit information link" do
+		visit '/users/TestUserName'
+
+		page.should have_content "Edit Profile "
+	end
+
+	it 'should be able to edit their own information' do
+		visit '/users/TestUserName'
+		click_link 'Edit Profile'
+		fill_in 'user_first_name', with: 'change'
+		fill_in 'user_last_name', with: "this"
+		fill_in 'user_username', with: "username"
+		click_button 'Edit User'
+		@user.reload
+
+		@user.first_name.should eq 'change'
+		@user.last_name.should eq 'this'
+		@user.username.should eq 'username'
+		current_path.should eq '/users/username'
 	end
 end
