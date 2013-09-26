@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
   
   def url_check(poss_url)
-  	if poss_url[-1].to_i == 0
+  	if poss_url[-1] =~ /[a-z]/
 			poss_url[0..-2] + (poss_url[-1].chr.ord - 1).chr + "2"
 		else
 			poss_url
