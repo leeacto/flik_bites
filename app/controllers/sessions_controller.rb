@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
       if @user.is_active?
         if  @user.authenticate(params[:session][:password])
           session[:user_id] = @user.id
-          redirect_to root_path, :notice => "Signed in!"
+          redirect_to root_path
         else
           flash[:error] = "Username or Password is incorrect"
           redirect_to login_path, :notice => "Signed in!"
         end
       else
         @error = "Your account is not active"
+        render 'accounts/update'
       end
     end
   end
