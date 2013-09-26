@@ -12,9 +12,11 @@ class RestaurantsController < ApplicationController
 		new_rest = Restaurant.new(restaurant_attributes)
 
 		#Render URL
-		potential = params[:restaurant][:name].downcase.gsub(' ','')
-		new_rest.url = make_url(new_rest, potential)
-
+		if params[:restaurant][:name]
+			potential = params[:restaurant][:name].downcase.gsub(' ','')
+			new_rest.url = make_url(new_rest, potential)
+		end
+		
 		#Get Lat/Lon? Or do AJAX Call on submission?
 
 		if new_rest.save
