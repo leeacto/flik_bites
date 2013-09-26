@@ -1,0 +1,35 @@
+<h1> Create User </h1>
+<p><%= flash[:error] %></p> 
+<%= form_for :user, url: users_path do |f| %>
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :zipcode %><br>
+    <%= f.text_field :zipcode %>
+  </p>
+  <p>
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password%>
+  </p>
+   <p>
+    <%= f.label :confirm_password %><br>
+    <%= f.password_field :password_confirmation%>
+  </p>
+  <p>
+    <%= f.submit "Create User" %>
+  </p>
+<% end %>
