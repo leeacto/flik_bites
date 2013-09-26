@@ -24,10 +24,15 @@ feature 'Create User' do
 end
 
 feature 'Deactivate User' do
-	before(:each) do
-	end
-
 	it "should see a deactivate account link" do
-		pending
+		@user = User.create!(:username => "TestUserName",
+										  		 :first_name => "TestFirst", 
+										  		 :last_name => "TestLast", 
+										  		 :zipcode => "60060", 
+										  		 :email => "user@example.com",
+										  		 :password => "foobar",
+										  		 :password_confirmation => "foobar")
+		visit '/users/TestUserName'
+		page.should have_content "deactivate account"
 	end
 end
