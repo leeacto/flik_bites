@@ -1,0 +1,17 @@
+.index_rest {
+	border: 1px solid black;
+}
+
+ul.index_one_rest {
+	border: 1px solid black;
+	list-style-type: none;
+}
+
+li.index_one_rest {
+	width: 30%;
+	border: 1px solid black;
+	display: inline-block;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+

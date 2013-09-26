@@ -1,3 +1,9 @@
-<% @restaurants.each do |r| %>
-	<%= r.name %>
+<% if @restaurants %>
+	<ul class="index_rest">
+		<% @restaurants.each do |r| %>
+			<li class="index_one_rest"><%=link_to r.name, "/#{r.url}" %></li>
+		<% end %>
+	</ul>
+<% else %>
+
 <% end %>
