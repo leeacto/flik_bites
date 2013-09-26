@@ -4,5 +4,11 @@ FactoryGirl.define do
     f.category    "Entree"
     f.description "Thai noodles with peanuts and stuff"
     f.price       "10.00"
+    f.url         "padthai"
   end
+
+  factory :invalid_dish, :parent => :dish do |f|
+    f.name nil
+  end
+
 end
