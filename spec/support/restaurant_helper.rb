@@ -1,4 +1,17 @@
 module RestaurantHelper
+  def one_rest
+    @attr = { :name => "The Bristol", 
+              :address => "2152 N. Damen Ave",
+              :city => "Chicago",
+              :state => "IL",
+              :zip => 60647,
+              :cuisine => "American",
+              :latitude => 41.921109,
+              :longitude => -87.677845,
+              :url => 'thebristol'
+             }
+    a = Restaurant.create(@attr)
+  end
 
 	def two_rest
 		@attr = { :name => "The Bristol", 
