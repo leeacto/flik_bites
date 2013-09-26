@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130925224359) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
+ActiveRecord::Schema.define(version: 20130925230915) do
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -28,4 +24,36 @@ ActiveRecord::Schema.define(version: 20130925224359) do
     t.datetime "updated_at"
   end
 
+  create_table "dishes", force: true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.text     "description"
+    t.string   "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dishes", ["category"], name: "index_dishes_on_category", using: :btree
+  add_index "dishes", ["name"], name: "index_dishes_on_name", using: :btree
+  add_index "dishes", ["price"], name: "index_dishes_on_price", using: :btree
+
+  create_table "restaurants", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.integer  "state"
+    t.string   "zip"
+    t.string   "cuisine"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "url"
+  end
+
+  add_index "restaurants", ["city"], name: "index_restaurants_on_city", using: :btree
+  add_index "restaurants", ["cuisine"], name: "index_restaurants_on_cuisine", using: :btree
+  add_index "restaurants", ["zip"], name: "index_restaurants_on_zip", using: :btree
+
+>>>>>>> master
 end
