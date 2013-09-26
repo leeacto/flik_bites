@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130925230915) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "dishes", force: true do |t|
     t.string   "name"
     t.string   "category"
@@ -43,5 +46,17 @@ ActiveRecord::Schema.define(version: 20130925230915) do
   add_index "restaurants", ["city"], name: "index_restaurants_on_city", using: :btree
   add_index "restaurants", ["cuisine"], name: "index_restaurants_on_cuisine", using: :btree
   add_index "restaurants", ["zip"], name: "index_restaurants_on_zip", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "zipcode"
+    t.boolean  "is_active",       default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
