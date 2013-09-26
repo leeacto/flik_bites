@@ -18,18 +18,24 @@ describe RestaurantsController do
 		end
 	end
 
-	describe '#new' do
+	describe 'GET #new' do
 		it 'should route to the new restaurant page' do
 			get :new
 			response.should render_template :new
 		end
 	end
 
-	describe "#show" do
-		it "should render the correct restaurant" do
+	describe "GET #show" do
+		it "should render the restaurant page given valid restaurant" do
 			two_rest
 			get :show, :restname => 'theBristol'
 			response.should render_template :show
+		end
+
+		it "should have the correct restaurant attribute" do
+			rs = two_rest
+			get :show, :restname => 'theBristol'
+			assigns(:restaurant).should eq rs.first
 		end
 
 		it "should render an error page on incorrect restaurant" do
@@ -38,12 +44,36 @@ describe RestaurantsController do
 		end
 	end
 
-	describe '#edit' do
+	describe 'GET #edit' do
 		it "should get to the edit page" do
 			two_rest
 			get :edit, :restname => 'cumin'
 			response.should render_template :edit
 		end
+
+		it "should prepare to edit the correct restaurant" do
+			rs = two_rest
+			get :edit, :restname => 'theBristol'
+			assigns(:restaurant).should eq rs.first
+		end
 	end
-	
+
+	describe 'PUT #update' do 
+
+		before(:each) do
+			@b = one_rest
+			@attr = {:name => 'bristol'}
+		end
+
+		it "should look to update the correct restaurant" do
+			put :update, :id => @b.id, :restaurant => @attr
+			assigns(:restaurant).should eq @b
+		end
+
+		it "should update the restaurant's attribute" do
+			put :update, :id => @b.id, :restaurant => @attr
+			@b.reload
+			@b.name.should eq ('bristol')
+		end
+	end
 end
