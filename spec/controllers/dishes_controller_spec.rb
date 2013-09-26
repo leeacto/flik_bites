@@ -29,27 +29,59 @@ describe DishesController do
   describe "GET #show" do
 
     before(:each) do
-      @dish = FactoryGirl.create(:dish)
       get :show, :restname => "theBristol", :dishname => "Pad Thai"
     end
 
     it "assigns the requested dish to @dish" do
+      @dish = @restaurant.dishes.first
       assigns(:dish).should eq(@dish)
     end
 
-    it "renders the :show template"
+    it "renders the :show template" do
+      response.should render_template :show
+    end
+
+  end
+
+  describe "GET #new" do
+    it "assigns the dish's restaurant to @restaurant" do
+      get :new, :restname => "theBristol"
+      assigns(:restaurant).should eq(@restaurant)
+    end
+
+    it "renders the :new template" do
+      get :new, :restname => "theBristol"
+      response.should render_template :new
+    end
   end
 
   describe "POST #create" do 
     context "with valid attributes" do
-      it "saves the new dish in the database"
-      it "redirects to the restaurant menu page"
+      it "saves the new dish in the database" do
+        expect { post :create, :restname => "thebristol",
+                      :dish => FactoryGirl.attributes_for(:dish)
+                }.to change(Dish, :count).by(1) 
+      end
+
+      it "redirects to the restaurant menu page" do 
+        post :create, :restname => "thebristol",
+                      :dish => FactoryGirl.attributes_for(:dish)
+        response.should redirect_to @restaurant
+      end
     end
 
     context "with invalid attributes" do
-      it "does not save dish in the database"
-      it "re-renders the dish :new template"
+      it "does not save dish in the database" do
+        expect { post :create, :restname => "thebristol",
+                      :dish => FactoryGirl.attributes_for(:invalid_dish)
+                }.to_not change(Dish, :count)         
+      end
+
+      it "re-renders the dish :new template" do
+        post :create, :restname => "thebristol",
+                      :dish => FactoryGirl.attributes_for(:invalid_dish)
+        response.should render_template :new       
+      end
     end
   end
-  
 end
