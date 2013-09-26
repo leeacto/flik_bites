@@ -48,5 +48,4 @@ describe RestaurantsController do
 		end
 	end
 	
->>>>>>> master
 end

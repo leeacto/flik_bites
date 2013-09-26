@@ -6,4 +6,6 @@ FinalProject::Application.routes.draw do
 
   
   resources :dishes
+  get '/:restname/dishes', to: 'dishes#index'
+  get '/:restname/:dish', to: 'dishes#show'
 end
