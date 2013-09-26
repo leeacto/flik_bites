@@ -1,0 +1,8 @@
+header ul {
+	list-style-type: none;
+	height: 2em;
+}
+
+header ul li {
+	display: inline-block;
+}

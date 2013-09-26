@@ -1,3 +1,12 @@
-<% @restaurants.each do |r| %>
-	<%= r.name %>
+<% if @restaurants %>
+	<ul class="index_rest">
+		<% @restaurants.each do |r| %>
+			<div class="card">
+				<li><%=link_to r.name, "/#{r.url}" %></li>
+				<div id="card_desc"><%= r.name %> - <%= r.cuisine %></div>
+			</div>
+		<% end %>
+	</ul>
+<% else %>
+
 <% end %>
