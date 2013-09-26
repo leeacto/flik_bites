@@ -6,7 +6,8 @@
 					:zip => 60647,
 					:cuisine => "American",
 					:latitude => 41.921109,
-					:longitude => -87.677845
+					:longitude => -87.677845,
+					:url => 'thebristol'
 }
 @attr_t = { :name => "Cumin", 
 						:address => "1414 N Milwaukee Ave",
@@ -15,7 +16,8 @@
 						:zip => 60622,
 						:cuisine => "Indian / Nepalese",
 						:latitude => 42.298697,
-						:longitude => -87.956501
+						:longitude => -87.956501,
+						:url => 'cumin'
 }
 Restaurant.create(@attr)
 Restaurant.create(@attr_t)
