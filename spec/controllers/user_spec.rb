@@ -21,12 +21,12 @@ feature UsersController do
 		  it "should not be able to create without valid input" do
 		  	User.create(:username => "TestUserName",
 		  		:first_name => "TestFirst", 
-		  		:last_name => "TestLast", 
+		  		:last_name => "s", 
 		  		:zipcode => "60060", 
-		  		:email => "user@eample.com",
+		  		:email => "usereample.com",
 		  		:password => "fooar",
 		  		:password_confirmation => "foobar")
-		  		response.should render_template '/'
+		  		session[:user_id].should eq nil
 		  end
 		end
 	end
