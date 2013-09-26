@@ -29,11 +29,12 @@ describe DishesController do
   describe "GET #show" do
 
     before(:each) do
+      @dish = FactoryGirl.create(:dish)
       get :show, :restname => "theBristol", :dishname => "Pad Thai"
     end
 
     it "assigns the requested dish to @dish" do
-      assigns(:dish).should eq()
+      assigns(:dish).should eq(@dish)
     end
 
     it "renders the :show template"
