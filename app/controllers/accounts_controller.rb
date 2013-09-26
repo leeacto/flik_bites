@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
 			if user.is_active?
 				user.deactivate_account!
 				session.clear
-				flash[:error] = "we are sorry to see you go please come back anytime"
+				flash[:error] = "we are sorry to see you go,come back anytime"
 				redirect_to root_path
 			else
 				user.activate_account!
