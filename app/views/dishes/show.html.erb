@@ -1,7 +1,23 @@
 <div class="card">
   <p>Name: <%= @dish.name.titleize %></p>
   <p>Price: <%= @dish.price %></p>
-  <p>Photo: <img src="http://lorempixel.com/300/300/food/" alt=""> </p>
+
+  <section class="main-content"> 
+    <p>
+        <input type="file" id="take-picture" accept="image/*">
+    </p>
+
+    <h2>Preview:</h2>
+    <p>
+        <img src="about:blank" alt="" id="show-picture">
+    </p>
+
+    <p id="error"></p>
+  </section>
+
   <p>Category: <%= @dish.category %> </p>
   <p>Description: <%= @dish.description %></p>
 </div>
+
+
+
