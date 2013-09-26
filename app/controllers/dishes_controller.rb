@@ -25,7 +25,8 @@ class DishesController < ApplicationController
     end
   end
 
-  def 
+  def edit
+  end
 
   private
 
