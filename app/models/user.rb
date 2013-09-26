@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
   
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :username, presence: true,uniqueness: true
+  validates :username, presence: true, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
-  validates :email, presence: true,uniqueness: true
+  validates :email, presence: true, uniqueness: true
 	validates :password_digest, presence: true
 	validates :zipcode, presence: true
 
