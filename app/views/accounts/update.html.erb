@@ -1,0 +1,5 @@
+<h3><%= @error if @error %><br></h3>
+<p>If you would like to re-activate your account please click Re-Activate Account, or Cancel to go back</p>
+<p>
+<%= link_to 'Re-Activate Account', accounts_path(@user),method: 'PUT'%><br>
+<%= link_to 'Cancel', root_path%>
