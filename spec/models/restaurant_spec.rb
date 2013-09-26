@@ -9,7 +9,8 @@ describe Restaurant do
   						:zip => 60647,
   						:cuisine => "American",
   						:latitude => 41.921109,
-  						:longitude => -87.677845
+  						:longitude => -87.677845,
+              :url => 'thebristol'
   	}
   	expect{
   		Restaurant.create(@attr)
