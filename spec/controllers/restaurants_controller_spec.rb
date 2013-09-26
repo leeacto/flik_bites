@@ -1,4 +1,6 @@
 require 'spec_helper'
+
+
 include RestaurantHelper
 
 describe RestaurantsController do
