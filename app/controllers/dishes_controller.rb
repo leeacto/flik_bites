@@ -5,13 +5,18 @@ class DishesController < ApplicationController
     @dishes = @restaurant.dishes
   end
 
+  def new
+    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
+  end
+
   def show
     for_url = params[:dishname].gsub(" ", "").downcase
     @dish = Dish.where(:url => for_url).first
   end
 
-  def new
-    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
+  def edit
+    for_url = params[:dishname].gsub(" ", "").downcase
+    @dish = Dish.where(:url => for_url).first
   end
 
   def create
@@ -25,11 +30,6 @@ class DishesController < ApplicationController
     end
   end
 
-  def edit
-    for_url = params[:dishname].gsub(" ", "").downcase
-    @dish = Dish.where(:url => for_url).first
-  end
-
   def update
     @dish = Dish.find(params[:id])
     @dish.assign_attributes(dish_attributes)
@@ -39,7 +39,6 @@ class DishesController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy

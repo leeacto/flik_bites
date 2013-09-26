@@ -8,8 +8,8 @@ FinalProject::Application.routes.draw do
   resources :restaurants
 
   get '/:restname/dishes', to: 'dishes#index'
-  get '/:restname/:dishname', to: 'dishes#show'
   get '/:restname/dishes/new', to: 'dishes#new'
+  get '/:restname/:dishname', to: 'dishes#show'
   get '/:restname/:dishname/edit', to: 'dishes#edit'
   post '/:restname/dishes', to: 'dishes#create'
   
