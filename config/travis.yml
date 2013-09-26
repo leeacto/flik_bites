@@ -6,7 +6,7 @@ env:
 script:
   - rake spec
 before_script:
+	- rake db:test:prepare
   - exec rake db:create RAILS_ENV=test
   - exec rake db:migrate
-  - rake db:test:prepare
 bundler_args: --binstubs=./bundler_stubs
