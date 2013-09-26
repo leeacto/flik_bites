@@ -26,8 +26,30 @@ class DishesController < ApplicationController
   end
 
   def edit
+    for_url = params[:dishname].gsub(" ", "").downcase
+    @dish = Dish.where(:url => for_url).first
   end
 
+  def update
+    @dish = Dish.find(params[:id])
+    @dish.assign_attributes(dish_attributes)
+
+    if @dish.save
+      redirect_to @dish
+    else
+      render :edit
+    end
+
+  end
+
+  def destroy
+    @dish = Dish.find(params[:id])
+    @restaurant = Restaurant.find(@dish.restaurant_id)
+    @dish.destroy
+
+    redirect_to @restaurant
+  end
+  
   private
 
   def dish_attributes
