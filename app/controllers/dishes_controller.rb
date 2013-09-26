@@ -12,11 +12,20 @@ class DishesController < ApplicationController
   def show
     for_url = params[:dishname].gsub(" ", "").downcase
     @dish = Dish.where(:url => for_url).first
+
+    if @dish.nil?
+      render 'not_found'
+    end
+
   end
 
   def edit
     for_url = params[:dishname].gsub(" ", "").downcase
     @dish = Dish.where(:url => for_url).first
+
+    if @dish.nil?
+      render 'not_found'
+    end
   end
 
   def create
@@ -44,8 +53,13 @@ class DishesController < ApplicationController
   def destroy
     @dish = Dish.find(params[:id])
     @restaurant = Restaurant.find(@dish.restaurant_id)
-    @dish.destroy
-
+    
+    if @dish
+      @dish.destroy
+      flash[:success] = "Dish Deleted"
+    else
+      flash[:error] = "Dish Was Not Found"
+    end
     redirect_to @restaurant
   end
   
