@@ -33,7 +33,7 @@ describe SessionsController do
 			session[:user_id].should eq nil
 		end
 	end
-
+	
 	describe "Should be able to check status of active" do
 		it 'should log in normal if user is active' do
 			@user = User.create!(:username => "TestUserName",
