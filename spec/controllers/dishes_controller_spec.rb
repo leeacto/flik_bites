@@ -153,6 +153,22 @@ describe DishesController do
         response.should render_template :edit
       end
     end
+
+    describe "url naming" do
+      it "should be given the correct url when name changes" do
+        put :update, :id => @dish,
+            :dish => FactoryGirl.attributes_for(:dish, :name => "Taco Salad")
+        @dish.reload
+        @dish.url.should eq("tacosalad")
+      end
+
+      it "should be given the correct url when other attrib changes" do
+        put :update, :id => @dish,
+            :dish => FactoryGirl.attributes_for(:dish, :category => "Dessert")
+        @dish.reload
+        @dish.url.should eq("padthai")
+      end
+    end
   end
 
   describe "DELETE destroy" do
