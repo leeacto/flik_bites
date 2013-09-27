@@ -34,5 +34,12 @@ feature "Add a Restaurant" do
 			}.to raise_error()
 		end
 	end
+end
 
+feature "Navigate to a Restaurant" do
+	context "When logged in" do
+		before(:each) do
+			user_login
+		end
+	end
 end

@@ -10,7 +10,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: final_project_development
+  database: final_project_test
   pool: 5
   timeout: 5000
   host: localhost
@@ -19,6 +19,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: final_project_development
+  database: final_project_production
   pool: 5
   timeout: 5000
+
