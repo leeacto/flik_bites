@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   	arr = ob_class.all.pluck(:url).compact
   	arr = arr.grep /^#{potential}/
-
+    
 		if arr == []
 			potential
 		else
@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
 			url_check(poss_url)
 		end
   end
-  
+  helper_method :make_url
+
   def url_check(poss_url)
   	if poss_url[-1] =~ /[a-z]/
 			poss_url[0..-2] + (poss_url[-1].chr.ord - 1).chr + "2"

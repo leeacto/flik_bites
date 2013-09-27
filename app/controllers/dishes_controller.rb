@@ -7,6 +7,14 @@ class DishesController < ApplicationController
 
   def new
     @restaurant = Restaurant.where(:url => params[:restname].downcase).first
+
+    if current_user
+      @dish = Dish.new
+      render 'new'
+    else
+      flash[:error] = "You must be signed in to add a dish"
+      redirect_to "/#{@restaurant.url}"
+    end
   end
 
   def show
@@ -28,13 +36,26 @@ class DishesController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
-    @dish = @restaurant.dishes.new(dish_attributes)
-
-    if @dish.save
-      redirect_to @restaurant 
+    @restaurant = Restaurant.where(:url => params["restname"]).first
+    if current_user
+      @dish = @restaurant.dishes.new(dish_attributes)
+      unless @dish.name.nil?
+        potential = @dish.name.downcase.gsub(' ','')
+        @dish.url = make_url(@dish, potential)
+        if @dish.save
+          flash[:success] = "New Dish Added!"
+          redirect_to "/#{@restaurant.url}/#{@dish.url}"
+        else
+          flash[:error] = "The Dish Was Not Saved"
+          render :new
+        end
+      else
+        flash[:error] = "The Dish Must Have a Name"
+        render :new
+      end
     else
-      render :new
+      flash[:error] = "You must be signed in to add a dish"
+      redirect_to "/#{@restaurant.url}"
     end
   end
 

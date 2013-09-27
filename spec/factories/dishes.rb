@@ -8,7 +8,10 @@ FactoryGirl.define do
   end
 
   factory :invalid_dish, :parent => :dish do |f|
-    f.name nil
+    f.category nil
   end
 
+  factory :no_name_dish, :parent => :dish do |f|
+    f.category nil
+  end
 end

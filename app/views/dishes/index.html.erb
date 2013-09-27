@@ -1,1 +1,8 @@
 <%= @restaurant.name %>
+
+<%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
+<ul>
+<% @dishes.starters.each do |s| %>
+	<li><%= link_to s.name, s %></li>
+<% end %>
+</ul>
