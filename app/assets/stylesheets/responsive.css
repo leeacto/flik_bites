@@ -1,4 +1,14 @@
 @media (min-width:920px){
+	#profiletable {
+		letter-spacing: 0;
+		width:50%;
+		margin: 0 25%;
+		text-align: center;
+	}
+
+	#profiletable > thead > tr >th {
+		text-align: center;
+	}
 	.error {
 		width:325px;
  		padding:3px 3px 3px;
@@ -39,6 +49,16 @@
  }
 
  @media (min-width:481px) and (max-width: 919px) {
+ 	#profiletable {
+		letter-spacing: 0;
+		width:50%;
+		margin: 0 25%;
+		text-align: center;
+	}
+
+	#profiletable > thead > tr >th {
+		text-align: center;
+	}
  	.error {
  		width:325px;
  		padding:3px 3px 3px;
@@ -83,6 +103,16 @@
  }
 
 @media(max-width: 480px) {
+	#profiletable {
+		letter-spacing: 0;
+		width:50%;
+		margin: 0 25%;
+		text-align: center;
+	}
+
+	#profiletable > thead > tr >th {
+		text-align: center;
+	}
 	.error {
 		width:325px;
  		padding:3px 3px 3px;
