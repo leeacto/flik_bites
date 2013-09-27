@@ -8,8 +8,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-		<div class="pure-g-r">
-			<%= yield %>
-		</div>
+	<div id='header'>
+		<%= render partial: 'layouts/header' %>
+		<% flash.each do |key, value| %>
+				<%= content_tag(:div, value, :class => "flash #{key}") %>
+		<% end %>
+	</div>
+	<div class="pure-g-r">
+		<%= yield %>
+	</div>
 </body>
 </html>

@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Create User Form' do
 	it "should show a user create form" do
 		visit new_user_path
-		page.should have_content "Username"
+		page.should have_content "Create User"
 	end
 end
 
