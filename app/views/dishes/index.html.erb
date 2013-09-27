@@ -2,7 +2,7 @@
 
 <%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
 
-<div class="all_tabs">
+<div class="menu">
 	<ul class="tab_header" >
 		<li id="starters_tab">Starters</li>
 		<li id="entrees_tab">Entrees</li>
@@ -15,13 +15,13 @@
 	<% end %>
 	</ul>
 
-	<ul class = "entrees tab">
+	<ul class = "entrees hidden tab">
 	<% @dishes.entrees.each do |e| %>
 		<li class = "card" ><%= link_to e.name, e %></li>
 	<% end %>
 	</ul>
 
-	<ul class = "desserts tab">
+	<ul class = "desserts hidden tab">
 	<% @dishes.desserts.each do |d| %>
 		<li class = "card" ><%= link_to d.name, d %></li>
 	<% end %>

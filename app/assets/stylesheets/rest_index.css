@@ -1,5 +1,38 @@
-.index rest {
-	width: 90%;
+.menu {
+	width: 95%;
+
+}
+
+ul.tab_header {
+	padding: 0;
+	width: 100%;
+	border: 2px solid black;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+ul.tab {
+	position: absolute;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
+	list-style-type: none;
+	margin-top: 0;
+	margin-right: 0;
+	padding: .5%;
+	text-align: center;
+	width: 94%;
+}
+
+ul.tab_header li {
+	font-size: 20px;
+	width: 30%;
+	border-top-right-radius: 10px;
+	font-family: sans-serif;
+	display: inline-block;
+	text-align: left;
+	list-style: none;
+	border-right: 2px solid black;
 }
 
 .card {
@@ -8,32 +41,11 @@
 	display: inline-block;
 }
 
-ul.tab {
-	border: 1px solid black;
-	list-style-type: none;
-}
-
-li.index_one_rest {
-	display: inline-block;
-	margin-top: .5em;
-	margin-bottom: .5em;
-}
-
 #card_desc {
 	border-top: 1px solid black
 }
 
-ul.tab_header {
-	padding-left: 0;
-	width: 100%;
-	border: 2px solid black;
-	padding: 2px;
-}
 
-ul.tab_header li {
-	font-size: 20px;
-	font-family: sans-serif;
-	text-align: center;
-	display: inline-block;
-	list-style: none;
+.hidden {
+	display: none;
 }
