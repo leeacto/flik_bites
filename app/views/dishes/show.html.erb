@@ -12,21 +12,13 @@
   <p>Description: <%= @dish.description %></p>
 </div>
 
-<%= form_for :dish do |f| %>
-  <div class="field">
-    <input type="file" id="take-picture" accept="image/*">
-  </div>
-  <div class="actions">
-    <%= f.submit 'Submit Photo' %>
-  </div>
-<% end %>
 
-<%= form_for :dish do |f| %>
+<%= form_for(@photo) do |f| %>
   <div class="field">
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
   <div class="actions">
-    <%= f.submit 'Make a friend' %>
+    <%= f.submit 'Save to database' %>
   </div>
 <% end %>

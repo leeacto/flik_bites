@@ -28,4 +28,7 @@ FinalProject::Application.routes.draw do
   post '/:restname/:dishname', to: 'dishes#photo_new'
   
   resources :dishes, only: [:update, :destroy]
+
+  resources :photos
+  
 end
