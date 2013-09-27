@@ -8,7 +8,7 @@
 	display: inline-block;
 }
 
-ul.index_rest {
+ul.tab {
 	border: 1px solid black;
 	list-style-type: none;
 }
@@ -21,4 +21,19 @@ li.index_one_rest {
 
 #card_desc {
 	border-top: 1px solid black
+}
+
+ul.tab_header {
+	padding-left: 0;
+	width: 100%;
+	border: 2px solid black;
+	padding: 2px;
+}
+
+ul.tab_header li {
+	font-size: 20px;
+	font-family: sans-serif;
+	text-align: center;
+	display: inline-block;
+	list-style: none;
 }
