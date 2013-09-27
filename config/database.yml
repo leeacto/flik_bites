@@ -22,3 +22,4 @@ production:
   database: final_project_development
   pool: 5
   timeout: 5000
+
