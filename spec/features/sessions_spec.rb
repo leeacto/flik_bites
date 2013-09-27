@@ -25,21 +25,10 @@ describe "Sessions" do
 	end
 
 	it "should be able to log out a user" do
-		User.create!(:username => "TestUserName",
-							  		 :first_name => "TestFirst", 
-							  		 :last_name => "TestLast", 
-							  		 :zipcode => "60060", 
-							  		 :email => "user@example.com",
-							  		 :password => "foobar",
-							  		 :password_confirmation => "foobar")
-		visit ('/login') 
-		fill_in 'session_username', with: 'TestUserName'
-		fill_in 'session_password', with: "foobar"
-
+		fill_in 'session_username', with: 'username'
+		fill_in 'session_password', with: 'password'
 		click_button 'Login'
-
-		visit ('/logout')
-
+		click_link 'Logout'
 		current_path.should eq root_path
 	end
 end
