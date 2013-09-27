@@ -39,7 +39,27 @@ end
 feature "Navigate to a Restaurant" do
 	context "When logged in" do
 		before(:each) do
+			two_rest
 			user_login
 		end
+
+		it "should let user see /:restaurant/dishes route" do
+			click_link 'Cumin'
+			page.should have_content 'Cumin'
+		end
 	end
+
+	context "When not logged in" do
+		it "should let user see /:restaurant/dishes route" do
+			two_rest
+			visit login_path
+			click_link 'Skip to Restaurants'
+			click_link 'Cumin'
+			page.should have_content 'Cumin'
+		end
+	end
+end
+
+feature "Viewing a Dish" do
+	it 
 end

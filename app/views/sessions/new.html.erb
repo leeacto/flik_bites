@@ -1,3 +1,4 @@
+
 <div class="pure-u-1"> 
 <h1>Login</h1> 
   <%= form_for :session, url: sessions_path,:html => {class: 'pure-form', id: "login"} do |f| %>
@@ -8,3 +9,7 @@
      <%end%>
 </fieldset>
 </div>
+
+<%= link_to "Skip to Restaurants", restaurants_path %>
+
+

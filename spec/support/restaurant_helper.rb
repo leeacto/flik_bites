@@ -10,7 +10,23 @@ module RestaurantHelper
               :longitude => -87.677845,
               :url => 'thebristol'
              }
+    @dish_attr = { :name => "pad thai",
+               :category => "Entree",
+               :description => "Thai noodles with peanuts and stuff",
+               :price => "10.00",
+               :url => "padthai"
+              }
+
+    @dish_attr2 = { :name => "pizza",
+               :category => "Entree",
+               :description => "Slice of heaven",
+               :price => "2.00",
+               :url => "pizza"
+              }
     a = Restaurant.create(@attr)
+    a.dishes.create(@dish_attr)
+    a.dishes.create(@dish_attr2)
+    a
   end
 
 	def two_rest
@@ -34,8 +50,28 @@ module RestaurantHelper
                 :longitude => -87.956501,
                 :url => 'cumin'
                }
+    @dish_attr = { :name => "pad thai",
+               :category => "Entree",
+               :description => "Thai noodles with peanuts and stuff",
+               :price => "10.00",
+               :url => "padthai"
+              }
+
+    @dish_attr2 = { :name => "pizza",
+               :category => "Entree",
+               :description => "Slice of heaven",
+               :price => "2.00",
+               :url => "pizza"
+              }
+              
     a = Restaurant.create(@attr)
+    a.dishes.create(@dish_attr)
+    a.dishes.create(@dish_attr2)
+
     b = Restaurant.create(@attr_t)
+    b.dishes.create(@dish_attr)
+    b.dishes.create(@dish_attr2)
+
     [a, b]
 	end
 end
