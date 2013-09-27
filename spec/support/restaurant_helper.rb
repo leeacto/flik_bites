@@ -1,15 +1,5 @@
 module RestaurantHelper
   def one_rest
-    @attr = { :name => "The Bristol", 
-              :address => "2152 N. Damen Ave",
-              :city => "Chicago",
-              :state => "IL",
-              :zip => 60647,
-              :cuisine => "American",
-              :latitude => 41.921109,
-              :longitude => -87.677845,
-              :url => 'thebristol'
-             }
     @dish_attr = { :name => "pad thai",
                :category => "Entree",
                :description => "Thai noodles with peanuts and stuff",
@@ -23,7 +13,7 @@ module RestaurantHelper
                :price => "2.00",
                :url => "pizza"
               }
-    a = Restaurant.create(@attr)
+    a = FactoryGirl.create(:restaurant)
     a.dishes.create(@dish_attr)
     a.dishes.create(@dish_attr2)
     a
