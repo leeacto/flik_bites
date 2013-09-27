@@ -50,6 +50,11 @@ describe DishesController do
     it "renders the :show template" do
       response.should render_template :show
     end
+
+    it "renders not_found page if dish is nil" do
+      get :show, :restname => "theBristol", :dishname => "not a dish"
+      response.should render_template :not_found
+    end
   end
 
   describe "GET #edit" do
@@ -61,6 +66,11 @@ describe DishesController do
     it "should prepare to edit the correct dish" do
       get :edit, :restname => "theBristol", :dishname => "pad Thai"
       assigns(:dish).should eq(@restaurant.dishes.first)
+    end
+
+    it "renders not_found page if dish is nil" do
+      get :edit, :restname => "theBristol", :dishname => "not a dish"
+      response.should render_template :not_found
     end
   end
 
