@@ -62,6 +62,11 @@ class DishesController < ApplicationController
     redirect_to @restaurant
   end
   
+  def photo_new
+    puts "*******************************************"
+    @what = params
+  end 
+  
   private
 
   def dish_attributes

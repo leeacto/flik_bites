@@ -79,7 +79,7 @@ FinalProject::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
 
-     # Amazon S3 settings for Paperclip uploads
+  # Amazon S3 settings for Paperclip uploads
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_protocol => 'http',

@@ -12,7 +12,7 @@
   <p>Description: <%= @dish.description %></p>
 </div>
 
-<%= form_for :photo do |f| %>
+<%= form_for :dish do |f| %>
   <div class="field">
     <input type="file" id="take-picture" accept="image/*">
   </div>
@@ -21,3 +21,8 @@
   </div>
 <% end %>
 
+
+<div class="field">
+  <%= f.label :image %><br />
+  <%= f.file_field :image %>
+</div>
