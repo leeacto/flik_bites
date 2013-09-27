@@ -1,4 +1,26 @@
 @media (min-width:920px){
+
+	#signupnow{
+		position: relative;
+		top:15px;
+		margin:20px 0 20px;
+		padding:15px 100px 15px;
+		background-color: #00FF00;
+		border-radius: 5px;
+		text-decoration: none;
+		color:white;
+	}
+	.landingpage {
+		letter-spacing: 0;
+		width: 100%;
+		margin-top: 10%;
+		text-align:center;
+	}
+
+	.landingpage > span {
+		font-size: 500%;
+	}
+
 	#profiletable {
 		letter-spacing: 0;
 		width:50%;
@@ -49,6 +71,27 @@
  }
 
  @media (min-width:481px) and (max-width: 919px) {
+ 	#signupnow{
+		position: relative;
+		top:15px;
+		margin:20px 0 20px;
+		padding:15px 100px 15px;
+		background-color: #00FF00;
+		border-radius: 5px;
+		text-decoration: none;
+		color:white;
+	}
+	.landingpage {
+		letter-spacing: 0;
+		width: 100%;
+		margin-top: 10%;
+		text-align:center;
+	}
+
+	.landingpage > span {
+		font-size: 500%;
+	}
+
  	#profiletable {
 		letter-spacing: 0;
 		width:50%;
@@ -103,6 +146,27 @@
  }
 
 @media(max-width: 480px) {
+	#signupnow{
+		position: relative;
+		top:15px;
+		margin:20px 0 20px;
+		padding:15px 100px 15px;
+		background-color: #00FF00;
+		border-radius: 5px;
+		text-decoration: none;
+		color:white;
+	}
+	.landingpage {
+		letter-spacing: 0;
+		width: 100%;
+		margin-top: 10%;
+		text-align:center;
+	}
+
+	.landingpage > span {
+		font-size: 500%;
+	}
+
 	#profiletable {
 		letter-spacing: 0;
 		width:50%;

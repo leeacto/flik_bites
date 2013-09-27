@@ -1,6 +1,6 @@
 FinalProject::Application.routes.draw do
-
-	root 'sessions#new'
+ 
+	root 'landing#index'
 	
 	
   resources :users, only: [:index,:new,:create,:edit,:update,:destory]
