@@ -17,5 +17,6 @@ module UserHelper
 		visit login_path
 		fill_in 'session_username', with: 'username'
 		fill_in 'session_password', with: "password"
+		click_button 'Login'
 	end
 end

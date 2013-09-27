@@ -32,5 +32,5 @@ describe SessionsController do
 			get :destroy
 			session[:user_id].should eq nil
 		end
-end
+	end
 end
