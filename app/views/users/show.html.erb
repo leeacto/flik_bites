@@ -1,7 +1,17 @@
-
-<% if current_user && current_user.id == @user.id%>
-	<%= link_to 'Edit Profile', edit_user_path(@user)%>
-	<br>
-	<br>
-	Unhappy? <p><%= link_to 'deactivate account', accounts_path(@user), :data => { :confirm => "Are you sure you want to deactivate?" },method: 'PUT'%></p>
-<% end %>
+<table class="pure-table" id='profiletable'>
+		<thead>
+			<tr>
+				<th> User Options </th>
+			</tr>
+		</thead>
+    <tbody>
+    		<% if current_user && current_user.id == @user.id%>
+        <tr>
+            <td><%= link_to 'Edit Profile', edit_user_path(@user)%></td>
+         </tr>
+         <tr>
+            <td><p><%= link_to 'Deactivate Account', accounts_path(@user), :data => { :confirm => "Are you sure you want to deactivate?" },method: 'PUT'%></td>
+        </tr>
+        <% end %>
+ 		</tbody>
+</table>

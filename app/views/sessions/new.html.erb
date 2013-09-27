@@ -1,18 +1,15 @@
-<h1>Login</h1>
-<p><%= flash[:error] %></p> 
-<%= current_user.id if current_user %>
-<%= form_for :session, url: sessions_path do |f| %>
-  <p>
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </p>
 
-  <p>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
+<div class="pure-u-1"> 
+<h1>Login</h1> 
+  <%= form_for :session, url: sessions_path,:html => {class: 'pure-form', id: "login"} do |f| %>
+  <fieldset>
+      <%= f.text_field :username, placeholder: 'username',:required => true %>
+      <%= f.password_field :password,placeholder: 'password',:required => true %>
+      <%= f.submit "Login",class: 'pure-button'%>
+     <%end%>
+</fieldset>
+</div>
 
-  <p>
-    <%= f.submit "Login" %>
-  </p>
-<% end %>
+<%= link_to "Skip to Restaurants", restaurants_path %>
+
+

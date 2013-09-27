@@ -3,15 +3,8 @@
   <p>Price: <%= @dish.price %></p>
 
   <section class="main-content"> 
-    <p>
-        <input type="file" id="take-picture" accept="image/*">
-    </p>
-
     <h2>Preview:</h2>
-    <p>
-        <img src="about:blank" alt="" id="show-picture">
-    </p>
-
+    <p><img src="about:blank" alt="" id="show-picture"></p>
     <p id="error"></p>
   </section>
 
@@ -19,7 +12,10 @@
   <p>Description: <%= @dish.description %></p>
 </div>
 
-<%= form_for(@dish) do |f| %>
+<%= form_for :photo do |f| %>
+  <div class="field">
+    <input type="file" id="take-picture" accept="image/*">
+  </div>
   <div class="actions">
     <%= f.submit 'Submit Photo' %>
   </div>

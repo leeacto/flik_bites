@@ -1,0 +1,160 @@
+@media (min-width:920px){
+	#profiletable {
+		letter-spacing: 0;
+		width:50%;
+		margin: 0 25%;
+		text-align: center;
+	}
+
+	#profiletable > thead > tr >th {
+		text-align: center;
+	}
+	.error {
+		width:325px;
+ 		padding:3px 3px 3px;
+ 		margin:0 auto;
+ 		border-radius: 4px;
+		background-color: #FF6666;
+		color: white;
+	}
+
+	.success {
+		width:325px;
+ 		padding:3px 3px 3px;
+ 		margin:0 auto;
+ 		border-radius: 4px;
+		background-color: #99FF99;
+		color:#009933;
+	}
+	#header {
+		text-align: center;
+	}
+	.pure-menu a, .pure-menu .pure-menu-heading {
+		display:inline-block;
+	}
+  .pure-u-1{
+  	display: block;
+  	text-align: center;
+  	width:50%;
+  	margin-right: 25%;
+  	margin-left: 25%;
+  }
+ 	fieldset#signup > input {
+  	margin:1px auto;
+  }
+  fieldset#signupsecond > input {
+  	margin:0 auto;
+  }
+
+ }
+
+ @media (min-width:481px) and (max-width: 919px) {
+ 	#profiletable {
+		letter-spacing: 0;
+		width:50%;
+		margin: 0 25%;
+		text-align: center;
+	}
+
+	#profiletable > thead > tr >th {
+		text-align: center;
+	}
+ 	.error {
+ 		width:325px;
+ 		padding:3px 3px 3px;
+ 		margin:0 auto;
+ 		border-radius: 4px;
+		background-color: #FF6666;
+		color: white;
+	}
+
+	.success {
+		width:325px;
+ 		padding:3px 3px 3px;
+ 		margin:0 auto;
+ 		border-radius: 4px;
+		background-color: #99FF99;
+		color:#009933;
+	}
+ 	#header {
+		text-align: center;
+	}
+	.pure-menu a, .pure-menu .pure-menu-heading {
+		display:inline-block;
+	}
+  .pure-u-1{
+  	text-align: center;
+  	width:50%;
+  	margin-right: 25%;
+  	margin-left: 25%;
+  }
+  #login fieldset > input {
+  	display:block;
+  	margin:2px auto; 
+  }
+  #signup > input {
+  	margin-left:auto;
+  	margin-right:auto; 
+  }
+   fieldset#signupsecond > input {
+  	margin:0 auto;
+  }
+
+ }
+
+@media(max-width: 480px) {
+	#profiletable {
+		letter-spacing: 0;
+		width:50%;
+		margin: 0 25%;
+		text-align: center;
+	}
+
+	#profiletable > thead > tr >th {
+		text-align: center;
+	}
+	.error {
+		width:325px;
+ 		padding:3px 3px 3px;
+ 		margin:0 auto;
+ 		border-radius: 4px;
+		background-color: #FF6666;
+		color: white;
+	}
+
+	.success {
+		width:325px;
+ 		padding:3px 3px 3px;
+ 		margin:0 auto;
+ 		border-radius: 4px;
+		background-color: #99FF99;
+		color:#009933;
+	}
+
+	#header {
+		text-align: center;
+	}
+	.pure-menu a, .pure-menu .pure-menu-heading {
+		display:inline-block;
+	}
+  .pure-u-1{
+  	text-align: center;
+  	width:50%;
+  	margin-right: 25%;
+  	margin-left: 25%;
+  }
+
+  #login fieldset > input {
+  	margin:2px auto; 
+  }
+  #signup > input {
+  	margin-left:auto;
+  	margin-right:auto; 
+  }
+   fieldset#signupsecond > input {
+  	margin:0 auto;
+  }
+
+ }
+
+

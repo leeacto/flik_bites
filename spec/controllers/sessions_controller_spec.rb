@@ -32,5 +32,34 @@ describe SessionsController do
 			get :destroy
 			session[:user_id].should eq nil
 		end
-end
+	end
+	
+	describe "Should be able to check status of active" do
+		it 'should log in normal if user is active' do
+			@user = User.create!(:username => "TestUserName",
+										  		 :first_name => "TestFirst", 
+										  		 :last_name => "TestLast", 
+										  		 :zipcode => "60060", 
+										  		 :email => "user@example.com",
+										  		 :password => "foobar",
+										  		 :password_confirmation => "foobar")
+			post :create,{session: {username: 'TestUserName', password: 'foobar'}}
+			session[:user_id].should eq @user.id	
+		end
+
+		it 'should redirect to activation page if user is inactive' do
+			@user = User.create!(:username => "TestUserName",
+										  		 :first_name => "TestFirst", 
+										  		 :last_name => "TestLast", 
+										  		 :zipcode => "60060", 
+										  		 :email => "user@example.com",
+										  		 :password => "foobar",
+										  		 :password_confirmation => "foobar",
+										  		 :is_active => false)
+			post :create,{session: {username: 'TestUserName', password: 'foobar'}}
+			session[:user_id].should eq nil
+			response.should render_template("accounts/update")
+
+		end
+	end
 end

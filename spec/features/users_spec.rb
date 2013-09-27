@@ -4,7 +4,7 @@ include UserHelper
 feature 'Create User Form' do
 	it "should show a user create form" do
 		visit new_user_path
-		page.should have_content "Username"
+		page.should have_content "Create User"
 	end
 end
 
@@ -35,7 +35,7 @@ feature 'Edit user information' do
 
 	it "should see a deactivate account link" do
 		click_link 'Profile'
-		page.should have_content "deactivate account"
+		page.should have_content "Deactivate Account"
 	end
 
 	it "user should see the edit information link" do
