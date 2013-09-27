@@ -1,6 +1,8 @@
 
 <div class="pure-menu pure-menu-open pure-menu-horizontal">
     <ul>
+      <li><%= link_to 'FlikBites', restaurants_path %></li>
+      <li><%= link_to 'Restaurants', restaurants_path %></li>
 		<% if current_user %>
 			<li><a><%= link_to 'Logout', logout_path %></a></li>
 			<li><%= link_to 'Profile', "/users/#{current_user.username}" %></li>
