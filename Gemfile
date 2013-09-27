@@ -46,6 +46,21 @@ end
 # Use ActiveModel has_secure_password
 	gem 'bcrypt-ruby', '~> 3.0.0'
 
+
+gem 'aws-sdk', '~> 1.6.0'
+gem 'paperclip', '~> 3.5.0'
+
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'launchy'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'shoulda-matchers'
+end
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

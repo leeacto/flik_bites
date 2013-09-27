@@ -19,5 +19,9 @@
   <p>Description: <%= @dish.description %></p>
 </div>
 
-
+<%= form_for(@dish) do |f| %>
+  <div class="actions">
+    <%= f.submit 'Submit Photo' %>
+  </div>
+<% end %>
 
