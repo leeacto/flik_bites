@@ -2,6 +2,9 @@
   <p>Name: <%= @dish.name.titleize %></p>
   <p>Price: <%= @dish.price %></p>
 
+
+  <%= image_tag @photo_view.image.url(:medium) %>
+
   <section class="main-content"> 
     <h2>Preview:</h2>
     <p><img src="about:blank" alt="" id="show-picture"></p>

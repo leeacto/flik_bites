@@ -13,6 +13,7 @@ class DishesController < ApplicationController
     for_url = params[:dishname].gsub(" ", "").downcase
     @dish = Dish.where(:url => for_url).first
     @photo = Photo.new
+    @photo_view = Photo.last
 
     if @dish.nil?
       render 'not_found'
