@@ -21,8 +21,12 @@
   </div>
 <% end %>
 
-
-<div class="field">
-  <%= f.label :image %><br />
-  <%= f.file_field :image %>
-</div>
+<%= form_for :dish do |f| %>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Make a friend' %>
+  </div>
+<% end %>
