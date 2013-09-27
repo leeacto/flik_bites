@@ -23,6 +23,10 @@ FinalProject::Application.routes.draw do
   get '/:restname/:dishname', to: 'dishes#show'
   get '/:restname/:dishname/edit', to: 'dishes#edit'
   post '/:restname/dishes', to: 'dishes#create'
+  post '/:restname/dishes/destroy', to: 'dishes#destroy'
+  
+  
+  resources :dishes
   
   resources :restaurants do
     resources :dishes

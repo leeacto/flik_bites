@@ -12,6 +12,6 @@
 	<%= f.text_area :description %><br>
 	<%= f.label :price %>
 	<%= f.text_field :price %><br>
-	<%= f.hidden_field :restname, :value => restaurant %>
+	<%= f.hidden_field :restname, :value => restaurant.url %>
 	<%= f.submit %>
 <% end %>

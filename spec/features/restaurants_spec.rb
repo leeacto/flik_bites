@@ -15,7 +15,7 @@ feature "Add a Restaurant" do
 			expect {
 				fill_in "restaurant_name", with: "Pizza Hut"
 				fill_in "restaurant_address", with: "123 F"
-				fill_in "restaurant_city", with: "Chicag"
+				fill_in "restaurant_city", with: "Chicago"
 				fill_in "restaurant_state", with: "IL"
 				fill_in "restaurant_zip", with: "60622"
 				fill_in "restaurant_cuisine", with: "Pizza"
@@ -26,7 +26,7 @@ feature "Add a Restaurant" do
 		it "should not accept a form with missing fields" do
 			expect {
 				fill_in "restaurant_address", with: "123 F"
-				fill_in "restaurant_city", with: "Chicag"
+				fill_in "restaurant_city", with: "Chicago"
 				fill_in "restaurant_state", with: "IL"
 				fill_in "restaurant_zip", with: "60622"
 				fill_in "restaurant_cuisine", with: "Pizza"
@@ -61,5 +61,5 @@ feature "Navigate to a Restaurant" do
 end
 
 feature "Viewing a Dish" do
-	it 
+
 end

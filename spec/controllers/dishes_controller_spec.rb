@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+include UserHelper
 
 describe DishesController do 
 
@@ -26,14 +26,33 @@ describe DishesController do
   end
 
   describe "GET #new" do
-    it "assigns the dish's restaurant to @restaurant" do
-      get :new, :restname => "theBristol"
-      assigns(:restaurant).should eq(@restaurant)
+    context "as a signed in user" do
+      before(:each) do
+        user_login
+        controller.stub(:current_user).and_return true
+      end
+
+      it "assigns the dish's restaurant to @restaurant" do
+        get :new, :restname => "theBristol"
+        assigns(:restaurant).should eq(@restaurant)
+      end
+
+      it "renders the :new template" do
+        get :new, :restname => "theBristol"
+        response.should render_template :new
+      end
     end
 
-    it "renders the :new template" do
-      get :new, :restname => "theBristol"
-      response.should render_template :new
+    context "when not logged in" do
+      it "should flash error message" do
+        get :new, :restname => "theBristol"
+        flash.now[:error].should =~ /signed/
+      end
+
+      it "should return to restaurant page" do
+        get :new, :restname => "theBristol"
+        response.should redirect_to "/thebristol"
+      end
     end
   end  
 
@@ -75,31 +94,68 @@ describe DishesController do
   end
 
   describe "POST #create" do 
-    context "with valid attributes" do
-      it "saves the new dish in the database" do
-        expect { post :create, :restname => "thebristol",
-                      :dish => FactoryGirl.attributes_for(:dish)
-                }.to change(Dish, :count).by(1) 
+    describe "as a logged in user" do
+      before(:each) do
+        user_login
+        controller.stub(:current_user).and_return true
+      end
+    
+      context "with valid attributes" do
+        it "saves the new dish in the database" do
+          expect { post :create, :restname => "thebristol",
+                        :dish => FactoryGirl.attributes_for(:dish, :name => "Taco")
+                  }.to change(Dish, :count).by(1)
+        end
+
+        it "gets a success flash" do
+          post :create, :restname => "thebristol",
+                        :dish => FactoryGirl.attributes_for(:dish, :name => "Taco")
+          flash.now[:success].should =~ /New Dish Added!/
+        end
+
+        it "redirects to the restaurant menu page" do 
+          post :create, :restname => "thebristol",
+                        :dish => FactoryGirl.attributes_for(:dish, :name => "Taco")
+          response.should redirect_to "/#{@restaurant.url}/taco"
+        end
       end
 
-      it "redirects to the restaurant menu page" do 
-        post :create, :restname => "thebristol",
-                      :dish => FactoryGirl.attributes_for(:dish)
-        response.should redirect_to @restaurant
+      context "with invalid attributes" do
+        describe "no name" do
+          it "shows a no-name error" do 
+            post :create, :restname => "thebristol",
+                          :dish => FactoryGirl.attributes_for(:dish, :name => nil)
+            flash.now[:error].should =~ /Name/i
+          end
+        end
+
+        describe "no category" do
+          it "does not save dish in the database" do
+            expect { post :create, :restname => "thebristol",
+                          :dish => FactoryGirl.attributes_for(:invalid_dish, :name => "Taco")
+                    }.to_not change(Dish, :count)         
+          end
+
+          it "re-renders the dish :new template" do
+            post :create, :restname => "thebristol",
+                          :dish => FactoryGirl.attributes_for(:invalid_dish, :name => "Taco")
+            response.should render_template :new       
+          end
+        end
       end
     end
 
-    context "with invalid attributes" do
-      it "does not save dish in the database" do
-        expect { post :create, :restname => "thebristol",
-                      :dish => FactoryGirl.attributes_for(:invalid_dish)
-                }.to_not change(Dish, :count)         
+    describe "as a non-logged in viewer" do
+      it "should flash error message" do
+        post :create, :restname => "thebristol",
+                        :dish => FactoryGirl.attributes_for(:dish)
+        flash.now[:error].should =~ /signed/
       end
 
-      it "re-renders the dish :new template" do
+      it "should return to restaurant page" do
         post :create, :restname => "thebristol",
-                      :dish => FactoryGirl.attributes_for(:invalid_dish)
-        response.should render_template :new       
+                        :dish => FactoryGirl.attributes_for(:dish)
+        response.should redirect_to "/thebristol"
       end
     end
   end
