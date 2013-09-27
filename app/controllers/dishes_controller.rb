@@ -7,6 +7,7 @@ class DishesController < ApplicationController
 
   def new
     @restaurant = Restaurant.where(:url => params[:restname].downcase).first
+    @dish = Dish.new
   end
 
   def show
@@ -28,12 +29,16 @@ class DishesController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
+    @restaurant = Restaurant.find(params["restaurant_id"])
     @dish = @restaurant.dishes.new(dish_attributes)
-
+    potential = @dish.name.downcase.gsub(' ','')
+    @dish.url = make_url(@dish, potential)
+    
     if @dish.save
-      redirect_to @restaurant 
+      flash[:success] = "New Dish Added!"
+      redirect_to "/#{@restaurant.url}/#{@dish.url}"
     else
+      flash[:error] = "The Dish Was Not Saved"
       render :new
     end
   end
