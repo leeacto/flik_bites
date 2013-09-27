@@ -35,9 +35,35 @@
 							 :url => "pizza"
 }
 
+@dish_attr3 = { :name => "burger",
+							 :category => "Entree",
+							 :description => "MM meat",
+							 :price => "5.00",
+							 :url => "burger"
+}
+
+@dish_attr4 = { :name => "salad",
+							 :category => "appetizer",
+							 :description => "pre food",
+							 :price => "6.00",
+							 :url => "salad"
+}
+
+
 
 a = Restaurant.create(@attr)
 b = Restaurant.create(@attr_t)
 
 a.dishes.create(@dish_attr)
+a.dishes.create(@dish_attr2)
+a.dishes.create(@dish_attr3)
+a.dishes.create(@dish_attr4)
+
+
+b.dishes.create(@dish_attr)
 b.dishes.create(@dish_attr2)
+b.dishes.create(@dish_attr3)
+b.dishes.create(@dish_attr4)
+
+
+

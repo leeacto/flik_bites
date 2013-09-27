@@ -1,7 +1,12 @@
-Dish list for <%= @restaurant.name %>
+Menu For: <%= @restaurant.name %>
 
-<ul>
+
+<div>
   <% @dishes.each do |dish| %>
-    <li><%= link_to dish.name, "/#{@restaurant.url}/#{dish.url}" %></li>
+    <div class="card">
+      <p><%= link_to dish.name, "/#{@restaurant.url}/#{dish.url}" %> <%= dish.price %></p>
+      <%= image_tag "http://lorempixel.com/300/300/food" %>
+      <p><%= dish.description %></p>
+    </div>
   <% end %>
-</ul>
+</div>
