@@ -35,7 +35,7 @@ feature 'Edit user information' do
 
 	it "should see a deactivate account link" do
 		click_link 'Profile'
-		page.should have_content "deactivate account"
+		page.should have_content "Deactivate Account"
 	end
 
 	it "user should see the edit information link" do
