@@ -1,6 +1,7 @@
 <h1>Login</h1>
-<p><%= flash[:error] %></p> 
-<%= current_user.id if current_user %>
+
+<%= link_to "Skip to Restaurants", restaurants_path %>
+
 <%= form_for :session, url: sessions_path do |f| %>
   <p>
     <%= f.label :username %><br>

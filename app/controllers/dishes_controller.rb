@@ -16,7 +16,6 @@ class DishesController < ApplicationController
     if @dish.nil?
       render 'not_found'
     end
-
   end
 
   def edit
