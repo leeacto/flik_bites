@@ -53,4 +53,3 @@ production:
   encoding: unicode
   database: final_project_production
   pool: 5
-
