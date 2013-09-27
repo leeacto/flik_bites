@@ -1,2 +1,7 @@
 Dish list for <%= @restaurant.name %>
 
+<ul>
+  <% @dishes.each do |dish| %>
+    <li><%= link_to dish.name, "/#{@restaurant.url}/#{dish.url}" %></li>
+  <% end %>
+</ul>
