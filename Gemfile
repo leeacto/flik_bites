@@ -41,23 +41,20 @@ group :test, :development do
 	gem 'capybara'
 	gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'jasmine-rails'
+  gem 'launchy'
+  gem 'jasmine-jquery-rails'
 end
 
 # Use ActiveModel has_secure_password
-	gem 'bcrypt-ruby', '~> 3.0.0'
+  gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 gem 'aws-sdk', '~> 1.6.0'
 gem 'paperclip', '~> 3.5.0'
 
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'launchy'
-end
-
 group :test do
-  gem 'capybara'
   gem 'shoulda-matchers'
 end
 
