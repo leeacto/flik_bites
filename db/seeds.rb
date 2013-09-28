@@ -1,4 +1,3 @@
-require 'faker'
 
 #Seed Two Restaurants
 @attr = { :name => "The Bristol", 
