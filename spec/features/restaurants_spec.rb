@@ -60,6 +60,28 @@ feature "Navigate to a Restaurant" do
 	end
 end
 
+feature "Interacting with /:restaurant/dishes page" do
+	before(:each) do
+		two_rest
+	end
+	
+	context "Either Logged in or Not" do
+		before(:each) do
+			visit "/cumin/dishes"
+		end
+
+		it "should highlight tabs upon hover" do
+			
+		end
+	end
+
+	context "While Logged In" do
+
+	end
+
+	context "As a Visitor" do
+	end
+end
 feature "Viewing a Dish" do
 
 end

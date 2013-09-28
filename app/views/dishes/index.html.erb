@@ -1,4 +1,4 @@
-<div><%= @restaurant.name %></div>
+<div onclick="TINY.box.show({html:'<%=@restaurant.cuisine%>'})"><%= @restaurant.name	 %></div>
 
 <div>
 	<%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
