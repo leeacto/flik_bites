@@ -1,6 +1,5 @@
 ![Build Status][BS img]
-<a href='https://coveralls.io/r/eugenefilimonov/final_project?branch=master'><img src='https://coveralls.io/repos/eugenefilimonov/final_project/badge.png?branch=master' alt='Coverage Status' /></a>
-
+[![Coverage Status](https://coveralls.io/repos/eugenefilimonov/final_project/badge.png?branch=master)](https://coveralls.io/r/eugenefilimonov/final_project?branch=master)
 [travis pull requests]: https://travis-ci.org/eugenefilimonov/final_project/pull_requests
 [BS img]: https://travis-ci.org/eugenefilimonov/final_project.png
 
