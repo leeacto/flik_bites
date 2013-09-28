@@ -29,7 +29,9 @@ ul.tab_header li:hover {
 
 ul.tab {
 	position: absolute;
-	border: 2px solid black;
+	border-right: 2px solid black;
+	border-left: 2px solid black;
+	border-bottom: 2px solid black;
 	list-style-type: none;
 	margin-top: 0;
 	margin-right: 0;
@@ -39,13 +41,17 @@ ul.tab {
 	height: 100%;
 }
 
+#starters_tab {
+	border-left: 2px solid black;
+}
+
 .card {
 	border: 1px solid black;
 	width: 30%;
 	height: 36.4%;
 	display: inline-block;
 	float: left;
-	margin: auto;
+	margin: 1.5% 1.5% 0 1.5%;
 }
 
 .card_pic {
@@ -93,7 +99,13 @@ ul.tab {
 	list-style-type: circle;
 }
 
+li.selected_tab {
+	border-bottom-style: none;
+}
 
+li.unselected_tab {
+	border-bottom: 2px solid black;
+}
 .hidden {
 	display: none;
 }

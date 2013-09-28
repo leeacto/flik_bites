@@ -10,7 +10,7 @@
 				<% if @curr_dishes.starters.count > 0 %>
 					<ul><h4>Starters</h4>
 						<% @curr_dishes.starters.each do |s| %>
-							<li><%= link_to s.name, "/#{@restaurant.url}/#{s.url}" %></li></br>
+							<li><%= link_to s.name, "/#{restaurant.url}/#{s.url}" %></li></br>
 						<% end %>
 					</ul>
 				<% end %>
@@ -18,7 +18,7 @@
 				<% if @curr_dishes.entrees.count > 0 %>
 					<ul><h4>Entrees</h4>
 						<% @curr_dishes.entrees.each do |s| %>
-							<li><%=link_to s.name, "/#{@restaurant.url}/#{s.url}" %></li></br>
+							<li><%=link_to s.name, "/#{restaurant.url}/#{s.url}" %></li></br>
 						<% end %>
 					</ul>
 				<% end %>
@@ -26,7 +26,7 @@
 				<% if @curr_dishes.desserts.count > 0 %>
 					<ul><h4>Desserts</h4>
 						<% @curr_dishes.desserts.each do |s| %>
-							<li><%=link_to s.name, "/#{@restaurant.url}/#{s.url}"  %></li></br>
+							<li><%=link_to s.name, "/#{restaurant.url}/#{s.url}"  %></li></br>
 						<% end %>
 					</ul>
 				<% end %>
