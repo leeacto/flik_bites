@@ -19,7 +19,7 @@ FinalProject::Application.routes.draw do
   get '/restaurants/new', to: 'restaurants#new'
   get '/:restname', to: 'restaurants#show'
   get '/:restname/edit', to: 'restaurants#edit'
-
+  get '/:restname/desc', to: 'restaurants#desc'
   
 
   get '/:restname/dishes', to: 'dishes#index'

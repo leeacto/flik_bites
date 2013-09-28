@@ -24,6 +24,22 @@ describe RestaurantsController do
 			response.should render_template :new
 		end
 	end
+	
+	describe 'GET #desc' do
+		before(:each) do
+			@rs = two_rest
+			get :desc, :url => 'cumin'
+		end
+
+		it 'should render the desc view' do
+			response.should render_template 'desc'
+		end
+
+		it "should give cuisine name" do
+			assigns(:rest).should eq (@rs.last)
+		end
+
+	end
 
 	describe "GET #show" do
 		it "should render the restaurant page given valid restaurant" do

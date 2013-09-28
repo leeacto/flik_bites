@@ -61,9 +61,14 @@ feature "Interacting with /:restaurant/dishes page" do
 			visit "/cumin/dishes"
 		end
 
-		it "should highlight tabs upon hover" do
+		it "should show the correct tab upon click" do
 			find('#entrees_tab').click
 			page.should have_content 'pad thai'
+		end
+
+		it "should show restaurant info upon clicking name" do
+			find('#rest_show_name').click
+			page.should have_content 'American'
 		end
 	end
 

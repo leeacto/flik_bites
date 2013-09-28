@@ -68,6 +68,12 @@ class RestaurantsController < ApplicationController
 		redirect_to '/restaurants'
 	end
 
+	def desc
+		p params
+		@rest = Restaurant.where(:url => params[:restname]).first
+		render 'desc'
+	end
+
 	private
 	
 	def restaurant_attributes
