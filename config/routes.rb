@@ -1,8 +1,12 @@
 FinalProject::Application.routes.draw do
 
-	root 'sessions#new'
+  match 'auth/:provider/callback', to: 'sessions#createoath', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+	root 'landing#index'
+	
 	mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
 	resources :users, only: [:index,:new,:create,:edit,:update,:destory]
+
   get '/users/:user', to: 'users#show'
   
   resource :accounts, only: [:update]
@@ -28,6 +32,7 @@ FinalProject::Application.routes.draw do
   
   resources :dishes, only: [:update, :destroy]
 
+
   resources :photos
   
 
@@ -39,5 +44,6 @@ FinalProject::Application.routes.draw do
   resources :restaurants do
     resources :dishes
   end
+
 
 end

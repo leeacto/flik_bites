@@ -1,3 +1,4 @@
+<div class="pure-u-1"> 
 <h1> Update your information </h1>
 <%= form_for @user do |f| %>
   <p>
@@ -24,12 +25,9 @@
     <%= f.label :password %><br>
     <%= f.password_field :password%>
   </p>
-   <p>
-    <%= f.label :confirm_password %><br>
-    <%= f.password_field :password_confirmation%>
-  </p>
   <p>
   <p>
     <%= f.submit "Edit User" %>
   </p>
 <% end %>
+</div>

@@ -7,6 +7,5 @@ FactoryGirl.define do
 		f.email 						  	"email@email.com"
 		f.is_active							true
 		f.password 						  "password"
-		f.password_confirmation "password"
   end
 end

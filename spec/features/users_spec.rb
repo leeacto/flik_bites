@@ -12,13 +12,9 @@ feature 'Create User' do
 	it "if user fills out with propper info should save" do
 		visit new_user_path
 		expect {
-						fill_in 'user_first_name', with: 'first'
-						fill_in 'user_last_name', with: 'last'
-						fill_in 'user_zipcode', with: '60060'
 						fill_in 'user_username', with: 'username'
 						fill_in 'user_email', with: "email@email.com"
 						fill_in 'user_password', with: "password"
-						fill_in 'user_password_confirmation', with: "password"
 						click_button 'Create User'
 					}.to change(User, :count).by(1)
 	end
@@ -34,17 +30,17 @@ feature 'Edit user information' do
 	end
 
 	it "should see a deactivate account link" do
-		click_link 'Profile'
+		click_link 'username'
 		page.should have_content "Deactivate Account"
 	end
 
 	it "user should see the edit information link" do
-		click_link 'Profile'
+		click_link 'username'
 		page.should have_content "Edit Profile "
 	end
 
 	it 'should be able to edit their own information' do
-		click_link 'Profile'
+		click_link 'username'
 		click_link 'Edit Profile'
 		fill_in 'user_first_name', with: 'change'
 		fill_in 'user_last_name', with: "this"
