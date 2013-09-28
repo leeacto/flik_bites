@@ -7,7 +7,7 @@ class DishesController < ApplicationController
 
   def new
     @restaurant = Restaurant.where(:url => params[:restname].downcase).first
-
+    @curr_dishes = @restaurant.dishes
     if current_user
       @dish = Dish.new
       render 'new'
@@ -38,8 +38,8 @@ class DishesController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.where(:url => params["restname"]).first
-    if current_user
+    @restaurant = Restaurant.where(:url => params["dish"]["restname"]).first
+    if logged_in?
       @dish = @restaurant.dishes.new(dish_attributes)
       unless @dish.name.nil?
         potential = @dish.name.downcase.gsub(' ','')

@@ -1,6 +1,5 @@
 .menu {
 	width: 100%;
-
 }
 
 ul.tab_header {
@@ -40,14 +39,13 @@ ul.tab {
 	height: 100%;
 }
 
-
 .card {
 	border: 1px solid black;
 	width: 30%;
 	height: 36.4%;
 	display: inline-block;
 	float: left;
-	margin-right: 2%;
+	margin: auto;
 }
 
 .card_pic {
@@ -62,6 +60,22 @@ ul.tab {
 	width: 12%;
 	height: 27%;
 	margin: auto;
+}
+
+#add_dish_content {
+	text-align: center;
+}
+
+#add_dish_content li{
+	width: 45%;
+	display: inline-block;
+	list-style-type: none;
+	margin: auto;
+}
+
+.curr_menu {
+	border: 1px solid black;
+	float: left;
 }
 
 .hidden {

@@ -95,6 +95,3 @@ feature "Interacting with /:restaurant/dishes page" do
 	context "As a Visitor" do
 	end
 end
-feature "Viewing a Dish" do
-
-end
