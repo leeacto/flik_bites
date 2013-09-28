@@ -1,5 +1,7 @@
 [travis pull requests]: https://travis-ci.org/eugenefilimonov/final_project/pull_requests
 [Coverage Status]: https://coveralls.io/r/eugenefilimonov/final_project
+[BS img]: https://travis-ci.org/eugenefilimonov/final_project.png
+[CS img]: https://coveralls.io/repos/elgalu/final_project/badge.png?branch=master
 # FlikBites
 
 A better menu
