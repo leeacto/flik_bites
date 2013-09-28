@@ -3,8 +3,6 @@ $(document).ready(function() {
         var takePicture = document.querySelector("#take-picture"),
             showPicture = document.querySelector("#show-picture");
             
-            console.log("getting through");
-
             if (takePicture && showPicture) {
             console.log("getting through two");
             takePicture.onchange = function (event) {
