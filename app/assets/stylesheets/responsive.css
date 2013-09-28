@@ -1,6 +1,14 @@
 @media (min-width:920px){
+
+	#twlog, #glog{
+		height:31px;
+	}
 	#newrest {
 		letter-spacing: 0;
+	}
+
+	#twlog {
+		border-radius:5px;
 	}
 	#signupnow{
 		position: relative;
@@ -73,6 +81,9 @@
  }
 
  @media (min-width:481px) and (max-width: 919px) {
+ 	#twlog, #glog{
+		height:31px;
+	}
  	#signupnow{
 		position: relative;
 		top:15px;
@@ -148,6 +159,9 @@
  }
 
 @media(max-width: 480px) {
+	#twlog, #glog{
+		height:31px;
+	}
 	#signupnow{
 		position: relative;
 		top:15px;
