@@ -1,6 +1,4 @@
 require 'spec_helper'
-
-
 include RestaurantHelper
 
 describe RestaurantsController do
@@ -31,10 +29,40 @@ describe RestaurantsController do
 	end
 
 	describe 'GET #new' do
-		it 'should route to the new restaurant page' do
-			get :new
-			response.should render_template :new
+		context 'As Logged In User' do
+			it 'should route to the new restaurant page' do
+				controller.stub(:logged_in?).and_return true
+				get :new
+				response.should render_template :new
+			end
 		end
+
+		context 'As Visitor' do
+			before(:each) do
+				get :new
+			end
+
+			it "should redirect to login page" do
+				response.should	redirect_to login_path
+			end
+
+		end
+	end
+	
+	describe 'GET #desc' do
+		before(:each) do
+			@rs = two_rest
+			get :desc, :restname => 'cumin'
+		end
+
+		it 'should render the desc view' do
+			response.should render_template 'desc'
+		end
+
+		it "should give cuisine name" do
+			assigns(:rest).should eq (@rs.last)
+		end
+
 	end
 
 	describe "GET #show" do

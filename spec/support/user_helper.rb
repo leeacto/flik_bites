@@ -8,7 +8,6 @@ module UserHelper
 			:email =>  "email@email.com",
 			:password =>  "password",
 		}
-		# User.create(@attr)
 		FactoryGirl.create(:user)
 	end
 
