@@ -16,6 +16,18 @@ describe RestaurantsController do
 			get :index
 			assigns(:restaurants).should eq(@rs)
 		end
+
+		context "with an ajax request" do
+			it "has a 200 status code" do
+				xhr :get, :index
+				response.code.should eq "200"
+			end
+
+			it "renders the live_search partial" do
+				xhr :get, :index
+				response.should render_template :_live_search
+			end
+		end
 	end
 
 	describe 'GET #new' do
