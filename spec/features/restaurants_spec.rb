@@ -34,10 +34,6 @@ feature "Add a Restaurant" do
 			before(:each) do
 				visit '/restaurants/new'
 			end
-			
-			it "should redirect to login path" do
-				page.should have_content 'Sign in'
-			end
 
 			it "should have a flash error" do
 				page.should have_content 'must log'
