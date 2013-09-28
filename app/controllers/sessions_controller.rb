@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     redirect_to  root_path
   end
 
-  def createoath
+  def createoauth
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to root_path

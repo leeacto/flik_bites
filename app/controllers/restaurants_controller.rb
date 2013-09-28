@@ -5,7 +5,12 @@ class RestaurantsController < ApplicationController
 	end
 
 	def new
-		@restaurant = Restaurant.new
+		if logged_in?
+			@restaurant = Restaurant.new
+		else
+			flash[:error] = "You must log in to add a new restaurant"
+			redirect_to login_path
+		end
 	end
 
 	def create
@@ -69,7 +74,6 @@ class RestaurantsController < ApplicationController
 	end
 
 	def desc
-		p params
 		@rest = Restaurant.where(:url => params[:restname]).first
 		render 'desc'
 	end
