@@ -36,18 +36,32 @@ ul.tab {
 	margin-right: 0;
 	padding: .5%;
 	text-align: center;
-	width: 100%;
+	width: 95%;
+	height: 100%;
 }
 
 
 .card {
 	border: 1px solid black;
 	width: 30%;
+	height: 36.4%;
 	display: inline-block;
+	float: left;
+	margin-right: 2%;
+}
+
+.card_pic {
+	width: 88%;
+	height: 72%;
+	border: 1px solid black;
+	margin: auto;
+	margin-top: 2%;
 }
 
 #card_desc {
-	border-top: 1px solid black
+	width: 12%;
+	height: 27%;
+	margin: auto;
 }
 
 .hidden {
