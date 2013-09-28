@@ -1,7 +1,6 @@
-![Build Status][BS img]
+[![Build Status](https://travis-ci.org/eugenefilimonov/final_project.png)](https://travis-ci.org/eugenefilimonov/final_project)
 [![Coverage Status](https://coveralls.io/repos/eugenefilimonov/final_project/badge.png?branch=master)](https://coveralls.io/r/eugenefilimonov/final_project?branch=master)
-[travis pull requests]: https://travis-ci.org/eugenefilimonov/final_project/pull_requests
-[BS img]: https://travis-ci.org/eugenefilimonov/final_project.png
+
 
 # FlikBites
 
