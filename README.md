@@ -1,5 +1,5 @@
 [travis pull requests]: https://travis-ci.org/eugenefilimonov/final_project/pull_requests
-[Coverage Status]: https://coveralls.io/r/eugenefilimonov /final_project
+[Coverage Status]: https://coveralls.io/r/eugenefilimonov/final_project
 # FlikBites
 
 A better menu
