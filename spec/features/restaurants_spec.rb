@@ -71,7 +71,8 @@ feature "Interacting with /:restaurant/dishes page" do
 		end
 
 		it "should highlight tabs upon hover" do
-			
+			find('#entrees_tab').click
+			page.should have_content 'pad thai'
 		end
 	end
 
