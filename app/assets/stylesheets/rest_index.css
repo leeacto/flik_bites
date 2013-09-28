@@ -24,6 +24,10 @@ ul.tab_header li {
 	border-top: 2px solid black;
 }
 
+ul.tab_header li:hover {
+	background-color: red;
+}
+
 ul.tab {
 	position: absolute;
 	border: 2px solid black;
@@ -34,6 +38,7 @@ ul.tab {
 	text-align: center;
 	width: 100%;
 }
+
 
 .card {
 	border: 1px solid black;

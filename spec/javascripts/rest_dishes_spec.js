@@ -9,6 +9,5 @@ describe("Menu", function() {
 	it("should have the menu class selector", function() {
 	// var menu
 		expect(new Menu('.menu')).toEqual('.menu');
-		// expect(true).toEqual(true);
 	})
 })

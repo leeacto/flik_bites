@@ -4,25 +4,40 @@ include UserHelper
 
 feature "Add a Restaurant" do
 	context "On Purpose" do
-		before(:each) do
-			user_login
-			visit '/restaurants/new'
-		end
-		
-		it "should route to the correct page" do
-			page.should have_content 'New'
-		end
+		describe "As a Logged In User" do
+			before(:each) do
+				user_login
+				visit '/restaurants/new'
+			end
+			
+			it "should route to the correct page" do
+				page.should have_content 'New'
+			end
 
-		it "should add a new restaurant and get to the page" do
-			expect {
-				fill_in "restaurant_name", with: "Pizza Hut"
-				fill_in "restaurant_address", with: "123 F"
-				fill_in "restaurant_city", with: "Chicago"
-				fill_in "restaurant_state", with: "IL"
-				fill_in "restaurant_zip", with: "60622"
-				fill_in "restaurant_cuisine", with: "Pizza"
-				click_button 'Create Restaurant'
-			}.to change(Restaurant, :count).by(1)
+			it "should add a new restaurant and get to the page" do
+				expect {
+					fill_in "restaurant_name", with: "Pizza Hut"
+					fill_in "restaurant_address", with: "123 F"
+					fill_in "restaurant_city", with: "Chicago"
+					fill_in "restaurant_state", with: "IL"
+					fill_in "restaurant_zip", with: "60622"
+					fill_in "restaurant_cuisine", with: "Pizza"
+					click_button 'Create Restaurant'
+				}.to change(Restaurant, :count).by(1)
+			end
+		end
+	end
+
+	context "When Not Logged In" do
+		describe "should not allow access" do
+
+			before(:each) do
+				visit '/restaurants/new'
+			end
+
+			it "should have a flash error" do
+				page.should have_content 'must log'
+			end
 		end
 	end
 end
@@ -51,6 +66,35 @@ feature "Navigate to a Restaurant" do
 	end
 end
 
+feature "Interacting with /:restaurant/dishes page" do
+	before(:each) do
+		two_rest
+	end
+	
+	context "Either Logged in or Not" do
+		before(:each) do
+			visit "/cumin/dishes"
+		end
+
+		it "should show the correct tab upon click" do
+			find('#entrees_tab').click
+			page.should have_content 'pad thai'
+		end
+
+		# Not Working - I think it may be due to TinyBox
+		# it "should show restaurant info upon clicking name" do
+		# 	find('#rest_show_name').click
+		# 	page.should have_content 'American'
+		# end
+	end
+
+	context "While Logged In" do
+
+	end
+
+	context "As a Visitor" do
+	end
+end
 feature "Viewing a Dish" do
 
 end
