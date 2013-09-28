@@ -1,6 +1,6 @@
 FinalProject::Application.routes.draw do
 
-  match 'auth/:provider/callback', to: 'sessions#createoath', via: [:get, :post]
+  match 'auth/:provider/callback', to: 'sessions#createouath', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
 	root 'landing#index'
 	
@@ -19,7 +19,7 @@ FinalProject::Application.routes.draw do
   get '/restaurants/new', to: 'restaurants#new'
   get '/:restname', to: 'restaurants#show'
   get '/:restname/edit', to: 'restaurants#edit'
-
+  get '/:restname/desc', to: 'restaurants#desc'
   
 
   get '/:restname/dishes', to: 'dishes#index'
