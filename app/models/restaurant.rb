@@ -10,7 +10,7 @@ class Restaurant < ActiveRecord::Base
 
 	def self.search(term)
     if term
-      where('lower(name) LIKE ?', "%#{term.downcase.strip}%").to_a
+      where('lower(name) LIKE ?', "%#{term.downcase.strip}%")
     else
       all
     end
