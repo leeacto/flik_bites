@@ -1,5 +1,13 @@
-@media (min-width:920px){
 
+.l-box {
+	width:33%;
+}
+.l-box:first-child {
+margin-left: 33%;
+}
+
+
+@media (min-width:920px){
 	#twlog, #glog{
 		height:31px;
 	}
