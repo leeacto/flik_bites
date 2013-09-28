@@ -8,11 +8,6 @@
       <%= f.submit "Login",class: 'pure-button'%>
      <%end%>
 </fieldset>
-
-<%=link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+<%=image_tag("facebook_32.png")%><%=link_to 'Login With Facebook', "/auth/facebook" %>
 <%=link_to "Sign in with Google", "/auth/google_oauth2" %>
-<%=link_to "Sign in with Twitter", "/auth/twitter" %>
-
-
-
-
+<%=image_tag("twitter_32.png")%><%=link_to "Sign in with Twitter", "/auth/twitter" %>

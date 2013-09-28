@@ -8,8 +8,7 @@ describe AccountsController do
 										  		 :last_name => "TestLast", 
 										  		 :zipcode => "60060", 
 										  		 :email => "user@example.com",
-										  		 :password => "foobar",
-										  		 :password_confirmation => "foobar")
+										  		 :password => "foobar")
 		post :update,{format: "#{@user.id}"}
 		@user.reload.is_active?.should eq false
 		session[:user_id].should eq nil
@@ -23,7 +22,6 @@ describe AccountsController do
 										  		 :zipcode => "60060", 
 										  		 :email => "user@example.com",
 										  		 :password => "foobar",
-										  		 :password_confirmation => "foobar",
 										  		 :is_active => false)
 		post :update,{format: "#{@user.id}"}
 		@user.reload.is_active?.should eq true

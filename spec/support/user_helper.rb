@@ -7,7 +7,6 @@ module UserHelper
 			:username =>  'username',
 			:email =>  "email@email.com",
 			:password =>  "password",
-			:password_confirmation =>  "password",
 		}
 		User.create(@attr)
 	end

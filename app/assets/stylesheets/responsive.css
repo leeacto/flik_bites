@@ -1,5 +1,7 @@
 @media (min-width:920px){
-
+	#newrest {
+		letter-spacing: 0;
+	}
 	#signupnow{
 		position: relative;
 		top:15px;

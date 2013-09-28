@@ -8,8 +8,7 @@ describe SessionsController do
 										  		 :last_name => "TestLast", 
 										  		 :zipcode => "60060", 
 										  		 :email => "user@example.com",
-										  		 :password => "foobar",
-										  		 :password_confirmation => "foobar")	
+										  		 :password => "foobar")		 	
 		end
 		it "should be able to create a session" do
 			post :create,{session: {username: 'TestUserName', password: 'foobar'}}
@@ -41,8 +40,7 @@ describe SessionsController do
 										  		 :last_name => "TestLast", 
 										  		 :zipcode => "60060", 
 										  		 :email => "user@example.com",
-										  		 :password => "foobar",
-										  		 :password_confirmation => "foobar")
+										  		 :password => "foobar")
 			post :create,{session: {username: 'TestUserName', password: 'foobar'}}
 			session[:user_id].should eq @user.id	
 		end
@@ -54,7 +52,6 @@ describe SessionsController do
 										  		 :zipcode => "60060", 
 										  		 :email => "user@example.com",
 										  		 :password => "foobar",
-										  		 :password_confirmation => "foobar",
 										  		 :is_active => false)
 			post :create,{session: {username: 'TestUserName', password: 'foobar'}}
 			session[:user_id].should eq nil
