@@ -1,0 +1,17 @@
+<%= form_for [restaurant, dish] do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %><br>
+	
+	<%= f.label :category %>
+	<%= f.radio_button :category, 'Starter', :checked => true %>
+		<%= label :starter, 'Starter' %>
+		<%= label :entree, 'Entree' %>
+		<%= label :dessert, 'Dessert' %><br>
+	
+	<%= f.label :description %>
+	<%= f.text_area :description %><br>
+	<%= f.label :price %>
+	<%= f.text_field :price %><br>
+	<%= f.hidden_field :restname, :value => restaurant.url %>
+	<%= f.submit %>
+<% end %>

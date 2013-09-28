@@ -18,17 +18,27 @@ FinalProject::Application.routes.draw do
   get '/:restname/edit', to: 'restaurants#edit'
 
   
-  resources :restaurants
 
   get '/:restname/dishes', to: 'dishes#index'
   get '/:restname/dishes/new', to: 'dishes#new'
   get '/:restname/:dishname', to: 'dishes#show'
   get '/:restname/:dishname/edit', to: 'dishes#edit'
   post '/:restname/dishes', to: 'dishes#create'
+
   post '/:restname/:dishname', to: 'dishes#photo_new'
   
   resources :dishes, only: [:update, :destroy]
 
   resources :photos
   
+
+  post '/:restname/dishes/destroy', to: 'dishes#destroy'
+  
+  
+  resources :dishes
+  
+  resources :restaurants do
+    resources :dishes
+  end
+
 end
