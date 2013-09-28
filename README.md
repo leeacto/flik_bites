@@ -1,6 +1,6 @@
-# FoodAdventures
+# FlikBites
 
-GENERAL SUMMARY HERE
+A better menu
 
 
 # SETUP AND CONFIGURATION
