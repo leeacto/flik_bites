@@ -5,9 +5,8 @@ class UsersController < ApplicationController
 									   zipcode: params[:user][:zipcode],
 									   username: params[:user][:username], 
 									   email: params[:user][:email],
-									   password: params[:user][:password],
-									   password_confirmation:params[:user][:password_confirmation])
-
+									   password: params[:user][:password])
+									 
     if @user.save
 	    session[:user_id] = @user.id
 	    redirect_to root_path

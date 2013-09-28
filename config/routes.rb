@@ -1,5 +1,6 @@
 FinalProject::Application.routes.draw do
- 
+  match 'auth/:provider/callback', to: 'sessions#createoath', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
 	root 'landing#index'
 	
 	
@@ -26,4 +27,6 @@ FinalProject::Application.routes.draw do
   post '/:restname/dishes', to: 'dishes#create'
   
   resources :dishes, only: [:update, :destroy]
+
+
 end

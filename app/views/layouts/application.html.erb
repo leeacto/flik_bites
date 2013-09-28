@@ -11,10 +11,11 @@
 <body>
 	<div id='header'>
 		<%= render partial: 'layouts/header' %>
+	</div>
 		<% flash.each do |key, value| %>
 				<%= content_tag(:div, value, :class => "flash #{key}") %>
 		<% end %>
-	</div>
+	
 	<div class="pure-g-r">
 		<%= yield %>
 	</div>
