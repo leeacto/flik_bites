@@ -30,10 +30,12 @@ div.dish {
   display: inline-block;
   font-size: 12px;
   position: relative;
-  height: 200px;
-  width: 200px;
   -webkit-perspective: 600px;
   -moz-perspective: 600px;
+  @include prefixer(box-sizing, border-box);
+  padding: 20px;
+  height: 200px;
+  width: 300px;
 
   a {
     color: $color-1;
@@ -50,16 +52,28 @@ div.dish {
 
     -moz-transform-style: preserve-3d;
     -moz-backface-visibility: hidden;
+    @include prefixer(box-sizing, border-box);
+    padding: 20px;
+    height: 200px;
+    width: 300px;
   }
 
   &:hover {
     div.front {
       -webkit-transform: rotateY(180deg);
+      @include prefixer(box-sizing, border-box);
+      padding: 20px;
+      height: 200px;
+      width: 300px;
     }
 
     div.back {
       z-index: 1000;
       -webkit-transform: rotateY(0deg);
+      @include prefixer(box-sizing, border-box);
+      padding: 20px;
+      height: 200px;
+      width: 300px;
     }
   }
 
@@ -67,6 +81,10 @@ div.dish {
     z-index: 900;
     -webkit-transform: rotateX(0deg) rotateY(0deg);
     -moz-transform: rotateX(0deg) rotateY(0deg);
+    @include prefixer(box-sizing, border-box);
+    padding: 20px;
+    height: 200px;
+    width: 300px;
 
   }
 

@@ -2,6 +2,10 @@
 	width: 100%;
 }
 
+ul.restaurant_list {
+	padding-left: 0px;
+
+}
 ul.tab_header {
 	width: 100%;
 	padding: 0;
@@ -40,9 +44,8 @@ ul.tab {
 }
 
 .card {
-	border: 1px solid black;
-	width: 30%;
-	height: 36.4%;
+    height: 200px;
+    width: 300px;
 	display: inline-block;
 	float: left;
 	margin: auto;
