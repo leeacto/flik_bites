@@ -45,6 +45,7 @@ group :test, :development do
   gem 'jasmine-rails'
   gem 'launchy'
   gem 'jasmine-jquery-rails'
+  gem 'paperclip-compression'
 end
 
 # Use ActiveModel has_secure_password
