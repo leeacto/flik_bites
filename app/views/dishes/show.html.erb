@@ -1,8 +1,8 @@
-<div class="card">
+<div class="NOT CARD">
   <p>Name: <%= @dish.name.titleize %></p>
   <p>Price: <%= @dish.price %></p>
 
-  <ul id="Gallery">
+  <ul id="gallery">
     <% @photos.each do |photo| %>
       <li><a><%= image_tag photo.image.url(:medium) %></a></li>
     <% end %>
