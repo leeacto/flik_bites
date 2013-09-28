@@ -1,1 +1,36 @@
-<%= render partial: 'form', :locals => {:dish => @dish, :restaurant => @restaurant } %>
+<h1>Add a Dish to <%= @restaurant.name %></h1>
+
+<ul id = "add_dish_content">
+	<li><%= render partial: 'form', :locals => {:dish => @dish, :restaurant => @restaurant } %></li>
+
+	<li>
+		<div class="curr_menu">
+			<% unless @curr_dishes.empty? %>
+				<h3> Current Menu </h3>
+				<% if @curr_dishes.starters.count > 0 %>
+					<ul><h4>Starters</h4>
+						<% @curr_dishes.starters.each do |s| %>
+							<li><%= link_to s.name, "/#{@restaurant.url}/#{s.url}" %></li></br>
+						<% end %>
+					</ul>
+				<% end %>
+
+				<% if @curr_dishes.entrees.count > 0 %>
+					<ul><h4>Entrees</h4>
+						<% @curr_dishes.entrees.each do |s| %>
+							<li><%=link_to s.name, "/#{@restaurant.url}/#{s.url}" %></li></br>
+						<% end %>
+					</ul>
+				<% end %>
+
+				<% if @curr_dishes.desserts.count > 0 %>
+					<ul><h4>Desserts</h4>
+						<% @curr_dishes.desserts.each do |s| %>
+							<li><%=link_to s.name, "/#{@restaurant.url}/#{s.url}"  %></li></br>
+						<% end %>
+					</ul>
+				<% end %>
+			<% end %>
+		</div>
+	</li>
+</ul>

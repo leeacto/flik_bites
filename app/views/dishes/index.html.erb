@@ -13,19 +13,40 @@
 
 	<ul class = "starters tab">
 		<% @dishes.starters.each do |s| %>
-			<li class = "card"><%= link_to s.name, s %></li>
+			<li class = "card">
+				<div class = "card_pic">
+					test
+				</div>
+				<div id="card_desc">
+					<%= link_to s.name, s %>
+				</div>
+			</li>
 		<% end %>
 	</ul>
 
 	<ul class = "entrees hidden tab">
 		<% @dishes.entrees.each do |e| %>
-			<li class = "card" ><%= link_to e.name, e %></li>
+			<li class = "card" >
+				<div class = "card_pic">
+
+				</div>
+				<div id="card_desc">
+					<%= link_to e.name, e %>
+				</div>
+			</li>
 		<% end %>
 	</ul>
 
 	<ul class = "desserts hidden tab">
 		<% @dishes.desserts.each do |d| %>
-			<li class = "card" ><%= link_to d.name, d %></li>
+			<div class = "card_pic">
+
+			</div>
+			<li class = "card" >
+				<div id="card_desc">
+					<%= link_to d.name, d %>
+				</div>
+			</li>
 		<% end %>
 	</ul>
 </div>
