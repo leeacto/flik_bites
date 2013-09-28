@@ -1,0 +1,100 @@
+$color-1: #444;
+$color-2: gainsboro;
+$color-3: #B32216;
+$color-4: #999;
+$color-5: white;
+
+// Mixins
+// ----------------------------------------
+
+@mixin prefixer ($property, $value,
+                 $webkit: true,
+                    $moz: true,
+                     $ms: true,
+                      $o: true,
+                   $spec: true) {
+  @if $webkit { -webkit-#{$property}: $value; }
+  @if $moz    {    -moz-#{$property}: $value; }
+  @if $ms     {     -ms-#{$property}: $value; }
+  @if $o      {      -o-#{$property}: $value; }
+  @if $spec   {         #{$property}: $value; }
+}
+
+// Dish
+// ----------------------------------------
+section#dishes {
+  font-size: 0;
+}
+
+div.dish {
+  display: inline-block;
+  font-size: 12px;
+  position: relative;
+  height: 200px;
+  width: 200px;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+
+  a {
+    color: $color-1;
+  }
+
+  & > div {
+    left: 0;
+    position: absolute;
+    top: 0;
+    @include prefixer(transition, all .6s ease-in-out);
+
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+
+    -moz-transform-style: preserve-3d;
+    -moz-backface-visibility: hidden;
+  }
+
+  &:hover {
+    div.front {
+      -webkit-transform: rotateY(180deg);
+    }
+
+    div.back {
+      z-index: 1000;
+      -webkit-transform: rotateY(0deg);
+    }
+  }
+
+  div.front {
+    z-index: 900;
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+
+  }
+
+  div.back {
+    background: $color-2;
+    @include prefixer(box-sizing, border-box);
+    padding: 20px;
+    height: 200px;
+    width: 300px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @include prefixer(transform, rotateY(-180deg));
+    z-index: 800;
+  }
+
+  span.friend-name {
+    font-size: 16px;
+  }
+}
+
+div.actions {
+  margin: 12px 0 0 0;
+
+  a {
+    @extend a.new-friend;
+    color: $color-5;
+  }
+}

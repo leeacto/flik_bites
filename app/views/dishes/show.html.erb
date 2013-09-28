@@ -21,7 +21,23 @@
     <%= f.label :image %>
     <%= f.file_field :image, id: "take-picture", accept: "image/*" %>
   </div>
-  <div class="actions">
+  <div>
     <%= f.submit 'Save to database' %>
   </div>
 <% end %>
+
+
+
+
+
+<div class="dish" id="<%= @dish.name %>">
+  <div class="front">
+      <%= image_tag @photo_view.image.url(:medium) %>
+  </div>
+
+  <div class="back">
+    <span class="friend-name"><%= @dish.name %></span>
+    <div class="actions">
+    </div>
+  </div>
+</div>
