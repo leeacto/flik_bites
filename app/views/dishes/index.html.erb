@@ -1,5 +1,4 @@
 <div onclick="TINY.box.show({url:'desc', get:'url=<%= @restaurant.url %>'})" id="rest_show_name"><%= @restaurant.name	 %></div>
-
 <div>
 	<%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
 </div>
@@ -29,9 +28,6 @@
 
 	<ul class = "desserts hidden tab">
 		<% @dishes.desserts.each do |d| %>
-			<div class = "card_pic">
-
-			</div>
 			<li class = "card" >
 				<%= render partial: 'flip', :locals => {:dish => d } %>
 			</li>
