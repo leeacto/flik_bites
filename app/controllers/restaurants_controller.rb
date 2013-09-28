@@ -12,8 +12,6 @@ class RestaurantsController < ApplicationController
 		new_rest = Restaurant.new(restaurant_attributes)
 
 		#Render URL
-		p params[:restaurant][:name]
-		p params[:restaurant][:name] == ""
 		if params[:restaurant][:name] != ""
 			potential = params[:restaurant][:name].downcase.gsub(' ','')
 			new_rest.url = make_url(new_rest, potential)
@@ -25,7 +23,6 @@ class RestaurantsController < ApplicationController
 				render 'new'
 			end
 		else
-			puts "No Name Ctrl"
 			flash[:error] = "The Restaurant Needs a Name"
 			render 'new'
 		end
