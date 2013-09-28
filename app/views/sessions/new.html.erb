@@ -8,8 +8,9 @@
       <%= f.submit "Login",class: 'pure-button'%>
      <%end%>
 </fieldset>
-</div>
-
-<%= link_to "Skip to Restaurants", restaurants_path %>
-
-
+<div>
+	<span>-------</span>	or <span>-------</span>
+</div><br>
+<%=link_to image_tag("fblogin.png"), "/auth/facebook", id: "fblogin" %>
+<%=link_to image_tag("googlelogin.png",:size => "176x31",id: 'glog'), "/auth/google_oauth2" %>
+<%=link_to image_tag("twitter.png",:size => "176x31",id: 'twlog'), "/auth/twitter" %>
