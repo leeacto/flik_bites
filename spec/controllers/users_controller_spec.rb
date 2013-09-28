@@ -9,8 +9,7 @@ feature UsersController do
 		  		:last_name => "TestLast", 
 		  		:zipcode => "60060", 
 		  		:email => "user@example.com",
-		  		:password => "foobar",
-		  		:password_confirmation => "foobar"
+		  		:password => "foobar"
 		  	}
 		  end
 
@@ -24,8 +23,7 @@ feature UsersController do
 		  		:last_name => "s", 
 		  		:zipcode => "60060", 
 		  		:email => "usereample.com",
-		  		:password => "fooar",
-		  		:password_confirmation => "foobar")
+		  		:password => "fooar")
 		  		session[:user_id].should eq nil
 		  end
 		end
@@ -38,8 +36,7 @@ feature UsersController do
 		  		:last_name => "TestLast", 
 		  		:zipcode => "60060", 
 		  		:email => "user@example.com",
-		  		:password => "foobar",
-		  		:password_confirmation => "foobar"
+		  		:password => "foobar"
 		  	}
 		  	@user = User.create!(@attr)
 		  end
@@ -62,8 +59,7 @@ feature UsersController do
 		  		:last_name => "TestLast", 
 		  		:zipcode => "60060", 
 		  		:email => "user@example.com",
-		  		:password => "foobar",
-		  		:password_confirmation => "foobar"
+		  		:password => "foobar"
 		  	}
 		  	@user = User.create!(@attr)
 		  end
@@ -94,8 +90,7 @@ feature UsersController do
 		  		:last_name => "TestLast", 
 		  		:zipcode => "60060", 
 		  		:email => "user@example.com",
-		  		:password => "foobar",
-		  		:password_confirmation => "foobar"
+		  		:password => "foobar"
 		  	}
 		  	@user = User.create!(@attr)
 		  end
@@ -106,7 +101,6 @@ feature UsersController do
 														  											:zipcode => '60042',
 														  											:username => 'user', 
 														  											:email => "test@test.com",
-														  											:password_confirmation => 'password',
 														  											:password => 'password'}
 					@user.reload
 		  	end
