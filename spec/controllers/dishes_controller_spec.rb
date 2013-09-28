@@ -102,20 +102,20 @@ describe DishesController do
     
       context "with valid attributes" do
         it "saves the new dish in the database" do
-          expect { post :create, :restname => "thebristol",
-                        :dish => FactoryGirl.attributes_for(:dish, :name => "Taco")
+          expect { post :create,
+                        :dish => FactoryGirl.attributes_for(:dish, :name => "Taco", :restname => "thebristol")
                   }.to change(Dish, :count).by(1)
         end
 
         it "gets a success flash" do
-          post :create, :restname => "thebristol",
-                        :dish => FactoryGirl.attributes_for(:dish, :name => "Taco")
+          post :create,
+                        :dish => FactoryGirl.attributes_for(:dish, :name => "Taco", :restname => "thebristol")
           flash.now[:success].should =~ /New Dish Added!/
         end
 
         it "redirects to the restaurant menu page" do 
-          post :create, :restname => "thebristol",
-                        :dish => FactoryGirl.attributes_for(:dish, :name => "Taco")
+          post :create,
+                        :dish => FactoryGirl.attributes_for(:dish, :name => "Taco", :restname => "thebristol")
           response.should redirect_to "/#{@restaurant.url}/taco"
         end
       end
@@ -123,22 +123,22 @@ describe DishesController do
       context "with invalid attributes" do
         describe "no name" do
           it "shows a no-name error" do 
-            post :create, :restname => "thebristol",
-                          :dish => FactoryGirl.attributes_for(:dish, :name => nil)
+            post :create,
+                          :dish => FactoryGirl.attributes_for(:dish, :name => nil, :restname => "thebristol")
             flash.now[:error].should =~ /Name/i
           end
         end
 
         describe "no category" do
           it "does not save dish in the database" do
-            expect { post :create, :restname => "thebristol",
-                          :dish => FactoryGirl.attributes_for(:invalid_dish, :name => "Taco")
+            expect { post :create,
+                          :dish => FactoryGirl.attributes_for(:invalid_dish, :name => "Taco", :restname => "thebristol")
                     }.to_not change(Dish, :count)         
           end
 
           it "re-renders the dish :new template" do
-            post :create, :restname => "thebristol",
-                          :dish => FactoryGirl.attributes_for(:invalid_dish, :name => "Taco")
+            post :create,
+                          :dish => FactoryGirl.attributes_for(:invalid_dish, :name => "Taco", :restname => "thebristol")
             response.should render_template :new       
           end
         end
@@ -147,14 +147,14 @@ describe DishesController do
 
     describe "as a non-logged in viewer" do
       it "should flash error message" do
-        post :create, :restname => "thebristol",
-                        :dish => FactoryGirl.attributes_for(:dish)
+        post :create,
+                        :dish => FactoryGirl.attributes_for(:dish, :restname => "thebristol")
         flash.now[:error].should =~ /signed/
       end
 
       it "should return to restaurant page" do
-        post :create, :restname => "thebristol",
-                        :dish => FactoryGirl.attributes_for(:dish)
+        post :create,
+                        :dish => FactoryGirl.attributes_for(:dish, :restname => "thebristol")
         response.should redirect_to "/thebristol"
       end
     end

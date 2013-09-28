@@ -1,5 +1,6 @@
 <%= form_for [restaurant, dish] do |f| %>
-	<%= f.error_messages %>
+	<%= render partial: 'shared/error_messages', :locals => {:dish => dish }%>
+
 	<%= f.label :name %>
 	<%= f.text_field :name %><br>
 	

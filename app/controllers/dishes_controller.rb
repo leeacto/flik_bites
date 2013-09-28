@@ -39,6 +39,7 @@ class DishesController < ApplicationController
 
   def create
     @restaurant = Restaurant.where(:url => params["dish"]["restname"]).first
+    @curr_dishes = @restaurant.dishes
     if logged_in?
       @dish = @restaurant.dishes.new(dish_attributes)
       unless @dish.name.nil?
@@ -56,6 +57,7 @@ class DishesController < ApplicationController
         render :new
       end
     else
+
       flash[:error] = "You must be signed in to add a dish"
       redirect_to "/#{@restaurant.url}"
     end
