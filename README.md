@@ -1,3 +1,6 @@
+[![Build Status][BS img]][Build Status]
+[![Coverage Status][CS img]][Coverage Status]
+
 [travis pull requests]: https://travis-ci.org/eugenefilimonov/final_project/pull_requests
 [Coverage Status]: https://coveralls.io/r/eugenefilimonov/final_project
 [BS img]: https://travis-ci.org/eugenefilimonov/final_project.png
