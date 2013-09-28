@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/eugenefilimonov/final_project.png)](https://travis-ci.org/eugenefilimonov/final_project)
+[![Coverage Status](https://coveralls.io/repos/eugenefilimonov/final_project/badge.png?branch=master)](https://coveralls.io/r/eugenefilimonov/final_project?branch=master)
+
+
 # FlikBites
 
 A better menu

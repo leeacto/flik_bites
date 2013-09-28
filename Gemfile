@@ -65,7 +65,7 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'better_errors'
-
+gem 'coveralls', require: false
 # Use unicorn as the app server
 # gem 'unicorn'
 

@@ -1,6 +1,16 @@
 <div class="pure-u-1"> 
 <h1> Create User </h1>
 <p><%= flash[:error] %></p> 
+<div>
+<h3>Sign up with one click!</h3>
+</div><br>
+<%=link_to image_tag("fblogin.png"), "/auth/facebook", id: "fblogin" %>
+<%=link_to image_tag("googlelogin.png",:size => "176x31",id: 'glog'), "/auth/google_oauth2" %>
+<%=link_to image_tag("twitter.png",:size => "176x31",id: 'twlog'), "/auth/twitter" %>
+<br><br>
+<div>
+	Or fill out the form below
+</div><br>
 <%= form_for :user, url: users_path,:html => {class: 'pure-form'} do |f| %>
   <fieldset class="pure-group", id="signupsecond">
       <%= f.text_field :username,placeholder: 'username' %>
@@ -9,8 +19,5 @@
   		<%= f.password_field :password_confirmation,placeholder: 'password confirmation'%> 
   </fieldset>
       <%= f.submit "Create User",class: 'pure-button' %>
-<% end %>
-<%=link_to "Create account with Facebook", "/auth/facebook", id: "sign_in" %>
-<%=link_to "Create account with Google", "/auth/google_oauth2" %>
-<%=link_to "Create account with Twitter", "/auth/twitter" %>
+<% end %><br>
 </div>

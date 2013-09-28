@@ -1,7 +1,12 @@
 class RestaurantsController < ApplicationController
 
 	def index
-		@restaurants = Restaurant.all.includes(:dishes)
+		if request.xhr?
+			@restaurants = Restaurant.search(params[:search]).includes(:dishes).order("name")
+			render :partial => "live_search", :layout => false
+		else
+			@restaurants = Restaurant.all.includes(:dishes)
+		end
 	end
 
 	def new
