@@ -6,5 +6,5 @@ class Photo < ActiveRecord::Base
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>'
-  }, processors: [:thumbnail, :compression]	
+  }
 end
