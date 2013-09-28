@@ -1,10 +1,12 @@
-<div class="card">
+<div class="NOT CARD">
   <p>Name: <%= @dish.name.titleize %></p>
   <p>Price: <%= @dish.price %></p>
 
-
-  <%= image_tag @photo_view.image.url(:medium) %>
-
+  <ul id="gallery">
+    <% @photos.each do |photo| %>
+      <li><a><%= image_tag photo.image.url(:medium) %></a></li>
+    <% end %>
+  </ul>
   <section class="main-content"> 
     <h2>Preview:</h2>
     <p><img src="about:blank" alt="" id="show-picture"></p>
@@ -18,10 +20,17 @@
 
 <%= form_for(@photo) do |f| %>
   <div class="field">
+    <%= hidden_field_tag 'photo[dish_id]', @dish.id %>
     <%= f.label :image %>
     <%= f.file_field :image, id: "take-picture", accept: "image/*" %>
   </div>
-  <div class="actions">
+  <div>
     <%= f.submit 'Save to database' %>
   </div>
 <% end %>
+
+
+<!-- CODE BELOW FLIPS IMAGES
+ -->
+
+</div>

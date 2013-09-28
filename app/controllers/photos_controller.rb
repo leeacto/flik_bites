@@ -1,11 +1,19 @@
 class PhotosController < ApplicationController
 
 def create
-	puts params
-	@photo = Photo.new(photo_params)
-	@photo.save
+  @dish = Dish.find(params[:photo][:dish_id])
+  @restaurant = @dish.restaurant
 
-	redirect_to '/Cumin/pizza'
+	if logged_in?
+		@photo = Photo.new(photo_params)
+    @photo.user_id = current_user.id
+		@photo.save
+    flash[:success] = "Photo added!"
+    redirect_to "/#{@restaurant.url}/#{@dish.url}"
+	else
+    flash[:error] = "Please log in to add photos!"
+		redirect_to "/#{@restaurant.url}/#{@dish.url}"
+  end
 end 
 
 private 
