@@ -1,14 +1,10 @@
-<div class="pure-u-1"> 
-<% if @restaurants %>
-	<ul class="index_rest">
-		<% @restaurants.each do |r| %>
-			<div class="card">
-				<li><%=link_to r.name, "/#{r.url}/dishes" %></li>
-				<div id="card_desc"><%= r.name %> - <%= r.cuisine %></div>
-			</div>
-		<% end %>
-	</ul>
-<% else %>
-
+<%= form_tag restaurants_path, :id => "search_form", :method => 'get', class: "search" do %>
+    <%= text_field_tag :search, params[:search], :id => "search_field" %>
+    <%= submit_tag "Search", :class => "submitButton", :name => nil %>
 <% end %>
+
+<div class="pure-u-1"> 
+  <div id="live-search">
+    <%= render "live_search", :object => @restaurants %>
+  </div>
 </div>
