@@ -22,14 +22,17 @@ $color-5: white;
 
 // Dish
 // ----------------------------------------
-section#dishes {
+section#cards {
   font-size: 0;
 }
+
 
 div.dish {
   display: inline-block;
   font-size: 12px;
   position: relative;
+
+li.card {
   -webkit-perspective: 600px;
   -moz-perspective: 600px;
   @include prefixer(box-sizing, border-box);
@@ -83,17 +86,15 @@ div.dish {
     -moz-transform: rotateX(0deg) rotateY(0deg);
     @include prefixer(box-sizing, border-box);
     padding: 20px;
-    height: 200px;
-    width: 300px;
-
+    height: 100%;
+    width: 100%;
   }
 
   div.back {
     background: $color-2;
     @include prefixer(box-sizing, border-box);
-    padding: 20px;
-    height: 200px;
-    width: 300px;
+    height: 100%;
+    width: 100%;
 
     position: absolute;
     top: 0;

@@ -1,0 +1,19 @@
+<div class="front">
+	<div class = "card_pic">
+		pic goes here
+	</div>
+	<div id="card_desc">
+		<%= link_to dish.name, "/#{@restaurant.url}/#{dish.url}" %>
+	</div>
+</div>
+
+<div class="back">
+	<span class="friend-name">
+		<%= dish.restaurant.name %><br>
+		<%= dish.name %><br><br>
+		<%= dish.description %><br>
+		<%= link_to "View More Images", "/#{@restaurant.url}/#{dish.url}" %>
+	</span>
+  <div class="actions">
+  </div>
+</div>
