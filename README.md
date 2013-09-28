@@ -1,3 +1,9 @@
+![Build Status][BS img]
+<a href='https://coveralls.io/r/eugenefilimonov/final_project?branch=master'><img src='https://coveralls.io/repos/eugenefilimonov/final_project/badge.png?branch=master' alt='Coverage Status' /></a>
+
+[travis pull requests]: https://travis-ci.org/eugenefilimonov/final_project/pull_requests
+[BS img]: https://travis-ci.org/eugenefilimonov/final_project.png
+
 # FlikBites
 
 A better menu
