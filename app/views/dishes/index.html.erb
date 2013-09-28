@@ -1,8 +1,31 @@
-<%= @restaurant.name %>
+<div><%= @restaurant.name %></div>
 
-<%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
-<ul>
-<% @dishes.starters.each do |s| %>
-	<li><%= link_to s.name, s %></li>
-<% end %>
-</ul>
+<div>
+	<%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
+</div>
+
+<div class="menu">
+	<ul class="tab_header" >
+		<li id="starters_tab">Starters</li>
+		<li id="entrees_tab">Entrees</li>
+		<li id="desserts_tab">Desserts</li>
+	</ul>
+
+	<ul class = "starters tab">
+		<% @dishes.starters.each do |s| %>
+			<li class = "card"><%= link_to s.name, s %></li>
+		<% end %>
+	</ul>
+
+	<ul class = "entrees hidden tab">
+		<% @dishes.entrees.each do |e| %>
+			<li class = "card" ><%= link_to e.name, e %></li>
+		<% end %>
+	</ul>
+
+	<ul class = "desserts hidden tab">
+		<% @dishes.desserts.each do |d| %>
+			<li class = "card" ><%= link_to d.name, d %></li>
+		<% end %>
+	</ul>
+</div>
