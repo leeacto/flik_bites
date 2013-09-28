@@ -3,7 +3,8 @@
     <%= submit_tag "Search", :class => "submitButton", :name => nil %>
 <% end %>
 
-
-<div id="live-search">
-  <%= render "live_search", :object => @restaurants %>
+<div class="pure-u-1"> 
+  <div id="live-search">
+    <%= render "live_search", :object => @restaurants %>
+  </div>
 </div>

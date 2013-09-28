@@ -1,4 +1,4 @@
-<%= form_for restaurant do |f| %>
+<%= form_for restaurant, :html => {class: 'pure-form pure-form-stacked'} do |f| %>
 	<%= f.label :name %>
 	<%= f.text_field :name %><br>
 
@@ -16,6 +16,6 @@
 
 	<%= f.label :cuisine %>
 	<%= f.text_field :cuisine %><br>
-
 	<%= f.submit %>
 <% end %>
+

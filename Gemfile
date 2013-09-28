@@ -5,6 +5,7 @@ gem 'rails', '4.0.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 's3_direct_upload'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -41,25 +42,29 @@ group :test, :development do
 	gem 'capybara'
 	gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'jasmine-rails'
+  gem 'launchy'
+  gem 'jasmine-jquery-rails'
 end
 
 # Use ActiveModel has_secure_password
-	gem 'bcrypt-ruby', '~> 3.0.0'
+  gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 gem 'aws-sdk', '~> 1.6.0'
 gem 'paperclip', '~> 3.5.0'
 
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'launchy'
-end
-
 group :test do
-  gem 'capybara'
   gem 'shoulda-matchers'
 end
+
+
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'better_errors'
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -10,7 +10,7 @@ describe AccountsController do
 	end
 
 	it "should be able to re-active a user" do
-		@user = @user = FactoryGirl.create(:user)
+		@user = FactoryGirl.create(:user)
 		@user.is_active = false
 		@user.save
 		post :update,{format: "#{@user.id}"}

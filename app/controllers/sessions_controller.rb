@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       redirect_to login_path
     else
       if @user.is_active?
-        if  @user.authenticate(params[:session][:password])
+       if @user.password == params[:session][:password]
           session[:user_id] = @user.id
           redirect_to restaurants_path
         else
@@ -24,5 +24,11 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     redirect_to  root_path
+  end
+
+  def createoath
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to root_path
   end
 end

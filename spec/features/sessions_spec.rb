@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+include UserHelper
 describe "Sessions" do
 	before(:each) do
 		one_user
@@ -11,7 +11,7 @@ describe "Sessions" do
 			fill_in 'session_username', with: 'username'
 			fill_in 'session_password', with: 'password'
 			click_button 'Login'
-			page.should have_content 'Profile'
+			page.should have_content 'username'
 		end
 	end
 

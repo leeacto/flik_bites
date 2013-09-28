@@ -17,20 +17,23 @@ class RestaurantsController < ApplicationController
 		new_rest = Restaurant.new(restaurant_attributes)
 
 		#Render URL
-		if params[:restaurant][:name]
+		if params[:restaurant][:name] != ""
 			potential = params[:restaurant][:name].downcase.gsub(' ','')
 			new_rest.url = make_url(new_rest, potential)
+			if new_rest.save
+				flash[:success] = "Restaurant Added"
+				redirect_to "/#{new_rest.url}"
+			else
+				flash[:error] = "Restaurant was not saved"
+				render 'new'
+			end
+		else
+			flash[:error] = "The Restaurant Needs a Name"
+			render 'new'
 		end
 		
 		#Get Lat/Lon? Or do AJAX Call on submission?
 
-		if new_rest.save
-			flash[:success] = "Restaurant Added"
-			redirect_to "/#{new_rest.url}"
-		else
-			flash[:error] = "Restaurant was not saved"
-			render 'new'
-		end
 	end
 
 	def show
