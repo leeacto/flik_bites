@@ -4,21 +4,21 @@
 			Photo goes here
 		</div>
 		<div id="card_desc">
-				<%=link_to restaurant.name, "/#{restaurant.url}/dishes" %> - 
-				<%= restaurant.cuisine %>
-
+			<div id="rest_dish_link"><%=link_to restaurant.name, "/#{restaurant.url}/dishes" %></div> - 
+			<%= restaurant.cuisine %>
 		</div>
 	</div>
 
 	<div class="back">
 			<span class="friend-name">
 				<div class = "rest_text">
-					<div class="rest_top"
-						<%= restaurant.name %><br>
+					<div class="rest_top">
+						<div id="rest_name"><%= restaurant.name %></div><br>
 						<%= restaurant.cuisine %><br><br>
 					</div>
+					<div class="rest_mid"></div>
 					<div class = "rest_bot">
-						<%= restaurant.address %><br>
+						<div id="rest_addr"><%= restaurant.address %></div><br>
 						<%= restaurant.city %>, <%= restaurant.state %><br>
 						<%= restaurant.zip %><br>
 						<%= link_to "View Menu", "/#{restaurant.url}/dishes" %>
