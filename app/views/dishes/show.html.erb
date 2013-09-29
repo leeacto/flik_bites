@@ -1,34 +1,29 @@
 <div class="show_dish">
-    <p class="dish_name">Name: <%= @dish.name.titleize %></p>
-    <p class="dish_price">Price: <%= @dish.price %></p>
-    <div class="container">
-      <div class="carousel_controls">
-        <a href="#" id="previous_frame">&lt;</a>
-        <a href="#" id="next_frame">&gt;</a>
-      </div>
+  <p class="dish_name">Name: <%= @dish.name.titleize %></p>
+  <p class="dish_price">Price: <%= @dish.price %></p>
+  <p class="dish_category">Category: <%= @dish.category %> </p>
+  <p class="dish_description">Description: <%= @dish.description %></p>
 
-      <div class="carousel">
-        <ul class="frames">
-          <% @photos.each do |photo| %>
-            <li><%= image_tag photo.image.url(:medium) %></li>
-          <% end %>
-        </ul>
-      </div>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @photos.each do |photo| %>
+        <div class="swiper-slide">
+          <%= image_tag photo.image.url(:medium) %>
+        </div>
+      <% end %>
     </div>
-
-    <p>Category: <%= @dish.category %> </p>
-    <p>Description: <%= @dish.description %></p>
-
-    <%= form_for(@photo) do |f| %>
-      <div class="field">
-        <%= hidden_field_tag 'photo[dish_id]', @dish.id %>
-        <%= f.label :image %>
-        <%= f.file_field :image, id: "take-picture", accept: "image/*" %>
-      </div>
-      <div>
-        <%= f.submit 'Save to database' %>
-      </div>
-    <% end %>
+  </div>
+  <%= form_for(@photo) do |f| %>
+    <div class="field">
+      <%= hidden_field_tag 'photo[dish_id]', @dish.id %>
+      <%= f.label :image %>
+      <%= f.file_field :image, id: "take-picture", accept: "image/*" %>
+    </div>
+    <div>
+      <%= f.submit 'Save to database' %>
+    </div>
+  <% end %>
 </div>
 
 
