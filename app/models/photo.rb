@@ -8,5 +8,5 @@ class Photo < ActiveRecord::Base
     medium: '300x300>'
   }
 
-  validates_attachment_presence :avatar
+  validates_attachment_presence :image
 end
