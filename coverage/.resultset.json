@@ -493,44 +493,6 @@
         null,
         null
       ],
-      "/Users/luishernandez/Desktop/final_project/spec/controllers/photos_controller_spec.rb": [
-        1,
-        1,
-        1,
-        1,
-        0,
-        0,
-        0,
-        null,
-        null
-      ],
-      "/Users/luishernandez/Desktop/final_project/app/controllers/photos_controller.rb": [
-        1,
-        null,
-        1,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        null,
-        null,
-        null,
-        1,
-        null,
-        1,
-        0,
-        null,
-        null,
-        null
-      ],
       "/Users/luishernandez/Desktop/final_project/spec/controllers/restaurants_controller_spec.rb": [
         1,
         1,
@@ -1193,8 +1155,8 @@
         null,
         null,
         1,
-        49,
-        49,
+        48,
+        48,
         null,
         null
       ],
@@ -1627,11 +1589,6 @@
         null,
         null
       ],
-      "/Users/luishernandez/Desktop/final_project/app/controllers/landing_controller.rb": [
-        1,
-        null,
-        null
-      ],
       "/Users/luishernandez/Desktop/final_project/app/models/photo.rb": [
         1,
         1,
@@ -1645,8 +1602,13 @@
         null,
         1,
         null
+      ],
+      "/Users/luishernandez/Desktop/final_project/app/controllers/landing_controller.rb": [
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1380481152
+    "timestamp": 1380482210
   }
 }
