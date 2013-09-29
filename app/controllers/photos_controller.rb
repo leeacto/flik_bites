@@ -1,7 +1,9 @@
 class PhotosController < ApplicationController
 
 def create
+  p params
   @dish = Dish.find(params[:photo][:dish_id])
+  p @dish
   @restaurant = @dish.restaurant
 
 	if logged_in?
