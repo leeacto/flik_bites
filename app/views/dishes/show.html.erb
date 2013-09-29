@@ -1,29 +1,30 @@
 <div class="show_dish">
+
   <p class="dish_name">Name: <%= @dish.name.titleize %></p>
   <p class="dish_price">Price: <%= @dish.price %></p>
-  <p class="dish_category">Category: <%= @dish.category %> </p>
   <p class="dish_description">Description: <%= @dish.description %></p>
-
 
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <% @photos.each do |photo| %>
         <div class="swiper-slide">
-          <%= image_tag photo.image.url(:medium) %>
+          <%= image_tag photo.image.url(:medium), class: "dish_photo" %>
         </div>
       <% end %>
     </div>
   </div>
+
   <%= form_for(@photo) do |f| %>
     <div class="field">
       <%= hidden_field_tag 'photo[dish_id]', @dish.id %>
-      <%= f.label :image %>
       <%= f.file_field :image, id: "take-picture", accept: "image/*" %>
     </div>
-    <div>
-      <%= f.submit 'Save to database' %>
+    
+    <div id="save_to_db">
+      <%= f.submit 'Save to database'%>
     </div>
   <% end %>
+
 </div>
 
 
