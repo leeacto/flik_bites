@@ -16,9 +16,7 @@ body {
 
 .show_dish {
   height: 300px;
-  width: 60%;
   height: 80%;
-  border: 1px solid black;
   margin: 0 auto;
 }
 
@@ -48,11 +46,25 @@ body {
   margin:5% auto;
 }
 
-#save_to_db {
-  width: 50%;
-  margin:0 auto;
-}
-
 #save_to_db input{
-  width: 100%;
+  background-color:#ee7836;
+  color: white;
+  border: none;
+  text-indent:0px;
+  display:inline-block;
+  font-family:arial;
+  font-size:21px;
+  font-weight:bold;
+  font-style:normal;
+  height:45px;
+  line-height:45px;
+  width:200px;
+  text-decoration:none;
+  text-align:center;
+}#save_to_db input:hover {
+  background-color:#ee5b36;
+  color: white;
+}#save_to_db input:active {
+  position:relative;
+  top:1px;
 }
