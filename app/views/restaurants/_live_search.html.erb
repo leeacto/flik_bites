@@ -1,25 +1,27 @@
 <ul class = "restaurant_list">
 	<% @restaurants.each do |r| %>
-		<div class="dish">
+		<div class = "card">
+			
 			<div class="front">
-				<div class = "card">
-					<div class = "card_pic">
-						<%=link_to r.name, "/#{r.url}/dishes" %>
-					</div>
-					<div id="card_desc">
-						<%= r.cuisine %>
-					</div>
-				</div>
-			</div>
-			<div class="back">
+					
 				<div class = "card_pic">
 					<%=link_to r.name, "/#{r.url}/dishes" %>
 				</div>
 				<div id="card_desc">
-					<%= r.cuisine %>
+							<%= r.cuisine %>
 				</div>
-   			</div>
-	    </div>
+			</div>
+
+			<div class="back">
+					<span class="friend-name">
+						<%= r.name %><br>
+						<%= link_to "View Menu", "/#{r.url}/dishes" %>
+					</span>
+			  <div class="actions">
+				</div>
+			</div>
+
+		</div>
 	<% end %>
 </ul>
 

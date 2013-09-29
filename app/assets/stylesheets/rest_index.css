@@ -9,6 +9,10 @@ body {
 .menu {
 	width: 100%;
 	border: 1px solid red;
+	margin-left: 5%;
+	margin-right: 5%;
+	float: left;
+
 }
 
 ul.restaurant_list {
@@ -42,9 +46,6 @@ ul.tab_header li:hover {
 
 ul.tab {
 	position: absolute;
-	border-right: 2px solid black;
-	border-left: 2px solid black;
-	border-bottom: 2px solid black;
 	list-style-type: none;
 	margin-top: 0;
 	margin-right: 0;
