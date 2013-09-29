@@ -1,5 +1,5 @@
 <div class = "card" id="card-<%= index %>">
-	<div class="front">
+	<div class="front side">
 		<div class = "card_pic">
 			Photo goes here
 		</div>
@@ -9,24 +9,20 @@
 		</div>
 	</div>
 
-	<div class="back">
-			<span class="friend-name">
-				<div class = "rest_text">
-					<div class="rest_top">
-						<div id="rest_name"><%= restaurant.name %></div><br>
-						<%= restaurant.cuisine %><br><br>
-					</div>
-					<div class="rest_mid"></div>
-					<div class = "rest_bot">
-						<div id="rest_addr"><%= restaurant.address %></div><br>
-						<%= restaurant.city %>, <%= restaurant.state %><br>
-						<%= restaurant.zip %><br>
-						<%= link_to "View Menu", "/#{restaurant.url}/dishes" %>
-					</div>
-				</div>
-				<div class = "gmap" id="map-canvas-<%= index %>"></div>
-			</span>
-	  <div class="actions">
+	<div class="back side">
+		<div class = "rest_text">
+			<div class="rest_top">
+				<%= restaurant.name %><br>
+				<%= restaurant.cuisine %><br><br>
+			</div>
+			<div class="rest_mid"></div>
+			<div class = "rest_bot">
+				<%= restaurant.address %><br>
+				<%= restaurant.city %>, <%= restaurant.state %><br>
+				<%= restaurant.zip %><br>
+				<%= link_to "View Menu", "/#{restaurant.url}/dishes" %>
+			</div>
 		</div>
+		<div class = "gmap hidden" id="map-canvas-<%= index %>"></div>
 	</div>
 </div>

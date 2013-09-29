@@ -16,12 +16,26 @@ restTable.prototype.initialize = function(){
 }
 
 var Card = function(el, url) {
-  var lat;
-  var lon;
-  this.el = $(el);
+  this.el = $("#"+el);
   this.url = url;
   var self = this;
-  var mapNum = el.replace('card-','');
+
+  this.el.find('.side').on('click', function(event) {
+    event.stopPropagation();
+    $(event.target).closest('.card').toggleClass('active');
+    self.addMap();
+    self.el.find(".gmap").toggleClass('hidden');
+  });
+};
+
+Card.prototype.addMap = function() {
+  var lat;
+  var lon;
+  var el = this.el;
+  var url = this.url;
+  var self = this;
+  var mapNum = el.selector.replace('#card-','');
+  console.log(mapNum);
   geocoder = new google.maps.Geocoder();
 
   $.ajax({
@@ -64,29 +78,11 @@ var Card = function(el, url) {
       scaleControl: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
+    console.log(coords);
     self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
     self.gmap.setMarker(coords);
   });
 };
-
-Card.prototype.getCoords = function() {
-  var rCoord;
-  var self = this;
-
-  $.ajax({
-    url: "/"+this.url+"/coords",
-    method: 'get',
-    data: this.url,
-    dataType: 'json'
-  }).done(function(coords) {
-    if (coords.latitude != "") {
-      self.latlon = coords;
-    }
-    else {
-      console.log('Do a GeoCode Find');
-    }
-  });
-}
 
 function codeAddress(address, restaurant) {
   var lat;
@@ -105,11 +101,11 @@ function codeAddress(address, restaurant) {
         pkg = { 
           lat:  lat,
           lon:  lng,
-          id:  restaurant.id
+          url:  self.url
         };
 
         $.ajax({
-          url: '/coords',
+          url: '/setcoords',
           data: pkg,
           method: 'post'
         });
@@ -130,7 +126,6 @@ google.maps.Map.prototype.setMarker = function (coordObj) {
 
 
 $(document).ready(function() {
-  // initialize();
   var rTable = new restTable();
 
   $('#search_form').on('submit', function(event) {

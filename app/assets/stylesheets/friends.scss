@@ -50,16 +50,6 @@ section#cards {
     -moz-backface-visibility: hidden;
   }
 
-  &:hover {
-    div.front {
-      -webkit-transform: rotateY(180deg);
-    }
-
-    div.back {
-      z-index: 1000;
-      -webkit-transform: rotateY(0deg);
-    }
-  }
 
   div.front {
     z-index: 900;
