@@ -9,8 +9,16 @@ body {
 .menu {
 	width: 100%;
 	border: 1px solid red;
+	margin-left: 5%;
+	margin-right: 5%;
+	float: left;
+
 }
 
+ul.restaurant_list {
+	padding-left: 0px;
+
+}
 ul.tab_header {
 	width: 100%;
 	padding: 0;
@@ -38,9 +46,6 @@ ul.tab_header li:hover {
 
 ul.tab {
 	position: absolute;
-	border-right: 2px solid black;
-	border-left: 2px solid black;
-	border-bottom: 2px solid black;
 	list-style-type: none;
 	margin-top: 0;
 	margin-right: 0;
@@ -55,9 +60,8 @@ ul.tab {
 }
 
 .card {
-	border: 1px solid black;
-	width: 30%;
-	height: 36.4%;
+    height: 200px;
+    width: 300px;
 	display: inline-block;
 	float: left;
 	margin: 1.5% 1.5% 0 1.5%;
