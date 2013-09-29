@@ -1,6 +1,6 @@
 <ul class = "restaurant_list">
-	<% @restaurants.each do |r| %>
-		<%= render partial: 'rest_flip', :locals => {:restaurant => r } %>
+	<% @restaurants.each_with_index do |r, i| %>
+		<%= render partial: 'rest_flip', :locals => {:restaurant => r, :index => i } %>
 	<% end %>
 </ul>
 

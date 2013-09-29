@@ -12,7 +12,11 @@ body {
 	margin-left: 5%;
 	margin-right: 5%;
 	float: left;
+}
 
+#map-canvas { 
+	height: 80%;
+	width: 40%;
 }
 
 ul.restaurant_list {
@@ -78,6 +82,30 @@ ul.tab {
 #card_desc {
 	width: 100%;
 	height: 27%;
+	margin: auto;
+}
+
+.card .back .friend-name .rest_text{
+	width: 50%;
+	float: left;
+}
+
+.card .back .friend-name .rest_text .rest_top {
+	float: left;
+	width: 100%;
+}
+
+.card .back .friend-name .rest_text .rest_bot {
+	position: absolute;
+	bottom: 0;
+	float: left;
+	width: 100%;
+}
+
+.card .back .friend-name .gmap {
+	height: 100%;
+	width: 50%;
+	float: right;
 	margin: auto;
 }
 

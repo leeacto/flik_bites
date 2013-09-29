@@ -1579,11 +1579,6 @@
         null,
         null
       ],
-      "/Users/leeacto/rails_projects/final_project/app/controllers/landing_controller.rb": [
-        1,
-        null,
-        null
-      ],
       "/Users/leeacto/rails_projects/final_project/app/models/photo.rb": [
         1,
         1,
@@ -1595,8 +1590,13 @@
         null,
         null,
         null
+      ],
+      "/Users/leeacto/rails_projects/final_project/app/controllers/landing_controller.rb": [
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1380408870
+    "timestamp": 1380465999
   }
 }

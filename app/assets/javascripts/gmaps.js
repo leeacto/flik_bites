@@ -1,8 +1,37 @@
-// google.maps.event.addDomListener(window, 'load', initialize);
+var restTable = function() {
+  this.cards = []
+
+  this.initialize();
+};
+
+
+restTable.prototype.initialize = function(){
+  var self = this;
+  $('.card').each(function(){
+    var card = new Card(this.id);
+    console.log(self);
+    self.cards.push(card);
+  })
+
+}
+
+var Card = function(el) {
+  this.el = $(el);
+  var geocoder = new google.maps.Geocoder();
+  var dbc = new google.maps.LatLng(41.88991, -87.63766);
+  var mapOptions = {
+    zoom: 16,
+    center: dbc,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  console.log(el);
+  var mapNum = el.replace('card-','');
+  var gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
+};
+
 
 var geocoder;
 var map;
-var dbc;
 
 function onItemClick(event, pin) { 
   // Create content
@@ -14,33 +43,12 @@ function onItemClick(event, pin) {
 } 
 
 function initialize() {
-  geocoder = new google.maps.Geocoder();
+  var geocoder = new google.maps.Geocoder();
   var dbc = new google.maps.LatLng(41.88991, -87.63766);
   
 
-  var mapOptions = {
-    zoom: 16,
-    center: dbc,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  map = new google.maps.Map(document.getElementById('map-canvas-0'), mapOptions);
   
-  var image = {
-    url: './images/dbc.png'
-  }
-
-  var marker = new google.maps.Marker({
-    icon: image,
-    position: dbc,
-    map: map,
-    data: 'DBC!'
-  });
-
-  google.maps.event.addListener(marker, 'click', function() { 
-    map.setCenter(new google.maps.LatLng(marker.position.lat(), marker.position.lng())); 
-    map.setZoom(16); 
-    onItemClick(event, marker); 
-  }); 
   infowindow = new google.maps.InfoWindow({ maxWidth: 320 }); 
 }
 
@@ -102,19 +110,8 @@ function setMarker(lat, lon, html, i_type) {
 
 
 $(document).ready(function() {
-  initialize();
-
-  var subway = new google.maps.Marker({
-    icon: './images/no_eat.png',
-    position: new google.maps.LatLng(41.88996, -87.63679),
-    map: map,
-    data: "You Gave Up!"
-  });
-  google.maps.event.addListener(subway, 'click', function() { 
-    map.setCenter(new google.maps.LatLng(subway.position.lat(), subway.position.lng())); 
-    map.setZoom(16); 
-    onItemClick(event, subway); 
-  }); 
+  // initialize();
+  var cards = new restTable();
 
   $('#search_form').on('submit', function(event) {
     event.preventDefault();
@@ -131,15 +128,4 @@ $(document).ready(function() {
     });
   });
 
-  $('select').on('change', function(){
-    initialize();
-    $.ajax({
-      url: '/assumption',
-      method: 'get',
-      data: $(this).serialize(),
-      dataType: 'json'
-    }).done(function(restaurant) {
-      codeAddress(restaurant.address, restaurant, "no_eat.png");
-    });
-  });
 });
