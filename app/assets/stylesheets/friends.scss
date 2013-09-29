@@ -50,7 +50,7 @@ section#cards {
     -moz-backface-visibility: hidden;
   }
 
-  &:hover {
+  &:active {
     div.front {
       -webkit-transform: rotateY(180deg);
     }
