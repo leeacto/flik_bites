@@ -1,0 +1,13 @@
+<% if dish.errors.any? %>
+	<div id="error_explanation">
+		<h4>
+      <%= pluralize(dish.errors.count, "error") %> prohibited
+      this user from being saved:
+    </h4>
+
+    <ul>
+    <% dish.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+	</div>
+<% end %>

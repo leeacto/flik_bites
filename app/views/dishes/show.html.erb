@@ -1,27 +1,31 @@
-<div class="card">
-  <p>Name: <%= @dish.name.titleize %></p>
-  <p>Price: <%= @dish.price %></p>
+<div class="show_dish">
 
+  <p class="dish_name">Name: <%= @dish.name.titleize %></p>
+  <p class="dish_price">Price: <%= @dish.price %></p>
+  <p class="dish_description">Description: <%= @dish.description %></p>
 
-  <%= image_tag @photo_view.image.url(:medium) %>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @photos.each do |photo| %>
+        <div class="swiper-slide">
+          <%= image_tag photo.image.url(:medium), class: "dish_photo" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-  <section class="main-content"> 
-    <h2>Preview:</h2>
-    <p><img src="about:blank" alt="" id="show-picture"></p>
-    <p id="error"></p>
-  </section>
+  <%= form_for(@photo) do |f| %>
+    <div class="field">
+      <%= hidden_field_tag 'photo[dish_id]', @dish.id %>
+      <%= f.file_field :image, id: "take-picture", accept: "image/*" %>
+    </div>
+    
+    <div id="save_to_db">
+      <%= f.submit 'Save to database'%>
+    </div>
+  <% end %>
 
-  <p>Category: <%= @dish.category %> </p>
-  <p>Description: <%= @dish.description %></p>
 </div>
 
 
-<%= form_for(@photo) do |f| %>
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image, id: "take-picture", accept: "image/*" %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Save to database' %>
-  </div>
-<% end %>
+

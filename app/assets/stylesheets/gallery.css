@@ -1,0 +1,58 @@
+/*
+ * Attribution: http://csswizardry.com/2011/10/fully-fluid-responsive-css-carousel/
+ *
+ * DON'T VISIT THE ABOVE SITE FOR ANSWERS UNLESS YOU'RE
+ * COMPLETELY STUMPED
+ *
+ * ...also, it will not help you solve the JavaScript :)
+*/
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.show_dish {
+  height: 300px;
+  width: 60%;
+  height: 80%;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.dish_category{
+  display: block;
+}
+
+.dish_name {
+  float:left;
+}
+
+.dish_price {
+  float:right;
+  /*clear:left;*/
+}
+
+.dish_description {
+  clear:left;
+}
+
+#take-picture {
+  margin:0 auto;
+}
+
+.field {
+  width: 50%;
+  margin:5% auto;
+}
+
+#save_to_db {
+  width: 50%;
+  margin:0 auto;
+}
+
+#save_to_db input{
+  width: 100%;
+}

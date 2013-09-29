@@ -3,11 +3,12 @@ class DishesController < ApplicationController
   def index
     @restaurant = Restaurant.where(:url => params[:restname].downcase).first
     @dishes = @restaurant.dishes
+    @cats = ["starters", "entrees", "desserts"]
   end
 
   def new
     @restaurant = Restaurant.where(:url => params[:restname].downcase).first
-
+    @curr_dishes = @restaurant.dishes
     if current_user
       @dish = Dish.new
       render 'new'
@@ -20,11 +21,11 @@ class DishesController < ApplicationController
   def show
     for_url = params[:dishname].gsub(" ", "").downcase
     @dish = Dish.where(:url => for_url).first
-    @photo = Photo.new
-    @photo_view = Photo.last
-
     if @dish.nil?
       render 'not_found'
+    else
+      @photo = Photo.new
+      @photos = Photo.where(:dish_id => @dish.id)
     end
   end
 
@@ -38,8 +39,9 @@ class DishesController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.where(:url => params["restname"]).first
-    if current_user
+    @restaurant = Restaurant.where(:url => params["dish"]["restname"]).first
+    @curr_dishes = @restaurant.dishes
+    if logged_in?
       @dish = @restaurant.dishes.new(dish_attributes)
       unless @dish.name.nil?
         potential = @dish.name.downcase.gsub(' ','')
@@ -56,6 +58,7 @@ class DishesController < ApplicationController
         render :new
       end
     else
+
       flash[:error] = "You must be signed in to add a dish"
       redirect_to "/#{@restaurant.url}"
     end

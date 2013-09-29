@@ -22,9 +22,11 @@ Menu.prototype.selectTab = function(tab) {
 	var self = this;
 	for(var i in this.tabs) {
 		if(self.tabs[i] === tab) {
+			tab.el.removeClass('unselected_tab');
 			tab.list.el.removeClass('hidden');
 		}
 		else {
+			self.tabs[i].el.addClass('unselected_tab');
 			self.tabs[i].list.el.addClass('hidden');
 		}
 	}

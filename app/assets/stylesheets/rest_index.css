@@ -1,8 +1,24 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	width: 100%;
+	height: 100%;
+}
 .menu {
 	width: 100%;
+	border: 1px solid red;
+	margin-left: 5%;
+	margin-right: 5%;
+	float: left;
 
 }
 
+ul.restaurant_list {
+	padding-left: 0px;
+
+}
 ul.tab_header {
 	width: 100%;
 	padding: 0;
@@ -14,7 +30,7 @@ ul.tab_header {
 
 ul.tab_header li {
 	font-size: 20px;
-	width: 30%;
+	width: 32%;
 	border-top-right-radius: 10px;
 	font-family: sans-serif;
 	display: inline-block;
@@ -30,26 +46,79 @@ ul.tab_header li:hover {
 
 ul.tab {
 	position: absolute;
-	border: 2px solid black;
 	list-style-type: none;
 	margin-top: 0;
 	margin-right: 0;
 	padding: .5%;
 	text-align: center;
-	width: 100%;
+	width: 95%;
+	height: 100%;
 }
 
+#starters_tab {
+	border-left: 2px solid black;
+}
 
 .card {
-	border: 1px solid black;
-	width: 30%;
+    height: 200px;
+    width: 300px;
 	display: inline-block;
+	float: left;
+	margin: 1.5% 1.5% 0 1.5%;
+}
+
+.card_pic {
+	width: 88%;
+	height: 72%;
+	border: 1px solid black;
+	margin: auto;
+	margin-top: 2%;
 }
 
 #card_desc {
-	border-top: 1px solid black
+	width: 12%;
+	height: 27%;
+	margin: auto;
 }
 
+#add_dish_content {
+	
+}
+
+#add_dish_content li{
+	width: 45%;
+	display: inline-block;
+	list-style-type: none;
+	margin: auto;
+}
+
+.curr_menu {
+	border: 1px solid black;
+	float: left;
+}
+
+#error_explanation {
+	border: 2px solid red;
+	margin-bottom: .5%;
+}
+
+#error_explanation h4 {
+	border-bottom: 2px solid red;
+	text-align: center;
+	margin-top: 0;
+}
+
+#error_explanation ul li {
+	list-style-type: circle;
+}
+
+li.selected_tab {
+	border-bottom-style: none;
+}
+
+li.unselected_tab {
+	border-bottom: 2px solid black;
+}
 .hidden {
 	display: none;
 }
