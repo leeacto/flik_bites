@@ -1,8 +1,9 @@
 <div class="show_dish">
-
+  
   <p class="dish_name">Name: <%= @dish.name.titleize %></p>
   <p class="dish_price">Price: <%= @dish.price %></p>
   <p class="dish_description">Description: <%= @dish.description %></p>
+      <%= @photos.count %>
 
   <div class="swiper-container">
     <div class="swiper-wrapper">

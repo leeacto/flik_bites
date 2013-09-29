@@ -30,7 +30,12 @@ body {
 
 .dish_price {
   float:right;
-  /*clear:left;*/
+}
+
+.dish_photo {
+  margin: auto;
+  /*max-width: 400px;*/
+  /*max-height:400px;*/
 }
 
 .dish_description {
@@ -61,7 +66,8 @@ body {
   width:200px;
   text-decoration:none;
   text-align:center;
-}#save_to_db input:hover {
+}
+#save_to_db input:hover {
   background-color:#ee5b36;
   color: white;
 }#save_to_db input:active {
