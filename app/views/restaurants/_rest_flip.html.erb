@@ -1,10 +1,11 @@
 <div class = "card">
 	<div class="front">
 		<div class = "card_pic">
-			<%=link_to restaurant.name, "/#{restaurant.url}/dishes" %>
+			Photo goes here
 		</div>
 		<div id="card_desc">
-					<%= restaurant.cuisine %>
+				<%=link_to restaurant.name, "/#{restaurant.url}/dishes" %> - 
+				<%= restaurant.cuisine %>
 		</div>
 	</div>
 
@@ -13,7 +14,7 @@
 				<%= restaurant.name %><br>
 				<%= restaurant.cuisine %><br><br>
 				<%= restaurant.address %><br>
-				<%= restaurant.city %><br>, 
+				<%= restaurant.city %>, 
 				<%= restaurant.state %>
 				<%= restaurant.zip %><br>
 				<%= link_to "View Menu", "/#{restaurant.url}/dishes" %>
