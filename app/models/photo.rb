@@ -7,4 +7,6 @@ class Photo < ActiveRecord::Base
     square: '200x200#',
     medium: '300x300>'
   }
+
+  validates_attachment_presence :avatar
 end

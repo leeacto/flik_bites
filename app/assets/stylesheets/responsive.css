@@ -26,6 +26,7 @@ margin-left: 33%;
 	#twlog {
 		border-radius:5px;
 	}
+
 	#signupnow{
 		position: relative;
 		top:15px;
@@ -36,6 +37,7 @@ margin-left: 33%;
 		text-decoration: none;
 		color:white;
 	}
+
 	.landingpage {
 		letter-spacing: 0;
 		width: 100%;
@@ -263,4 +265,50 @@ margin-left: 33%;
 	}
 }
 
+.signupnow {
+  background-color:#ee7836;
+  color: white;
+  border: none;
+  border-bottom-left-radius:3px;
+  text-indent:0px;
+  display:inline-block;
+  font-family:arial;
+  font-size:21px;
+  font-weight:bold;
+  font-style:normal;
+  height:45px;
+  line-height:45px;
+  width:200px;
+  text-decoration:none;
+  text-align:center;
+}.signupnow:hover {
+  background-color:#ee5b36;
+  color: white;
+}.signupnow:active {
+  position:relative;
+  top:1px;
+}
 
+
+.createuser {
+  background-color:#ee7836;
+  color: white;
+  border: none;
+  text-indent:0px;
+  display:inline-block;
+  font-family:arial;
+  font-size:21px;
+  font-weight:bold;
+  font-style:normal;
+  height:45px;
+  line-height:45px;
+  width:200px;
+  text-decoration:none;
+  text-align:center;
+}.createuser:hover {
+  background-color:#ee5b36;
+  color: white;
+}.createuser:active {
+  position:relative;
+  top:1px;
+}
