@@ -1,0 +1,24 @@
+<div class = "card">
+	<div class="front">
+		<div class = "card_pic">
+			<%=link_to restaurant.name, "/#{restaurant.url}/dishes" %>
+		</div>
+		<div id="card_desc">
+					<%= restaurant.cuisine %>
+		</div>
+	</div>
+
+	<div class="back">
+			<span class="friend-name">
+				<%= restaurant.name %><br>
+				<%= restaurant.cuisine %><br><br>
+				<%= restaurant.address %><br>
+				<%= restaurant.city %><br>, 
+				<%= restaurant.state %>
+				<%= restaurant.zip %><br>
+				<%= link_to "View Menu", "/#{restaurant.url}/dishes" %>
+			</span>
+	  <div class="actions">
+		</div>
+	</div>
+</div>
