@@ -17,8 +17,8 @@
 						:state => "IL",
 						:zip => 60622,
 						:cuisine => "Indian / Nepalese",
-						:latitude => 42.298697,
-						:longitude => -87.956501,
+						:latitude => 41.907696,
+						:longitude => -87.673286,
 						:url => 'cumin'
 }
 

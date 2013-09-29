@@ -234,4 +234,26 @@ describe RestaurantsController do
 			response.should redirect_to '/restaurants'
 		end
 	end
+
+	describe 'GET #coords' do
+		before(:each) do
+			@r = one_rest
+		end
+
+		it "should find the correct restaurant" do
+			xhr :get, :coords, restname: @r.url
+			assigns(:rest).should eq @r
+		end
+
+		it "should return the correct coordinates" do
+			@expected = { 
+				:latitude 	=>    41.921109,
+    		:longitude  => 		-87.677845
+    	}.to_json
+			
+			xhr :get, :coords, restname: @r.url
+			response.body.should == @expected
+
+		end
+	end
 end
