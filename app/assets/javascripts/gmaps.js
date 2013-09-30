@@ -20,6 +20,7 @@ var Card = function(el, url) {
   this.geocoder = new google.maps.Geocoder();
 
   this.el.find('.side').on('click', function(event) {
+    console.log('clicked');
     event.stopPropagation();
     $(event.target).closest('.card').toggleClass('active');
     self.addMap();
@@ -120,8 +121,7 @@ google.maps.Map.prototype.setMarker = function (coordObj) {
     map: self
   });
 }
-
-$(document).ready(function() {
+function setup() {
   var rTable = new restTable('.restaurant_list');
   rTable.initialize();
   
@@ -136,5 +136,10 @@ $(document).ready(function() {
       codeAddress(addr);
     });
   });
+}
 
-});
+
+$(document).on('ready', setup);
+
+$(document).on('page:load', setup);
+
