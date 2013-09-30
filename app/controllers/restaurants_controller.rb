@@ -83,6 +83,16 @@ class RestaurantsController < ApplicationController
 		render 'desc'
 	end
 
+	def coords
+		if request.xhr?
+			coords = {}
+			@rest = Restaurant.where(:url => params[:restname]).first
+			coords[:latitude] = @rest.latitude
+			coords[:longitude] = @rest.longitude
+			render :json => coords
+		end
+	end
+
 	private
 	
 	def restaurant_attributes
