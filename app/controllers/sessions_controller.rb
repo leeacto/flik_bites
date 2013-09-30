@@ -1,3 +1,4 @@
+# hard tabs in this file
 class SessionsController < ApplicationController
 
 	def create

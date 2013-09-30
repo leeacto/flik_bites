@@ -1,3 +1,6 @@
+# there's a mix of hard & soft tabs in this file. Replace the hard tabs
+# with softtabs
+
 FinalProject::Application.routes.draw do
 
   match 'auth/:provider/callback', to: 'sessions#createouath', via: [:get, :post]
@@ -5,8 +8,10 @@ FinalProject::Application.routes.draw do
 	root 'landing#index'
 	
 	mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
+  # hahaha, which actions are you not planning on exposing for /users ??
 	resources :users, only: [:index,:new,:create,:edit,:update,:destory]
 
+  # these looks non-standard. Why not use the standard /users/:id ?
   get '/users/:user', to: 'users#show'
   
   resource :accounts, only: [:update]
@@ -15,6 +20,10 @@ FinalProject::Application.routes.draw do
   get '/login',  to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
+
+  # What if there is a restaurant named 'photos', 'dishes' or 'login' ?
+  # Root level urls like this (especially dynamic ones) are going to
+  # cause pain
   get '/restaurants', to: 'restaurants#index'
   get '/restaurants/new', to: 'restaurants#new'
   get '/:restname', to: 'restaurants#show'

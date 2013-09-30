@@ -1,3 +1,4 @@
+# hard tabs
 class UpVotePhoto < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :photo

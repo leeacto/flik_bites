@@ -1,9 +1,12 @@
+# mix of hard & soft tabs
 class PhotosController < ApplicationController
 
 def create
+  # what if the dish isn't found in the DB?
   @dish = Dish.find(params[:photo][:dish_id])
   @restaurant = @dish.restaurant
 
+  # move this to a before_filter
 	if logged_in?
 		@photo = Photo.new(photo_params)
     @photo.user_id = current_user.id

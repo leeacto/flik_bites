@@ -1,3 +1,4 @@
+# hard tabs
 <h1>Add a Dish to <%= @restaurant.name %></h1>
 
 <ul id = "add_dish_content">
@@ -6,18 +7,24 @@
 	<li>
 		<div class="curr_menu">
 			<% unless @curr_dishes.empty? %>
+        # the below block of code is repeated three times (with a minor variation)
+        # this looks like a easy chance to create a partial
+        ###################
 				<h3> Current Menu </h3>
 				<% if @curr_dishes.starters.count > 0 %>
 					<ul><h4>Starters</h4>
 						<% @curr_dishes.starters.each do |s| %>
+              # no, no, no! Don't build up URLs by hand. user the _path helper methods
 							<li><%= link_to s.name, "/#{@restaurant.url}/#{s.url}" %></li></br>
 						<% end %>
 					</ul>
+        ####################
 				<% end %>
 
 				<% if @curr_dishes.entrees.count > 0 %>
 					<ul><h4>Entrees</h4>
 						<% @curr_dishes.entrees.each do |s| %>
+              # no, no, no! Don't build up URLs by hand. user the _path helper methods
 							<li><%=link_to s.name, "/#{@restaurant.url}/#{s.url}" %></li></br>
 						<% end %>
 					</ul>
@@ -26,6 +33,7 @@
 				<% if @curr_dishes.desserts.count > 0 %>
 					<ul><h4>Desserts</h4>
 						<% @curr_dishes.desserts.each do |s| %>
+              # no, no, no! Don't build up URLs by hand. user the _path helper methods
 							<li><%=link_to s.name, "/#{@restaurant.url}/#{s.url}"  %></li></br>
 						<% end %>
 					</ul>

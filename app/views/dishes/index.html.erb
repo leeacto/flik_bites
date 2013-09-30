@@ -1,3 +1,6 @@
+# hard tabs
+
+# inline onclick events are bad. move this click handler to a JS file in /app/assets/javascript
 <div onclick="TINY.box.show({url:'desc', get:'url=<%= @restaurant.url %>'})" id="rest_show_name"><%= @restaurant.name	 %></div>
 <div>
 	<%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>

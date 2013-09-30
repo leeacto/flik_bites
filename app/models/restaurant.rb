@@ -1,3 +1,4 @@
+# mix of hard & soft tabs
 class Restaurant < ActiveRecord::Base
   has_many :dishes
 	

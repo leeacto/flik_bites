@@ -1,3 +1,5 @@
+# omg so many hard tabs in this file. please replace them with soft tabs
+
 class RestaurantsController < ApplicationController
 
 	def index
@@ -10,6 +12,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def new
+    # Move this conditional to a before_filter
 		if logged_in?
 			@restaurant = Restaurant.new
 		else
@@ -18,11 +21,13 @@ class RestaurantsController < ApplicationController
 		end
 	end
 
+  # Why don't you check for logged_in status here?
 	def create
 		new_rest = Restaurant.new(restaurant_attributes)
 
 		#Render URL
 		if params[:restaurant][:name] != ""
+      # Can you move this downcase.gsub work into the make_url method?
 			potential = params[:restaurant][:name].downcase.gsub(' ','')
 			new_rest.url = make_url(new_rest, potential)
 			if new_rest.save
@@ -42,6 +47,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def show
+    # .find_by is a better choice when you are always calling .first on a query
 		@restaurant = Restaurant.where(:url => params[:restname].downcase).first
 		if @restaurant.nil?
 			render 'not_found'
@@ -49,6 +55,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def edit
+    # no logged_in? check here?
 		@restaurant = Restaurant.where(:url => params[:restname].downcase).first
 		
 		if @restaurant.nil?
@@ -57,17 +64,22 @@ class RestaurantsController < ApplicationController
 	end
 
 	def update
+    # no logged_in? check here?
 		@restaurant = Restaurant.find(params[:id])
 		if params[:restaurant][:name] && params[:restaurant][:name] != @restaurant.name
+      # if you're frequently generating slugs based on a restaurant's name, take a look at https://github.com/rsl/stringex
 			potential = params[:restaurant][:name].downcase.gsub(' ','')
 			@restaurant.url = make_url(@restaurant, potential)
 		end
+    # do you need to call .save after calling .update_attributes? go read the docs to find out
 		@restaurant.update_attributes(restaurant_attributes)
 		@restaurant.save
 		redirect_to @restaurant
 	end
 
 	def destroy
+    # so anyone can delete any restaurant? let me know when this is live so I can ask
+    # my script-kiddie cousin to  delete all your data ;)
 		@restaurant = Restaurant.find(params[:id]) if Restaurant.exists?(params[:id])
 		if @restaurant
 			@restaurant.destroy

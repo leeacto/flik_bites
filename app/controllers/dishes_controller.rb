@@ -9,6 +9,7 @@ class DishesController < ApplicationController
   def new
     @restaurant = Restaurant.where(:url => params[:restname].downcase).first
     @curr_dishes = @restaurant.dishes
+    # a before_filter is a better approach to this
     if current_user
       @dish = Dish.new
       render 'new'
@@ -39,6 +40,7 @@ class DishesController < ApplicationController
   end
 
   def create
+    # find_by instead of .first
     @restaurant = Restaurant.where(:url => params["dish"]["restname"]).first
     @curr_dishes = @restaurant.dishes
     if logged_in?
@@ -65,6 +67,7 @@ class DishesController < ApplicationController
   end
 
   def update
+    # no checking to see if the user has permissions to update a dish?
     @dish = Dish.find(params[:id])
     @dish.assign_attributes(dish_attributes)
 
@@ -76,6 +79,7 @@ class DishesController < ApplicationController
   end
 
   def destroy
+    # any user can delete any dish?
     @dish = Dish.find(params[:id])
     @restaurant = Restaurant.find(@dish.restaurant_id)
     

@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      # you're sure everyone has a gmail account? is nickname a gmail auth thing?
       email = auth.info.email || auth.info.nickname+"@gmail.com"
       user.username = auth.info.name
       user.email = email
