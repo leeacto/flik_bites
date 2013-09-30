@@ -17,7 +17,7 @@
   <%= form_for(@photo) do |f| %>
     <div class="field">
       <%= hidden_field_tag 'photo[dish_id]', @dish.id %>
-      <%= f.file_field :image, id: "take-picture", accept: "image/*" %>
+      <%= f.file_field :image, id: "take-picture", accept: "image/*"%>
     </div>
     
     <div id="save_to_db">
