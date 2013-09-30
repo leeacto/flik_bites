@@ -8,11 +8,13 @@ body {
 }
 .menu {
 	width: 100%;
-	border: 1px solid red;
+/*	border: 1px solid red;*/
 	margin-left: 5%;
-	margin-right: 5%;
-	float: left;
+}
 
+.search-bar {
+/*	border: 1px solid blue;*/
+	margin-left: 5%;
 }
 
 ul.restaurant_list {

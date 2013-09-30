@@ -6,85 +6,65 @@
  *
  * ...also, it will not help you solve the JavaScript :)
 */
- html {
+html {
   height: 100%;
- }
+}
 
- body {
+body {
   height: 100%;
- }
+}
 
- .show_dish {
+.show_dish {
   height: 300px;
-  width: 60%;
   height: 80%;
-  border: 1px solid black;
   margin: 0 auto;
- }
+}
 
-.container {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
+.dish_category{
+  display: block;
 }
- 
-.carousel{
-  overflow:hidden;
-  width:100%;
-}
-.frames{
-  list-style:none;
-  /* position: What value should position have?; */
-  width:3000%;
-  overflow:hidden;
-  padding:0;
-  margin:0;
-}
-.frames > li{
-  position:relative;
-  right: 0px;
+
+.dish_name {
   float:left;
-  width:33.33333%; /* 100 / number of frames */
-  max-width:300px;
-  max-height:300px;
 }
 
-.carousel img{
-  display:block;
-  max-width:300px;
-  max-height:300px;
-  margin: auto;
+.dish_price {
+  float:right;
+  /*clear:left;*/
 }
 
-.carousel h2{
-  font-size:1em;
-  padding:0.5em;
-  position:absolute;
-  bottom:10px;
-  left:10px;
-  text-align:left;
-  margin: 0;
-  color:#fff;
-  background-color:rgba(99,0,0,0.75);
+.dish_description {
+  clear:left;
 }
- 
-.carousel_controls a {
-  font-family: monospace;
-  text-decoration: none;
-  position: absolute;
-  margin-top: 99px;
-  width: 30px;
-  height: 40px;
-  line-height: 40px;
-  background-color: #eee;
-  border: 1px solid #ddd;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
+
+#take-picture {
+  margin:0 auto;
 }
-a#previous_frame {
-  margin-left: -50px;
+
+.field {
+  width: 50%;
+  margin:5% auto;
 }
-a#next_frame {
-  margin-left: 320px;
+
+#save_to_db input{
+  background-color:#ee7836;
+  color: white;
+  border: none;
+  text-indent:0px;
+  display:inline-block;
+  font-family:arial;
+  font-size:21px;
+  font-weight:bold;
+  font-style:normal;
+  height:45px;
+  line-height:45px;
+  width:200px;
+  text-decoration:none;
+  text-align:center;
+}#save_to_db input:hover {
+  background-color:#ee5b36;
+  color: white;
+}#save_to_db input:active {
+  position:relative;
+  top:1px;
 }
