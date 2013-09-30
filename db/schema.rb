@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20130929203038) do
   create_table "photos", force: true do |t|
     t.integer  "user_id"
     t.integer  "dish_id"
+    t.string   "photo_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
@@ -73,7 +74,7 @@ ActiveRecord::Schema.define(version: 20130929203038) do
     t.string   "name"
     t.string   "address"
     t.string   "city"
-    t.integer  "state"
+    t.string   "state"
     t.string   "zip"
     t.string   "cuisine"
     t.float    "latitude"
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 20130929203038) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
+    t.string   "phone"
   end
 
   add_index "restaurants", ["city"], name: "index_restaurants_on_city", using: :btree

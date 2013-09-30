@@ -168,7 +168,7 @@ describe RestaurantsController do
 
 			it "should route to the new restaurant" do
 				post :create, restaurant: @attr
-				response.should redirect_to "/#{Restaurant.last.url}"
+				response.should redirect_to "/#{Restaurant.last.url}/dishes"
 			end
 
 			describe "url naming" do

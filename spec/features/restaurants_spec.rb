@@ -14,16 +14,20 @@ feature "Add a Restaurant" do
 				page.should have_content 'New'
 			end
 
-			it "should add a new restaurant and get to the page" do
-				expect {
+			describe "Back End" do
+				before(:each) do
 					fill_in "restaurant_name", with: "Pizza Hut"
-					fill_in "restaurant_address", with: "123 F"
+					fill_in "restaurant_address", with: "1927 W North Ave"
 					fill_in "restaurant_city", with: "Chicago"
 					fill_in "restaurant_state", with: "IL"
 					fill_in "restaurant_zip", with: "60622"
 					fill_in "restaurant_cuisine", with: "Pizza"
 					click_button 'Create Restaurant'
-				}.to change(Restaurant, :count).by(1)
+				end
+				
+				it "should add a new restaurant record" do
+					Restaurant.last.name.should eq "Pizza Hut"
+				end
 			end
 		end
 	end

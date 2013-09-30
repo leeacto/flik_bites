@@ -4,7 +4,8 @@
   <p class="dish_price">Price: <%= @dish.price %></p>
   <p class="dish_description">Description: <%= @dish.description %></p>
       <%= @photos.count %>
-  <%= progress_bar(5, :color => 'black', :rounded => false) %><br> 
+  <%= progress_bar(rand(100), :color => 'black', :rounded => false) %><br>
+
   <label id="filesize"></label><br> 
   <div class="swiper-container">
     <div class="swiper-wrapper">
