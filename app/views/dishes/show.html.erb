@@ -4,7 +4,6 @@
   <p class="dish_price">Price: <%= @dish.price %></p>
   <p class="dish_description">Description: <%= @dish.description %></p>
       <%= @photos.count %>
-  <%= progress_bar(rand(100), :color => 'black', :rounded => false) %><br>
 
   <label id="filesize"></label><br> 
   <div class="swiper-container">
@@ -22,12 +21,30 @@
       <%= hidden_field_tag 'photo[dish_id]', @dish.id %>
       <%= f.file_field :image, id: "take-picture", accept: "image/*"%>
     </div>
-    
-    <div id="save_to_db">
-      <%= f.submit 'Save to database'%>
-    </div>
+    <table>
+      <tr>
+        <td>
+          <div id="save_to_db">
+            <%= f.submit 'Save to database'%>
+          </div>
+        </td>
+        <td>
+          <div id="floatingBarst">.........</div>
+        </td>
+        <td> 
+          <div id="floatingBarsG">
+            <div class="blockG" id="rotateG_01"></div>
+            <div class="blockG" id="rotateG_02"></div>
+            <div class="blockG" id="rotateG_03"></div>
+            <div class="blockG" id="rotateG_04"></div>
+            <div class="blockG" id="rotateG_05"></div>
+            <div class="blockG" id="rotateG_06"></div>
+            <div class="blockG" id="rotateG_07"></div>
+            <div class="blockG" id="rotateG_08"></div>
+          </div>
+        </td>
+      </tr>
+    </table>
   <% end %>
 </div>
-
-
 

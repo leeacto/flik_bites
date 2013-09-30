@@ -61,9 +61,4 @@ $(document).ready(function() {
         $("#filesize").html( filesize  + "kb"); 
      }    
   }); 
-
 });
-
-
-
-
