@@ -1,8 +1,11 @@
-header ul {
-	list-style-type: none;
-	height: 2em;
+#headeritems {
+  background-color:#21262E;
 }
 
-header ul li {
-	display: inline-block;
+#std-menu-items a{
+  color:white;
+}
+
+body {
+  background-color: #72C4C0;
 }
