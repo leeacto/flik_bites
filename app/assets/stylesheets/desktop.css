@@ -1,0 +1,119 @@
+@media (min-width:920px){
+	#restlist{
+		text-align: center;
+		width:90%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+	.card {
+  height: 200px;
+  width: 300px;
+  position: relative;
+  font-size: 12px;
+	display: inline-block;
+	float: left;
+	margin: 1.5% 1.5% 0 1.5%;
+	
+	-webkit-transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.5s;
+	}
+
+	.card a {
+		color: #444;
+	}
+	#map-canvas { 
+	height: 80%;
+	width: 40%;
+}
+
+	#screenshotpic {
+	margin: 5% 5%;
+	width:90%;	
+	}
+	#twlog, #glog{
+		height:31px;
+	}
+	#newrest {
+		letter-spacing: 0;
+	}
+
+	#twlog {
+		border-radius:5px;
+	}
+
+	#signupnow{
+		position: relative;
+		top:15px;
+		margin:20px 0 20px;
+		padding:15px 100px 15px;
+		background-color: #46DB56;
+		border-radius: 5px;
+		text-decoration: none;
+		color:white;
+	}
+
+	.landingpage {
+		letter-spacing: 0;
+		width: 100%;
+		padding: 10% 0;
+		text-align:center;
+    background-color:#21262E;
+	}
+
+	.landingpage > span {
+    color:white;
+		font-size: 500%;
+	}
+
+  .landingpage > h3 {
+    color:white;
+  }
+
+	#profiletable {
+		letter-spacing: 0;
+		width:50%;
+		margin: 0 25%;
+		text-align: center;
+	}
+
+	#profiletable > thead > tr >th {
+		text-align: center;
+	}
+	.error {
+		width:325px;
+ 		padding:3px 3px 3px;
+ 		margin:0 auto;
+ 		border-radius: 4px;
+		background-color: #FF6666;
+		color: white;
+	}
+
+	.success {
+		width:325px;
+ 		padding:3px 3px 3px;
+ 		margin:0 auto;
+ 		border-radius: 4px;
+		background-color: #99FF99;
+		color:#009933;
+	}
+	#header {
+		text-align: center;
+	}
+	.pure-menu a, .pure-menu .pure-menu-heading {
+		display:inline-block;
+	}
+  .pure-u-1{
+  	display: block;
+  	text-align: center;
+  	width:50%;
+  	margin-right: 25%;
+  	margin-left: 25%;
+  }
+ 	fieldset#signup > input {
+  	margin:1px auto;
+  }
+  fieldset#signupsecond > input {
+  	margin:0 auto;
+  }
+
+ }
