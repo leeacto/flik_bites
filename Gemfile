@@ -53,7 +53,7 @@ end
 
 gem 'aws-sdk', '~> 1.6.0'
 gem 'paperclip', '~> 3.5.0'
-
+gem 'delayed_job_active_record'
 
 group :test do
   gem 'shoulda-matchers'

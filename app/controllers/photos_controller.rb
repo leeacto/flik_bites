@@ -8,7 +8,7 @@ def create
 		@photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
 		if @photo.save 
-      flash[:success] = "Photo added!"
+      flash[:success] = "Adding photo..."
     else
       flash[:error] = "Please choose an image first"
     end
