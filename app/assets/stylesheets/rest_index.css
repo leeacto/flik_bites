@@ -1,32 +1,3 @@
-html {
-	width: 100%;
-	height: 100%;
-}
-body {
-	width: 100%;
-	height: 100%;
-}
-.menu {
-	width: 100%;
-	margin-left: 5%;
-	margin-right: 5%;
-	float: left;
-}
-
-#map-canvas { 
-	height: 80%;
-	width: 40%;
-}
-
-.search-bar {
-/*	border: 1px solid blue;*/
-	margin-left: 5%;
-}
-
-ul.restaurant_list {
-	padding-left: 0px;
-
-}
 ul.tab_header {
 	width: 100%;
 	padding: 0;
@@ -65,24 +36,6 @@ ul.tab {
 
 #starters_tab {
 	border-left: 2px solid black;
-}
-
-.card {
-  height: 200px;
-  width: 300px;
-  float: left;
-  /*position: relative;*/
-  font-size: 12px;
-	display: inline-block;
-	float: left;
-	margin: 1.5% 1.5% 0 1.5%;
-	
-	-webkit-transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform 0.5s;
-}
-
-.card a {
-	color: #444;
 }
 
 .side{
