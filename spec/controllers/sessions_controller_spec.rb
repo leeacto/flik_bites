@@ -59,4 +59,64 @@ describe SessionsController do
 
 		end
 	end
+
+	describe "omniauth testing" do
+				
+		it "should be able to log in with facebook if user does not exists" do
+			request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
+			get 'createoauth'
+			session[:user_id].should eq User.last.id
+			response.should redirect_to root_path
+		end
+
+		it "should be able to log in with google if user does not exists" do
+			request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
+			get 'createoauth'
+			session[:user_id].should eq User.last.id
+			response.should redirect_to root_path
+		end
+
+		it "should be able to log in with twitter if user does not exists" do
+			request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+  		get 'createoauth'
+			session[:user_id].should eq User.last.id
+			response.should redirect_to root_path
+		end
+
+		it 'should be able to find the user if they have signed in before with facebook' do
+			@user = User.create(:username => "TestUserName",
+										  		 :email => "foo@bar.com",
+										  		 :password => "foobar",
+										  		 :provider => 'facebook',
+    											 :uid => '123545')
+			request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
+  		get 'createoauth'
+			session[:user_id].should eq @user.id
+			response.should redirect_to root_path
+		end
+
+		it 'should be able to find the user if they have signed in before with google' do
+			@user = User.create(:username => "TestUserName",
+										  		 :email => "foo@bar.com",
+										  		 :password => "foobar",
+										  		 :provider => 'google_oauth2',
+    											 :uid => '123567')
+			request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
+  		get 'createoauth'
+			session[:user_id].should eq @user.id
+			response.should redirect_to root_path
+		end
+
+		it 'should be able to find the user if they have signed in before with twitter' do
+			@user = User.create( :username => 'something',
+										  		 :email => "foo@bar.com",
+										  		 :password => "foobar",
+										  		 :provider => 'twitter',
+    											 :uid => '987654')
+			request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+  		get 'createoauth'
+			session[:user_id].should eq @user.id
+			response.should redirect_to root_path
+		end
+	end
 end
