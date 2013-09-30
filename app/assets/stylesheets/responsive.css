@@ -1,5 +1,21 @@
+#redpanda{
+	border-radius: 5px;
+}
+
+.l-box {
+	width:33%;
+}
+.l-box:first-child {
+margin-left: 33%;
+}
+
+
 @media (min-width:920px){
 
+	#screenshotpic {
+	margin: 5% 5%;
+	width:90%;	
+	}
 	#twlog, #glog{
 		height:31px;
 	}
@@ -9,6 +25,17 @@
 
 	#twlog {
 		border-radius:5px;
+	}
+
+	#signupnow{
+		position: relative;
+		top:15px;
+		margin:20px 0 20px;
+		padding:15px 100px 15px;
+		background-color: #46DB56;
+		border-radius: 5px;
+		text-decoration: none;
+		color:white;
 	}
 
 	.landingpage {
@@ -86,7 +113,7 @@
 		top:15px;
 		margin:20px 0 20px;
 		padding:15px 100px 15px;
-		background-color: #00FF00;
+		background-color: #46DB56;
 		border-radius: 5px;
 		text-decoration: none;
 		color:white;
@@ -157,6 +184,9 @@
  }
 
 @media(max-width: 480px) {
+	#screenshotpic {
+	width:50%;	
+	}
 	#twlog, #glog{
 		height:31px;
 	}
@@ -165,7 +195,7 @@
 		top:15px;
 		margin:20px 0 20px;
 		padding:15px 100px 15px;
-		background-color: #00FF00;
+		background-color: #46DB56;
 		border-radius: 5px;
 		text-decoration: none;
 		color:white;
@@ -237,7 +267,10 @@
   #headeritems > ul > li {
  		padding:0;
   }
- }
+  #screenshotpic {
+  	display: none;	
+	}
+}
 
 .signupnow {
   background-color:#ee7836;

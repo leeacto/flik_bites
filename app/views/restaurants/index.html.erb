@@ -1,13 +1,21 @@
-<div class="menu">
-	<div class="search-bar">
-		<%= form_tag restaurants_path, :id => "search_form", :method => 'get', class: "search" do %>
-	    <%= text_field_tag :search, params[:search], :id => "search_field" %>
-	    <%= submit_tag "Search", :class => "submitButton", :name => nil %>
-		<% end %>
-	</div>
+<div class="pure-g-r">
+  <div class="pure-u-1-3">
+<div class="pure-u-1">
+<%= form_tag restaurants_path, :id => "search_form", :method => 'get', class: "pure-form" do %>
+<fieldset>
+    <%= text_field_tag :search, params[:search], :id => "search_field" %>
+    <%= submit_tag "Search", :class => "pure-button ", :name => nil %>
+</fiedlset>
+<% end %>
+ 
+<div id="live-search">
+  <div class="l-box">
+    <%= render "live_search", :object => @restaurants %>
+  </div>
+</div>
 
-	<div id="live-search">
-		<%= render "live_search", :object => @restaurants %>
-	</div>
-<div>
+</div>
+</div>
+</div>
+
 
