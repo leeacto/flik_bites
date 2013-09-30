@@ -41,3 +41,23 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+    :provider => 'facebook',
+    :uid => '123545',
+    :info => {:name => 'test',:email => "foo@bar.com"},
+    :credentials => {:token => '1'}
+  })
+OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    :provider => 'google_oauth2',
+    :uid => '123567',
+    :info => {:name => 'test',:email => "foo@bar.com"},
+    :credentials => {:token => '1'}
+  })
+OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+    :provider => 'twitter',
+    :uid => '987654',
+    :info => {:nickname => 'test'},
+    :credentials => {:token => '1'}
+  })
