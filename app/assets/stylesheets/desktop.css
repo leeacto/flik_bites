@@ -9,7 +9,7 @@
   height: 200px;
   width: 300px;
   position: relative;
-  font-size: 12px;
+  font-size: 13px;
 	display: inline-block;
 	float: left;
 	margin: 1.5% 1.5% 0 1.5%;
@@ -116,4 +116,7 @@
   	margin:0 auto;
   }
 
- }
+	.swiper-container {
+		display: none;
+	}
+}
