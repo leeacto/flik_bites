@@ -33,9 +33,7 @@ body {
 }
 
 .dish_photo {
-  margin: auto;
-  /*max-width: 400px;*/
-  /*max-height:400px;*/
+  width:310px;
 }
 
 .dish_description {
