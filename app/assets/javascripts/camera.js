@@ -47,18 +47,18 @@ $(document).ready(function() {
         if (((filesize / 1024) / 1024) > 1) 
         { 
             filesize = (Math.round(((filesize / 1024) / 1024) * 100) / 100);
-            $("#file_size").html( filesize + "Gb"); 
+            $("#filesize").html( filesize + "Gb"); 
         }
         else
         { 
             filesize = (Math.round((filesize / 1024) * 100) / 100)
-            $("#file_size").html( filesize + "Mb"); 
+            $("#filesize").html( filesize + "Mb"); 
         } 
      } 
      else 
      {
         filesize = (Math.round(filesize * 100) / 100)
-        $("#file_size").html( filesize  + "kb"); 
+        $("#filesize").html( filesize  + "kb"); 
      }    
   }); 
 
