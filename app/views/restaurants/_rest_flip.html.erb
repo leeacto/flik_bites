@@ -1,10 +1,14 @@
 <div class = "card" id="card-<%= index %>">
 	<div class="front side">
 		<div class = "card_pic">
-			Photo goes here
+			<% if restaurant.photos.count > 0 %>
+				<%= image_tag restaurant.photos.first.image.url(:medium), class: "restaurant_dish_photo" %>
+			<% else %>
+				<%= image_tag 'no_photos.png' %>
+			<% end %>
 		</div>
 		<div id="card_desc">
-			<div id="rest_dish_link"><%=link_to restaurant.name, "/#{restaurant.url}/dishes" %></div> - 
+			<div id="card_url"><%=link_to restaurant.name, "/#{restaurant.url}/dishes" %></div> - 
 			<%= restaurant.cuisine %>
 		</div>
 	</div>
