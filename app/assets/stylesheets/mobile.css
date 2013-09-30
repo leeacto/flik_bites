@@ -17,30 +17,30 @@
 	.list {
 		font-size: 150%;
 	}
-		#restlist{
+	#restlist{
 		padding: 0;
 		text-align: center;
 		width:90%;
 		margin-left: 5%;
 		margin-right: 5%;
-		}
+	}
 
 	.card {
 		padding: 0;
-	  height: 175px;
-	  width: 100%;
-	  position: relative;
-	  font-size: 11px;
+		height: 175px;
+		width: 100%;
+		position: relative;
+		font-size: 11px;
 		margin-bottom: 4%;
 		
 		-webkit-transform-style: preserve-3d;
-	  -webkit-transition: -webkit-transform 0.5s;
+		-webkit-transition: -webkit-transform 0.5s;
 	}
 	.card a {
 		color: #444;
 	}	
 	#screenshotpic {
-	width:50%;	
+		width:50%;	
 	}
 	#twlog, #glog{
 		height:31px;
@@ -78,18 +78,18 @@
 	}
 	.error {
 		width:325px;
- 		padding:3px 3px 3px;
- 		margin:0 auto;
- 		border-radius: 4px;
+		padding:3px 3px 3px;
+		margin:0 auto;
+		border-radius: 4px;
 		background-color: #FF6666;
 		color: white;
 	}
 
 	.success {
 		width:325px;
- 		padding:3px 3px 3px;
- 		margin:0 auto;
- 		border-radius: 4px;
+		padding:3px 3px 3px;
+		margin:0 auto;
+		border-radius: 4px;
 		background-color: #99FF99;
 		color:#009933;
 	}
@@ -101,29 +101,29 @@
 	.pure-menu a, .pure-menu .pure-menu-heading {
 		display:inline-block;
 	}
-  .pure-u-1{
-  	text-align: center;
-  	width:50%;
-  	margin-right: 25%;
-  	margin-left: 25%;
-  }
+	.pure-u-1{
+		text-align: center;
+		width:50%;
+		margin-right: 25%;
+		margin-left: 25%;
+	}
 
-  #login fieldset > input {
-  	margin:2px auto; 
-  }
-  #signup > input {
-  	margin-left:auto;
-  	margin-right:auto; 
-  }
-   fieldset#signupsecond > input {
-  	margin:0 auto;
-  }
+	#login fieldset > input {
+		margin:2px auto; 
+	}
+	#signup > input {
+		margin-left:auto;
+		margin-right:auto; 
+	}
+	fieldset#signupsecond > input {
+		margin:0 auto;
+	}
 
-  #headeritems > ul > li {
- 		padding:0;
-  }
-  #screenshotpic {
-  	display: none;	
+	#headeritems > ul > li {
+		padding:0;
+	}
+	#screenshotpic {
+		display: none;	
 	}
 	/*
  * Swiper - Mobile Touch Slider CSS
@@ -138,7 +138,7 @@
  *
  * Licensed under GPL & MIT
  *
-*/
+ */
 
 /* ===============================================================
 Basic Swiper Styles 
@@ -207,12 +207,12 @@ Basic Swiper Styles
 Your custom styles, here you need to specify container's and slide's
 sizes, pagination, etc.
 ================================================================*/
-	.swiper-container {
+.swiper-container {
 	/* Specify Swiper's Size: */
 	height: 193px;
 	border:1px solid black;
-	}
 }
+
 .swiper-slide {
 	/* Specify Slides's Size: */
 	

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130930200314) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "dishes", force: true do |t|
     t.string   "name"
     t.string   "category"
@@ -41,7 +44,6 @@ ActiveRecord::Schema.define(version: 20130930200314) do
   create_table "photos", force: true do |t|
     t.integer  "user_id"
     t.integer  "dish_id"
-    t.string   "photo_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
@@ -86,11 +88,11 @@ ActiveRecord::Schema.define(version: 20130930200314) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "zipcode"
-    t.boolean  "is_active",                    default: true
+    t.boolean  "is_active",        default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
-    t.string   "uid",              limit: nil
+    t.string   "uid"
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
