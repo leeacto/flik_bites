@@ -66,20 +66,21 @@ ul.tab {
 .card {
   height: 200px;
   width: 300px;
+  position: relative;
+  font-size: 12px;
 	display: inline-block;
 	float: left;
 	margin: 1.5% 1.5% 0 1.5%;
+	
 	-webkit-transform-style: preserve-3d;
-  -webkit-transition: -webkit-transform 1.5s;
-	-webkit-perspective:1000;
-  -moz-perspective:1000;
-  -ms-perspective:1000;
-  -o-perspective:1000;
-  perspective:1000;
+  -webkit-transition: -webkit-transform 0.5s;
+}
+
+.card a {
+	color: #444;
 }
 
 .side{
-  position: absolute;
   -webkit-backface-visibility: hidden;
   -webkit-box-shadow: 0 2px 5px #666;
 }
@@ -97,9 +98,29 @@ ul.tab {
 	height: 27%;
 	margin: auto;
 }
-.back {
-	-webkit-transform: rotateY(180deg);
+.front {
+  height: 100%;
+  width: 100%;
+  border: solid black 1px;
 }
+
+.back {
+	background-color: gainsboro;
+	padding: 20px;
+  height: 100%;
+  width: 100%;
+	border: 1px solid black;
+  position: absolute;
+  top: 0;
+  left: 0;
+	-webkit-transform: rotateY(180deg);
+	-webkit-box-sizing: border-box; 
+   -moz-box-sizing: border-box; 
+    -ms-box-sizing: border-box; 
+     -o-box-sizing: border-box; 
+        box-sizing: border-box; 
+}
+
 .card .back .rest_text{
 	width: 50%;
 	float: left;
@@ -121,6 +142,7 @@ ul.tab {
 }
 
 .card .back .gmap {
+	z-index: 1000;
 	height: 100%;
 	width: 50%;
 	float: right;

@@ -3,9 +3,10 @@
 <h1>Restaurant List (Please Rename Me) </h1>
 
 <%= form_tag restaurants_path, :id => "search_form", :method => 'get', class: "search" do %>
-    <%= text_field_tag :search, params[:search], :id => "search_field" %>
-    <%= submit_tag "Search", :class => "submitButton", :name => nil %>
+  <%= text_field_tag :search, params[:search], :id => "search_field" %>
+  <%= submit_tag "Search", :class => "submitButton", :name => nil %>
 <% end %>
+<%= link_to "Add a Restaurant", restaurants_new_path %>
 
 <br>
 

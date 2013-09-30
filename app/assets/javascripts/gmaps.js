@@ -19,9 +19,10 @@ var Card = function(el, url) {
   this.el = $("#"+el);
   this.url = url;
   var self = this;
-
+  console.log(this.el.closest('.outer'));
   this.el.find('.side').on('click', function(event) {
     event.stopPropagation();
+    console.log('click');
     $(event.target).closest('.card').toggleClass('active');
     self.addMap();
     self.el.find(".gmap").toggleClass('hidden');
@@ -84,35 +85,24 @@ Card.prototype.addMap = function() {
   });
 };
 
-function codeAddress(address, restaurant) {
+function codeAddress(srchString) {
   var lat;
   var lng;
   var geocoder = new google.maps.Geocoder();
-  if (restaurant.lat !== null) {
-    lat = restaurant.lat;
-    lng = restaurant.lon;
-  }
-  else {
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      
-      if (status === google.maps.GeocoderStatus.OK) {
-        lat = results[0].geometry.location.ob;
-        lng = results[0].geometry.location.pb;
-        pkg = { 
-          lat:  lat,
-          lon:  lng,
-          url:  self.url
-        };
 
-        $.ajax({
-          url: '/setcoords',
-          data: pkg,
-          method: 'post'
-        });
-      }
-    });
-  }
-  setMarker(lat, lng);
+  geocoder.geocode( { 'address': srchString}, function(results, status) {
+    
+    if (status === google.maps.GeocoderStatus.OK) {
+      var lat = results[0].geometry.location.nb;
+      var lng = results[0].geometry.location.ob;
+      pkg = { 
+        lat:  lat,
+        lon:  lng
+      };
+      return pkg;
+    }
+  });
+  
 }
 
 google.maps.Map.prototype.setMarker = function (coordObj) {
@@ -124,23 +114,16 @@ google.maps.Map.prototype.setMarker = function (coordObj) {
 }
 
 
-
 $(document).ready(function() {
   var rTable = new restTable();
 
-  $('#search_form').on('submit', function(event) {
-    event.preventDefault();
-    
-    $.ajax({
-      url: '/restaurants',
-      method: 'get',
-      data: $(this).serialize(),
-      dataType: 'json'
-    }).done( function(restaurants){
-      for (var i in restaurants) {
-        codeAddress(restaurants[i].address + " Chicago", restaurants[i], "eat.png");
-      }
-    });
-  });
+    // $.ajax({
+    //   url: '/restaurants/create',
+    //   method: 'post',
+    //   data: $(this).serialize(),
+    //   dataType: 'json'
+    // }).done( function(rest_id){
+      
+    // });
 
 });

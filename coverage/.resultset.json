@@ -4,23 +4,23 @@
       "/Users/leeacto/rails_projects/final_project/spec/support/restaurant_helper.rb": [
         1,
         1,
-        4,
+        6,
         null,
         null,
         null,
         null,
         null,
         null,
-        4,
+        6,
         null,
         null,
         null,
         null,
         null,
-        4,
-        4,
-        4,
-        4,
+        6,
+        6,
+        6,
+        6,
         null,
         null,
         1,
@@ -730,6 +730,28 @@
         1,
         null,
         null,
+        null,
+        1,
+        1,
+        2,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/leeacto/rails_projects/final_project/app/controllers/restaurants_controller.rb": [
@@ -816,6 +838,16 @@
         1,
         2,
         2,
+        null,
+        null,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
         null,
         null,
         1,
@@ -1579,6 +1611,11 @@
         null,
         null
       ],
+      "/Users/leeacto/rails_projects/final_project/app/controllers/landing_controller.rb": [
+        1,
+        null,
+        null
+      ],
       "/Users/leeacto/rails_projects/final_project/app/models/photo.rb": [
         1,
         1,
@@ -1590,14 +1627,9 @@
         null,
         null,
         null
-      ],
-      "/Users/leeacto/rails_projects/final_project/app/controllers/landing_controller.rb": [
-        1,
-        null,
-        null
       ]
     },
-    "timestamp": 1380465999
+    "timestamp": 1380505661
   },
   "RSpec": {
     "coverage": {
