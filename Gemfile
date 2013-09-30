@@ -53,6 +53,7 @@ end
 
 gem 'aws-sdk', '~> 1.6.0'
 gem 'paperclip', '~> 3.5.0'
+gem 'css3-progress-bar-rails'
 
 
 group :test do

@@ -62,6 +62,8 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
+    css3-progress-bar-rails (0.5.0)
+      rails (>= 3.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -236,6 +238,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   coveralls
+  css3-progress-bar-rails
   factory_girl_rails
   jasmine-jquery-rails
   jasmine-rails

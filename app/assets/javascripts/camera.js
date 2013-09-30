@@ -4,7 +4,6 @@ $(document).ready(function() {
             showPicture = document.querySelector("#show-picture");
             
             if (takePicture && showPicture) {
-            console.log("getting through two");
             takePicture.onchange = function (event) {
                 var files = event.target.files,
                     file;
@@ -39,8 +38,31 @@ $(document).ready(function() {
             };
         }
     })();
-});
 
+   $("#take-picture").change(function () 
+   { 
+     var filesize = ($("#take-picture")[0].files[0].size / 1024); 
+     if (filesize / 1024 > 1) 
+     { 
+        if (((filesize / 1024) / 1024) > 1) 
+        { 
+            filesize = (Math.round(((filesize / 1024) / 1024) * 100) / 100);
+            $("#file_size").html( filesize + "Gb"); 
+        }
+        else
+        { 
+            filesize = (Math.round((filesize / 1024) * 100) / 100)
+            $("#file_size").html( filesize + "Mb"); 
+        } 
+     } 
+     else 
+     {
+        filesize = (Math.round(filesize * 100) / 100)
+        $("#file_size").html( filesize  + "kb"); 
+     }    
+  }); 
+
+});
 
 
 

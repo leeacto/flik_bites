@@ -4,6 +4,8 @@
   <p class="dish_price">Price: <%= @dish.price %></p>
   <p class="dish_description">Description: <%= @dish.description %></p>
       <%= @photos.count %>
+  <%= progress_bar(78, :color => 'black', :rounded => false) %><br> 
+  <label id="file_size"></label><br> 
 
   <div class="swiper-container">
     <div class="swiper-wrapper">
@@ -25,7 +27,6 @@
       <%= f.submit 'Save to database'%>
     </div>
   <% end %>
-
 </div>
 
 
