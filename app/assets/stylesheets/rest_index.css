@@ -49,6 +49,13 @@ ul.tab {
 	border: 1px solid black;
 	margin: auto;
 	margin-top: 2%;
+	overflow: hidden;
+}
+
+.card_pic img {
+	max-width: 100%;
+	max-height: 100%;
+	float: left;
 }
 
 #card_desc {
@@ -56,13 +63,14 @@ ul.tab {
 	height: 27%;
 	margin: auto;
 }
+
+
 .front {
   height: 100%;
   width: 100%;    
   border: solid black 1px;
 }
 .outer-card {
-
 	perspective: 800px;
 }
 
@@ -121,10 +129,6 @@ ul.tab {
   -ms-transform:rotateY(180deg);
   -o-transform:rotateY(180deg);
   transform:rotateY(180deg);
-}
-
-#add_dish_content {
-	
 }
 
 #add_dish_content li{

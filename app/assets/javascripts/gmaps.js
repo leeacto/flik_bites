@@ -6,7 +6,7 @@ var restTable = function(el) {
 restTable.prototype.initialize = function(){
   var self = this;
   $('.card').each(function(){
-    var urlPrep = $(this).find("#rest_dish_link")[0].innerHTML.replace("<a href",'');
+    var urlPrep = $(this).find("#card_url")[0].innerHTML.replace("<a href",'');
     this.url = urlPrep.substring(3,urlPrep.indexOf("/dishes"));
     var card = new Card(this.id, this.url);
     self.cards.push(card);
@@ -20,7 +20,6 @@ var Card = function(el, url) {
   this.geocoder = new google.maps.Geocoder();
 
   this.el.find('.side').on('click', function(event) {
-    console.log('clicked');
     event.stopPropagation();
     $(event.target).closest('.card').toggleClass('active');
     self.addMap();

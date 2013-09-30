@@ -53,5 +53,4 @@ function setup() {
 
 
 $(document).on('ready', setup);
-
 $(document).on('page:load', setup);
