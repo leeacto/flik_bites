@@ -105,8 +105,12 @@ ul.tab {
 }
 .front {
   height: 100%;
-  width: 100%;
+  width: 100%;    
   border: solid black 1px;
+}
+.outer-card {
+
+	perspective: 800px;
 }
 
 .back {
@@ -129,11 +133,13 @@ ul.tab {
 .card .back .rest_text{
 	width: 50%;
 	float: left;
+	-webkit-transform: rotateY(180deg);
 }
 
 .card .back .rest_text .rest_top {
 	height: 10%;
 	width: 100%;
+	-webkit-transform: rotateY(180deg);
 }
 
 .card .back .rest_text .rest_mid {
@@ -144,6 +150,7 @@ ul.tab {
 .card .back .rest_text .rest_bot {
 	height: 80%;
 	width: 100%;
+	-webkit-transform: rotateY(180deg);
 }
 
 .card .back .gmap {
@@ -152,6 +159,7 @@ ul.tab {
 	width: 50%;
 	float: right;
 	margin: auto;
+	-webkit-transform: rotateY(180deg);
 }
 
 .active {

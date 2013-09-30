@@ -1,7 +1,6 @@
 var Menu = function(el) {
 	this.el = $(el);
 	this.tabs = [];
-	this.init();
 };
 
 Menu.prototype.init = function() {
@@ -47,6 +46,7 @@ var List = function(el, tab) {
 	this.tab = tab;
 }
 
-$(document).ready(function(){
+$(document).on("page:load", function(){
 	menu = new Menu('.menu');
+	menu.init();
 });

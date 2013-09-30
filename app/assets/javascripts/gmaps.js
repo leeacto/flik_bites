@@ -20,6 +20,7 @@ var Card = function(el, url) {
   this.url = url;
   var self = this;
   console.log(this.el.closest('.outer'));
+  
   this.el.find('.side').on('click', function(event) {
     event.stopPropagation();
     console.log('click');
@@ -27,6 +28,11 @@ var Card = function(el, url) {
     self.addMap();
     self.el.find(".gmap").toggleClass('hidden');
   });
+
+  this.el.find('a').on('click', function(event) {
+      event.stopPropagation();
+    });
+
 };
 
 Card.prototype.addMap = function() {
@@ -82,6 +88,9 @@ Card.prototype.addMap = function() {
     console.log(coords);
     self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
     self.gmap.setMarker(coords);
+    $("#map-canvas-"+mapNum).on('click', function(event) {
+      event.stopPropagation();
+    });
   });
 };
 
