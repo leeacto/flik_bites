@@ -109,7 +109,6 @@ describe SessionsController do
 
 		it 'should be able to find the user if they have signed in before with twitter' do
 			@user = User.create( :username => 'something',
-													 :nickname => "TestUserName",
 										  		 :email => "foo@bar.com",
 										  		 :password => "foobar",
 										  		 :provider => 'twitter',
