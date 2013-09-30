@@ -5,7 +5,7 @@ FinalProject::Application.routes.draw do
 	root 'landing#index'
 	
 	mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
-	resources :users, only: [:index,:new,:create,:edit,:update,:destory]
+	resources :users, only: [:index,:new,:create,:edit,:update,:destroy]
 
   get '/users/:user', to: 'users#show'
   
@@ -15,8 +15,11 @@ FinalProject::Application.routes.draw do
   get '/login',  to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
-  get '/restaurants', to: 'restaurants#index'
-  get '/restaurants/new', to: 'restaurants#new'
+  post '/restaurants/create', to: 'restaurants#create'
+
+  resources :restaurants do
+    resources :dishes
+  end
   get '/:restname', to: 'restaurants#show'
   get '/:restname/edit', to: 'restaurants#edit'
   get '/:restname/desc', to: 'restaurants#desc'
@@ -33,8 +36,6 @@ FinalProject::Application.routes.draw do
   post '/:restname/:dishname', to: 'dishes#photo_new'
   
   resources :dishes, only: [:update, :destroy]
-
-
   resources :photos
   
 
@@ -43,9 +44,6 @@ FinalProject::Application.routes.draw do
   
   resources :dishes
   
-  resources :restaurants do
-    resources :dishes
-  end
 
 
 end

@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+	include RestaurantsHelper
 
 	def index
 		if request.xhr?
@@ -20,25 +21,28 @@ class RestaurantsController < ApplicationController
 
 	def create
 		new_rest = Restaurant.new(restaurant_attributes)
-
-		#Render URL
 		if params[:restaurant][:name] != ""
-			potential = params[:restaurant][:name].downcase.gsub(' ','')
-			new_rest.url = make_url(new_rest, potential)
+			potential_url = params[:restaurant][:name].downcase.gsub(' ','')
+			new_rest.url = make_url(new_rest, potential_url)
 			if new_rest.save
-				flash[:success] = "Restaurant Added"
-				redirect_to "/#{new_rest.url}"
+				if request.xhr?
+					loc = {}
+					loc[:id] = new_rest.id
+					loc[:address] = street_city(new_rest)
+					render :json => loc
+				else
+					flash[:success] = "Restaurant Added"
+					redirect_to "/#{new_rest.url}/dishes"
+				end
 			else
 				flash[:error] = "Restaurant was not saved"
 				render 'new'
 			end
 		else
+			@restaurant = new_rest
 			flash[:error] = "The Restaurant Needs a Name"
 			render 'new'
 		end
-		
-		#Get Lat/Lon? Or do AJAX Call on submission?
-
 	end
 
 	def show
@@ -93,9 +97,20 @@ class RestaurantsController < ApplicationController
 		end
 	end
 
+	def setcoords
+		if params[:url] || params[:id]
+			rest = Restaurant.find(params[:id])
+			rest ||= Restaurant.where(:url => params[:url]).first
+			rest.latitude = params[:lat]
+			rest.longitude = params[:lon]
+			rest.save
+			render json: rest
+		end
+	end
+
 	private
 	
 	def restaurant_attributes
-  	params.require(:restaurant).permit(:name, :address, :city, :state, :zip, :latitude, :longitude, :url)
+  	params.require(:restaurant).permit(:name, :address, :city, :state, :zip, :latitude, :longitude, :url, :cuisine)
   end
 end

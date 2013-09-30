@@ -57,7 +57,6 @@ describe("Tab", function(){
 	});
 
 	it("should have a List object", function(){
-		console.log(tab.list.el);
 		expect(tab.list.el.selector).toBe('.starters');
 	});
 
