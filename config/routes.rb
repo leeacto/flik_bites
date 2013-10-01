@@ -1,6 +1,6 @@
 FinalProject::Application.routes.draw do
 
-  match 'auth/:provider/callback', to: 'sessions#createouath', via: [:get, :post]
+  match 'auth/:provider/callback', to: 'sessions#createoauth', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
 	root 'landing#index'
 	
