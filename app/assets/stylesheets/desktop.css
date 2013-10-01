@@ -1,7 +1,4 @@
-@media (min-width:920px){
-  #cboxClose {
-    float:right;
-  }
+@media (min-width:920px){ 
 	#restlist{
 		text-align: center;
 		width:90%;
