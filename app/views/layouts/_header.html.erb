@@ -1,14 +1,14 @@
 <div class="pure-menu pure-menu-open pure-menu-horizontal" id='headeritems'>
    <ul id="std-menu-items">
         <% if logged_in? %>
-        <li class="pure-menu-selected"><a href="/restaurants">FlikBites</a></li>
-        <li><a href='/restaurants'>Restaurants</a></li>
-        <li><a href="/users/<%=current_user.username%>"><%=current_user.username%></a> </li>
-        <li><a href="/logout">Logout</a></li>
+          <li class="pure-menu-selected"><a href="/restaurants">FlikBites</a></li>
+          <li><a href='/restaurants'>Restaurants</a></li>
+          <li><a href="/users/<%=current_user.username%>"><%=current_user.username%></a> </li>
+          <li><a href="/logout">Logout</a></li>
         <%else%>
-        <li class="pure-menu-selected"><a href="/">FlikBites</a></li>
-        <li><a href='/restaurants'>Restaurants</a></li>
-        <li><a href="/login">Login</a></li>
+          <li class="pure-menu-selected"><a href="/">FlikBites</a></li>
+          <li><a href='/restaurants'>Restaurants</a></li>
+          <li><a href="/login">Login</a></li>
         <%end%>
     </ul>
 </div>
