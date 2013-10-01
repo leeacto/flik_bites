@@ -96,7 +96,6 @@ Card.prototype.addMap = function() {
             scaleControl: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           }
-          console.log("searched" + coordsBack.gsearch);
           var gmap_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=13&size=129x158&maptype=roadmap&markers=color:red%7C" + lat + "," + lon + "&sensor=false";
           var gmap_img = "<a href='http://maps.google.com/?q=" + coordsBack.gsearch + "' target='_blank'><img src='" + gmap_url + "'></a>"
           $("#map-canvas-"+mapNum).append(gmap_img);
