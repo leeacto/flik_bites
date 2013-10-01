@@ -1,26 +1,31 @@
 class DishesController < ApplicationController
-
+  before_action(:except => [:index, :show]) { |controller| controller.require_login(restaurants_path) }
+  before_action :set_restaurant, :only => [:index, :new]
+  
   def index
-    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
-    @dishes = @restaurant.dishes.includes(:photos)
+    if @restaurant
+      @dishes = @restaurant.dishes.includes(:photos)
+    else
+      flash[:error] = "Restaurant not found"
+      redirect_to_back
+    end
   end
 
   def new
-    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
-    @curr_dishes = @restaurant.dishes
-    if current_user
+    if @restaurant
+      @curr_dishes = @restaurant.dishes
       @dish = Dish.new
       render 'new'
     else
-      flash[:error] = "You must be signed in to add a dish"
-      redirect_to "/#{@restaurant.url}"
+      flash[:error] = "Restaurant not found"
+      redirect_to @restaurant
     end
   end
 
   def show
     for_url = params[:dishname].gsub(" ", "").downcase
-    @dish = Dish.where(:url => for_url).first
     @comment = Comment.where(:dish_id => @dish.id)
+    @dish = Dish.find_by(:url => for_url)
     if @dish.nil?
       render 'not_found'
     else
@@ -31,7 +36,7 @@ class DishesController < ApplicationController
 
   def edit
     for_url = params[:dishname].gsub(" ", "").downcase
-    @dish = Dish.where(:url => for_url).first
+    @dish = Dish.find_by(:url => for_url)
 
     if @dish.nil?
       render 'not_found'
@@ -39,28 +44,23 @@ class DishesController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.where(:url => params["dish"]["restname"]).first
+    @restaurant = Restaurant.find_by(:url => params["dish"]["restname"])
     @curr_dishes = @restaurant.dishes
-    if logged_in?
-      @dish = @restaurant.dishes.new(dish_attributes)
-      unless @dish.name.nil?
-        potential = @dish.name.downcase.gsub(' ','')
-        @dish.url = make_url(@dish, potential)
-        if @dish.save
-          flash[:success] = "New Dish Added!"
-          redirect_to "/#{@restaurant.url}/#{@dish.url}"
-        else
-          flash[:error] = "The Dish Was Not Saved"
-          render :new
-        end
+
+    @dish = @restaurant.dishes.new(dish_attributes)
+    unless @dish.name.nil?
+      potential = @dish.name.downcase.gsub(' ','')
+      @dish.url = make_url(@dish, potential)
+      if @dish.save
+        flash[:success] = "New Dish Added!"
+        redirect_to "/#{@restaurant.url}/#{@dish.url}"
       else
-        flash[:error] = "The Dish Must Have a Name"
+        flash[:error] = "The Dish Was Not Saved"
         render :new
       end
     else
-
-      flash[:error] = "You must be signed in to add a dish"
-      redirect_to "/#{@restaurant.url}"
+      flash[:error] = "The Dish Must Have a Name"
+      render :new
     end
   end
 
@@ -92,5 +92,9 @@ class DishesController < ApplicationController
 
   def dish_attributes
     params.require(:dish).permit(:name, :category, :description, :price, :url)
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find_by(:url => params[:restname].downcase)
   end
 end

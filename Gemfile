@@ -53,7 +53,7 @@ end
 
 gem 'aws-sdk', '~> 1.6.0'
 gem 'paperclip', '~> 3.5.0'
-
+gem "paperclip-compression", "~> 0.3.4"
 gem 'mechanize'
 
 group :test do
@@ -67,6 +67,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'better_errors'
 gem 'coveralls', require: false
+gem 'will_paginate', '~> 3.0.5'
 # Use unicorn as the app server
 # gem 'unicorn'
 

@@ -6,7 +6,7 @@ var restTable = function(el) {
 restTable.prototype.initialize = function(){
   var self = this;
   $('.card').each(function(){
-    var urlPrep = $(this).find("#card_url")[0].innerHTML.replace("<a href",'');
+    var urlPrep = $(this).find(".card_url")[0].innerHTML.replace("<a href",'');
     this.url = urlPrep.substring(3,urlPrep.indexOf("/dishes"));
     var card = new Card(this.id, this.url);
     self.cards.push(card);
@@ -22,8 +22,12 @@ var Card = function(el, url) {
   this.el.find('.side').on('click', function(event) {
     event.stopPropagation();
     $(event.target).closest('.card').toggleClass('active');
-    self.addMap();
     self.el.find(".gmap").toggleClass('hidden');
+    if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1 )
+    {
+      setTimeout(function(){},2000);
+      self.addMap();
+    }
   });
 
   this.el.find('a').on('click', function(event) {
@@ -38,6 +42,7 @@ Card.prototype.addMap = function() {
   var url = this.url;
   var self = this;
   var mapNum = el.selector.replace('#card-','');
+  var deferreds = [];
 
   $.ajax({
     url: "/"+this.url+"/coords",
@@ -57,8 +62,10 @@ Card.prototype.addMap = function() {
         scaleControl: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
-      self.gmap.setMarker(coords);
+      var gmap_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=13&size=129x158&maptype=roadmap&markers=color:red%7C" + lat + "," + lon + "&sensor=false";
+      var gmap_img = "<a href='http://maps.google.com/?q=" + coordsBack.gsearch + "' target='_blank'><img src='" + gmap_url + "'></a>"
+      
+      $("#map-canvas-"+mapNum).append(gmap_img);
       $("#map-canvas-"+mapNum).on('click', function(event) {
         event.stopPropagation();
       });
@@ -66,9 +73,8 @@ Card.prototype.addMap = function() {
     else {
       self.geocoder.geocode( { 'address': coordsBack.address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-
-          lat = results[0].geometry.location.nb;
-          lon = results[0].geometry.location.ob;
+          lat = results[0].geometry.location.lat();
+          lon = results[0].geometry.location.lng();
 
           pkg = { 
             lat:  lat,
@@ -90,8 +96,10 @@ Card.prototype.addMap = function() {
             scaleControl: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           }
-          self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
-          self.gmap.setMarker(coords);
+          console.log("searched" + coordsBack.gsearch);
+          var gmap_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=13&size=129x158&maptype=roadmap&markers=color:red%7C" + lat + "," + lon + "&sensor=false";
+          var gmap_img = "<a href='http://maps.google.com/?q=" + coordsBack.gsearch + "' target='_blank'><img src='" + gmap_url + "'></a>"
+          $("#map-canvas-"+mapNum).append(gmap_img);
           $("#map-canvas-"+mapNum).on('click', function(event) {
             event.stopPropagation();
           });
@@ -106,12 +114,11 @@ function codeAddress(srchString) {
   var lat;
   var lng;
   var geocoder = new google.maps.Geocoder();
-  console.log(srchString);
   geocoder.geocode( { 'address': srchString.address}, function(results, status) {
     
     if (status === google.maps.GeocoderStatus.OK) {
-      var lat = results[0].geometry.location.nb;
-      var lng = results[0].geometry.location.ob;
+      var lat = results[0].geometry.location.lat();
+      var lng = results[0].geometry.location.lng();
       
       pkg = { 
             lat:  lat,

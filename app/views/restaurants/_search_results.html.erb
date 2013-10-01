@@ -1,0 +1,5 @@
+<% @restaurants.each_with_index do |r, i| %>
+		<%= render partial: 'rest_flip', :locals => {:restaurant => r, :index => i } %>
+<% end %>
+
+

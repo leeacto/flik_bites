@@ -60,7 +60,7 @@ ul.tab {
 	margin-top: 5%;
 }
 
-#card_desc {
+.card_desc {
 	width: 100%;
 	height: 27%;
 	margin: auto;
@@ -125,6 +125,14 @@ ul.tab {
 	-webkit-transform: rotateY(180deg);
 }
 
+.gmap img {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+}
 .active {
   -webkit-transform:rotateY(180deg);
   -moz-transform:rotateY(180deg);
