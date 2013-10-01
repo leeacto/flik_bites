@@ -21,9 +21,9 @@ describe RestaurantsController do
 				response.code.should eq "200"
 			end
 
-			it "renders the live_search partial" do
+			it "renders the search_results partial" do
 				xhr :get, :index
-				response.should render_template :_live_search
+				response.should render_template :_search_results
 			end
 		end
 	end
