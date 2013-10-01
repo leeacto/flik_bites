@@ -25,6 +25,7 @@ var Card = function(el, url) {
     self.el.find(".gmap").toggleClass('hidden');
     if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1 )
     {
+      setTimeout(function(){},2000);
       self.addMap();
     }
   });
@@ -61,12 +62,10 @@ Card.prototype.addMap = function() {
         scaleControl: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      console.log(coordsBack.gsearch);
       var gmap_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=13&size=129x158&maptype=roadmap&markers=color:red%7C" + lat + "," + lon + "&sensor=false";
       var gmap_img = "<a href='http://maps.google.com/?q=" + coordsBack.gsearch + "' target='_blank'><img src='" + gmap_url + "'></a>"
+      
       $("#map-canvas-"+mapNum).append(gmap_img);
-      // self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
-      // self.gmap.setMarker(coords);
       $("#map-canvas-"+mapNum).on('click', function(event) {
         event.stopPropagation();
       });
@@ -101,8 +100,6 @@ Card.prototype.addMap = function() {
           var gmap_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=13&size=129x158&maptype=roadmap&markers=color:red%7C" + lat + "," + lon + "&sensor=false";
           var gmap_img = "<a href='http://maps.google.com/?q=" + coordsBack.gsearch + "' target='_blank'><img src='" + gmap_url + "'></a>"
           $("#map-canvas-"+mapNum).append(gmap_img);
-          // self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
-          // self.gmap.setMarker(coords);
           $("#map-canvas-"+mapNum).on('click', function(event) {
             event.stopPropagation();
           });
@@ -117,7 +114,6 @@ function codeAddress(srchString) {
   var lat;
   var lng;
   var geocoder = new google.maps.Geocoder();
-  console.log(srchString);
   geocoder.geocode( { 'address': srchString.address}, function(results, status) {
     
     if (status === google.maps.GeocoderStatus.OK) {
