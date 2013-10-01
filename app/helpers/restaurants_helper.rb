@@ -1,5 +1,7 @@
 module RestaurantsHelper
 	def street_city(rest)
-		rest.address + " " + rest.city
+    
+		formatted = rest.address + " " + rest.city
+    formatted
 	end
 end
