@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
       redirect_to "/#{@restaurant.url}/#{@dish.url}"
     else
       flash[:error] = "Dish was not found"
-      redirect_to :back
+      redirect_to "/#{@restaurant.url}/#{@dish.url}"
     end
   end 
 

@@ -49,11 +49,11 @@ feature "Adding a Dish" do
 				two_rest
 			end
 			
-			it "should send user to the login page" do
+			it "should ask user to login first" do
 				visit '/restaurants'
 				click_link 'Cumin'
 				click_link 'Add a Dish'
-				page.should have_content "signed in"	
+				page.should have_content "Please log in"	
 			end
 		end
 	end

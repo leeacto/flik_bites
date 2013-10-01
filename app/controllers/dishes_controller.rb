@@ -1,14 +1,17 @@
 class DishesController < ApplicationController
-  before_action :require_login, :except => [:index, :show]
-
+  before_action(:except => [:index, :show]) { |controller| controller.require_login(restaurants_path) }
+  before_action :set_restaurant, :only => [:index, :new]
+  
   def index
-    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
-    @dishes = @restaurant.dishes.includes(:photos)
+    if @restaurant
+      @dishes = @restaurant.dishes.includes(:photos)
+    else
+      flash[:error] = "Restaurant not found"
+      redirect_to_back
+    end
   end
 
   def new
-    @restaurant = Restaurant.where(:url => params[:restname].downcase).first
-    
     if @restaurant
       @curr_dishes = @restaurant.dishes
       @dish = Dish.new
@@ -21,7 +24,7 @@ class DishesController < ApplicationController
 
   def show
     for_url = params[:dishname].gsub(" ", "").downcase
-    @dish = Dish.where(:url => for_url).first
+    @dish = Dish.find_by(:url => for_url)
     if @dish.nil?
       render 'not_found'
     else
@@ -32,7 +35,7 @@ class DishesController < ApplicationController
 
   def edit
     for_url = params[:dishname].gsub(" ", "").downcase
-    @dish = Dish.where(:url => for_url).first
+    @dish = Dish.find_by(:url => for_url)
 
     if @dish.nil?
       render 'not_found'
@@ -88,5 +91,9 @@ class DishesController < ApplicationController
 
   def dish_attributes
     params.require(:dish).permit(:name, :category, :description, :price, :url)
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find_by(:url => params[:restname].downcase)
   end
 end
