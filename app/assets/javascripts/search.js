@@ -4,6 +4,7 @@ var liveSearch = function() {
     var data = $("#search_form").serialize();
 
     $.get(url, data, function(response){
+        console.log(response);
         $("#live-search").html(response);
     });
   });
