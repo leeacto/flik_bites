@@ -192,8 +192,8 @@ describe RestaurantsController do
       end
 
       it "should redirect to restaurants page" do
-        expect {post :create, restaurant: @attr}.should
-        redirect_to restaurants_path
+        post :create, restaurant: @attr
+        response.should redirect_to restaurants_path
       end
     end
 
@@ -309,7 +309,8 @@ describe RestaurantsController do
       @expected = { 
         :latitude   =>    41.921109,
         :longitude  =>     -87.677845,
-        :address    =>    "2152 N. Damen Ave Chicago"
+        :address    =>    "2152 N. Damen Ave Chicago",
+        :gsearch    =>    "The+Bristol+2152+N.+Damen+Ave+Chicago"
       }.to_json
       
       xhr :get, :coords, restname: @r.url
