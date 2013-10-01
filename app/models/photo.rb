@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
   has_attached_file :image, styles: {
                               medium: { 
                                 geometry: '300x300',
-                                quality: 50
+                                quality: 50 }
   }
 
   validates_attachment_presence :image
