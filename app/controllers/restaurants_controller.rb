@@ -84,7 +84,7 @@ class RestaurantsController < ApplicationController
 
 	def desc
 		@rest = Restaurant.where(:url => params[:restname]).first
-		render 'desc'
+		render 'desc', :layout => false
 	end
 
 	def coords
