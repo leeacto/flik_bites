@@ -22,8 +22,11 @@ var Card = function(el, url) {
   this.el.find('.side').on('click', function(event) {
     event.stopPropagation();
     $(event.target).closest('.card').toggleClass('active');
-    self.addMap();
     self.el.find(".gmap").toggleClass('hidden');
+    if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1 )
+    {
+      self.addMap();
+    }
   });
 
   this.el.find('a').on('click', function(event) {
@@ -58,8 +61,12 @@ Card.prototype.addMap = function() {
         scaleControl: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
-      self.gmap.setMarker(coords);
+      console.log(coordsBack.gsearch);
+      var gmap_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=13&size=129x158&maptype=roadmap&markers=color:red%7C" + lat + "," + lon + "&sensor=false";
+      var gmap_img = "<a href='http://maps.google.com/?q=" + coordsBack.gsearch + "' target='_blank'><img src='" + gmap_url + "'></a>"
+      $("#map-canvas-"+mapNum).append(gmap_img);
+      // self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
+      // self.gmap.setMarker(coords);
       $("#map-canvas-"+mapNum).on('click', function(event) {
         event.stopPropagation();
       });
@@ -67,7 +74,6 @@ Card.prototype.addMap = function() {
     else {
       self.geocoder.geocode( { 'address': coordsBack.address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-          console.log(results);
           lat = results[0].geometry.location.lat();
           lon = results[0].geometry.location.lng();
 
@@ -91,8 +97,12 @@ Card.prototype.addMap = function() {
             scaleControl: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           }
-          self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
-          self.gmap.setMarker(coords);
+          console.log("searched" + coordsBack.gsearch);
+          var gmap_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=13&size=129x158&maptype=roadmap&markers=color:red%7C" + lat + "," + lon + "&sensor=false";
+          var gmap_img = "<a href='http://maps.google.com/?q=" + coordsBack.gsearch + "' target='_blank'><img src='" + gmap_url + "'></a>"
+          $("#map-canvas-"+mapNum).append(gmap_img);
+          // self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
+          // self.gmap.setMarker(coords);
           $("#map-canvas-"+mapNum).on('click', function(event) {
             event.stopPropagation();
           });
