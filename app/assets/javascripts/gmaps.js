@@ -6,7 +6,7 @@ var restTable = function(el) {
 restTable.prototype.initialize = function(){
   var self = this;
   $('.card').each(function(){
-    var urlPrep = $(this).find("#card_url")[0].innerHTML.replace("<a href",'');
+    var urlPrep = $(this).find(".card_url")[0].innerHTML.replace("<a href",'');
     this.url = urlPrep.substring(3,urlPrep.indexOf("/dishes"));
     var card = new Card(this.id, this.url);
     self.cards.push(card);
@@ -38,6 +38,7 @@ Card.prototype.addMap = function() {
   var url = this.url;
   var self = this;
   var mapNum = el.selector.replace('#card-','');
+  var deferreds = [];
 
   $.ajax({
     url: "/"+this.url+"/coords",
