@@ -39,4 +39,20 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
   helper_method :logged_in?
+  
+  def require_login(target_redirect = root_path)
+    unless logged_in?
+      flash[:error] = "Please log in first"
+      redirect_to target_redirect
+    end
+  end
+
+  def redirect_to_back(default = root_path)
+    if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+      redirect_to :back
+    else
+      redirect_to default
+    end
+  end
+  
 end
