@@ -11,14 +11,17 @@
     <%= link_to "Add a Restaurant", new_restaurant_path %>
   </div>
 </div>
+<div class="pure-g">
 <div class="pure-u-1 pagination">
   <%= will_paginate @posts, :page_links => false,class: 'mobilepag' %>
   <%= will_paginate @restaurants,class: 'pag'%>
 </div>
-<div>
+</div>
+<div id='restlist' class="cf">
   <%= render "search_results", :object => @restaurants %>
 </div>
+<div class="pure-g">
 <div class="pure-u-1 pagination">
   <%= will_paginate @posts, :page_links => false,class: 'mobilepag' %>
 </div>
-
+</div>
