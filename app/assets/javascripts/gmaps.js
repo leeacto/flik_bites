@@ -38,6 +38,21 @@ Card.prototype.addMap = function() {
   var url = this.url;
   var self = this;
   var mapNum = el.selector.replace('#card-','');
+  var deferreds = [];
+
+if(need_coords)
+  var d = new Deferred();
+  deferreds.push(d)
+  $.post().done(d.resolve());
+else
+  var d = new Deferred();
+  deferreds.push(d)
+  $.post().done(d.resolve());
+
+$.when(deferreds).done(function() {
+  
+  
+})
 
   $.ajax({
     url: "/"+this.url+"/coords",

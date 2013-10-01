@@ -53,7 +53,7 @@ end
 
 gem 'aws-sdk', '~> 1.6.0'
 gem 'paperclip', '~> 3.5.0'
-
+gem "paperclip-compression", "~> 0.3.4"
 
 group :test do
   gem 'shoulda-matchers'
