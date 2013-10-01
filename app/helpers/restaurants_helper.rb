@@ -5,6 +5,6 @@ module RestaurantsHelper
 
   def gsearch(rest)
     gsrch = rest.name + " " + rest.address + " " + rest.city
-    gsrch.gsub(" ","+").gsub('++','+').gsub('\'','')
+    gsrch.gsub(" ","+").gsub('\'','').gsub('&','').gsub('++','+')
   end
 end
