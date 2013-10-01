@@ -93,14 +93,16 @@ class RestaurantsController < ApplicationController
 			@rest = Restaurant.where(:url => params[:restname]).first
 			coords[:latitude] = @rest.latitude
 			coords[:longitude] = @rest.longitude
+			coords[:address] = street_city(@rest)
 			render :json => coords
 		end
 	end
 
 	def setcoords
 		if params[:url] || params[:id]
-			rest = Restaurant.find(params[:id])
-			rest ||= Restaurant.where(:url => params[:url]).first
+			rest = Restaurant.where(:url => params[:url]).first
+			rest ||= Restaurant.find(params[:id])
+			puts rest.inspect
 			rest.latitude = params[:lat]
 			rest.longitude = params[:lon]
 			rest.save
