@@ -3,7 +3,9 @@ class Photo < ActiveRecord::Base
 	belongs_to :dish
 	
   has_attached_file :image, styles: {
-    medium: '300x300'
+                              medium: { 
+                                geometry: '300x300',
+                                quality: 50
   }
 
   validates_attachment_presence :image
