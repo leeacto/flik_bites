@@ -46,6 +46,7 @@ Card.prototype.addMap = function() {
     data: this.url,
     dataType: 'json'
   }).done(function(coordsBack) {
+    console.log(coordsBack);
     if (coordsBack.latitude != null) {
       lat = coordsBack.latitude;
       lon = coordsBack.longitude;
