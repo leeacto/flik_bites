@@ -33,7 +33,7 @@ class RestaurantList
 
   def create_restaurants
     @rest_list.map! do |rest|
-      Restaurant.new({ name: rest[0], address: rest[1], cuisine: rest[2], number: rest[3]})
+      Restaurant.new({ name: rest[0], address: rest[1], cuisine: rest[2], phone: rest[3]})
     end
   end
 

@@ -1,76 +1,74 @@
+require 'nokogiri'
+require 'mechanize'
+require 'csv'
 
-#Seed Two Restaurants
-@attr = { :name => "The Bristol", 
-					:address => "2152 N. Damen Ave",
-					:city => "Chicago",
-					:state => "IL",
-					:zip => 60647,
-					:cuisine => "American",
-					:latitude => 41.921109,
-					:longitude => -87.677845,
-					:url => 'thebristol'
-}
+class RestaurantList
+  attr_reader :rest_list
 
-@attr_t = { :name => "Cumin", 
-						:address => "1414 N Milwaukee Ave",
-						:city => "Chicago",
-						:state => "IL",
-						:zip => 60622,
-						:cuisine => "Indian / Nepalese",
-						:latitude => 41.907696,
-						:longitude => -87.673286,
-						:url => 'cumin'
-}
+  # take an allmenus url and scrape through restaurants / menu pages
+  def initialize(url)
+    @agent = Mechanize.new
+    @page = @agent.get(url)
+    @noko_page = Nokogiri::HTML(@page.body)
+    @link_list = []
 
-@attr_3 = { :name => "Pizza Hut", 
-						:address => "1414 N Milwaukee Ave",
-						:city => "Chicago",
-						:state => "IL",
-						:zip => 60622,
-						:cuisine => "Classic American",
-						:latitude => 42.298697,
-						:longitude => -87.956501,
-						:url => 'pizzahut'
-}
+    @rest_list = self.get_names.zip(self.get_cuisines, self.get_addresses)
+    p self.save_to_csv
+  end
 
-@attr_4 = { :name => "Taco Bell", 
-						:address => "1414 N Milwaukee Ave",
-						:city => "Chicago",
-						:state => "IL",
-						:zip => 60622,
-						:cuisine => "Traditional Mexican",
-						:latitude => 42.298697,
-						:longitude => -87.956501,
-						:url => 'tacobell'
-}
+  def get_names
+    @noko_page.search('.restaurant_name').map { |link| link.inner_text }  
+  end
 
-@dish_attr = { :name => "pad thai",
-							 :category => "Entree",
-							 :description => "Thai noodles with peanuts and stuff",
-							 :price => "10.00",
-							 :url => "padthai"
-}
+  def get_cuisines
+    @noko_page.search('.restaurant_cuisines').map { |link| link.inner_text.strip }  
+  end
 
-@dish_attr2 = { :name => "pizza",
-							 :category => "Entree",
-							 :description => "Slice of heaven",
-							 :price => "2.00",
-							 :url => "pizza"
-}
+  def get_addresses
+    @noko_page.search('.restaurant_address').map { |link| link.inner_text }  
+  end
+
+  def parse_address(full_addr)
+  	#split full address into [address, city, zip]
+  	first_split = full_addr.split(",")
+  	address = first_split[0]
+  	city = first_split[1].match(/[a-z\s]+/i).to_s.strip
+  	zip = first_split[1].match(/\d+/).to_s.strip
+  	return [address, city, zip]
+  end
+
+  def get_numbers
+  	#NUMBERS ARE ON ACTUAL RESTAURNT MENU PAGE
+    @noko_page.search('#phone_number').inner_text
+  end
+  
+  def save_to_csv
+  	@rest_list.each do |rest|
+  		address_array = parse_address(rest[2])
+
+	  	CSV.open("db/restaurants.csv", "ab") do |csv|
+	  		csv << [ rest[0], address_array[0], address_array[1], 
+	  						 "IL", address_array[2], rest[1], rest[0].gsub(" ", "").downcase ]
+	  	end
+	  end
+  end
+
+  # def create_restaurants
+  #   @rest_list.map! do |rest|
+  #   	address_array = parse_address(rest[2])
+
+  #     Restaurant.create({ name: rest[0], 
+  #     										address: address_array[0], 
+  #     										city: address_array[1],
+  #     										state: "IL",
+  #     										zip: address_array[2], 
+  #     										cuisine: rest[1],
+  #     										url: rest[0].gsub(" ", "").downcase
+  #     									})
+  #   end
+  # end
+end
 
 
-a = Restaurant.create(@attr)
-b = Restaurant.create(@attr_t)
-c = Restaurant.create(@attr_3)
-d = Restaurant.create(@attr_4)
-
-
-a.dishes.create(@dish_attr)
-a.dishes.create(@dish_attr2)
-b.dishes.create(@dish_attr)
-b.dishes.create(@dish_attr2)
-c.dishes.create(@dish_attr)
-c.dishes.create(@dish_attr2)
-d.dishes.create(@dish_attr)
-d.dishes.create(@dish_attr2)
-
+url = 'http://www.allmenus.com/il/chicago/-/'
+a = RestaurantList.new(url)
