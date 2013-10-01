@@ -7,13 +7,13 @@ class RestaurantList
 
   # take an allmenus url and scrape through restaurants / menu pages
   def initialize(url)
+  	@url = url
     @agent = Mechanize.new
     @page = @agent.get(url)
     @noko_page = Nokogiri::HTML(@page.body)
-    @link_list = []
 
     @rest_list = self.get_names.zip(self.get_cuisines, self.get_addresses)
-    p self.save_to_csv
+    save_to_csv
   end
 
   def get_names
@@ -43,32 +43,58 @@ class RestaurantList
   end
   
   def save_to_csv
+  	rest_id = 1
   	@rest_list.each do |rest|
   		address_array = parse_address(rest[2])
 
 	  	CSV.open("db/restaurants.csv", "ab") do |csv|
-	  		csv << [ rest[0], address_array[0], address_array[1], 
-	  						 "IL", address_array[2], rest[1], rest[0].gsub(" ", "").downcase ]
+	  		csv << [ rest_id, rest[0], address_array[0], address_array[1], 
+	  						 "IL", address_array[2], rest[1], rest[0].gsub(/\W/, "").downcase ]
 	  	end
+	  	rest_id += 1
 	  end
   end
 
-  # def create_restaurants
-  #   @rest_list.map! do |rest|
-  #   	address_array = parse_address(rest[2])
-
-  #     Restaurant.create({ name: rest[0], 
-  #     										address: address_array[0], 
-  #     										city: address_array[1],
-  #     										state: "IL",
-  #     										zip: address_array[2], 
-  #     										cuisine: rest[1],
-  #     										url: rest[0].gsub(" ", "").downcase
-  #     									})
-  #   end
-  # end
+  def get_menus
+  	rest_id = 1
+  	@rest_list.each do |rest|
+  		agent = Mechanize.new
+  		page = agent.get(@url)
+  		menu_page = agent.page.link_with(:text => rest[0]).click.body
+  		Menu.new(menu_page, rest_id)
+  		p rest_id += 1
+  	end
+  end
 end
 
+class Menu
+	def initialize(raw_html, rest_id)
+		@page = Nokogiri::HTML(raw_html)
+		save_to_csv(rest_id)
+	end
 
-url = 'http://www.allmenus.com/il/chicago/-/'
-a = RestaurantList.new(url)
+  def save_to_csv(rest_id)
+    @page.search('.category').each do |div|
+      div.search('ul li').each do |li|
+
+    		category = div.search('.category_head > h3').inner_text
+    		name = li.search('.name').inner_text
+    		price = li.search('.price').inner_text
+    		description = li.search('.description').inner_text      	
+
+      	CSV.open("db/menus.csv", "ab") do |csv|
+      		csv << [ rest_id, category, name, price, description ]
+      	end
+      end
+    end
+  end
+end
+
+# url = 'http://www.allmenus.com/il/chicago/-/'
+# chicago_500 = RestaurantList.new(url)
+# chicago_500.get_menus
+
+# restaurant_url = 'http://www.allmenus.com/il/chicago/185647-grand-lux-cafe/menu/'
+# test = Menu.new(restaurant_url, 1)
+
+
