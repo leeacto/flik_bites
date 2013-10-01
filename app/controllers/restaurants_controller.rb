@@ -112,8 +112,8 @@ class RestaurantsController < ApplicationController
 
   def require_login
     unless logged_in?
-    flash[:error] = "You must log in to add a new restaurant"
-    redirect_to login_path
+      flash[:error] = "You must log in to add a new restaurant"
+      redirect_to :back
     end
   end
 end

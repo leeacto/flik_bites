@@ -39,13 +39,13 @@ describe RestaurantsController do
 
     context 'As Visitor' do
       before(:each) do
+        request.env["HTTP_REFERER"] = "/restaurants"
         get :new
       end
 
-      it "should redirect to login page" do
-        response.should  redirect_to login_path
+      it "should redirect back to where it came" do
+        response.should  redirect_to restaurants_path
       end
-
     end
   end
   
@@ -85,16 +85,38 @@ describe RestaurantsController do
   end
 
   describe 'GET #edit' do
-    it "should get to the edit page" do
-      two_rest
-      get :edit, :restname => 'cumin'
-      response.should render_template :edit
+    context "without logging in" do
+      before(:each) do
+        @rs = two_rest
+        request.env["HTTP_REFERER"] = "/cumin"
+        get :edit, :restname => 'cumin'
+      end
+
+      it "should not edit the restaurant" do
+        flash.now[:error].should =~ /must log/
+      end
+
+      it "should stay on edit page" do
+        response.should redirect_to "/cumin"
+      end
     end
 
-    it "should prepare to edit the correct restaurant" do
-      rs = two_rest
-      get :edit, :restname => 'theBristol'
-      assigns(:restaurant).should eq rs.first
+    describe "as a logged-in user" do
+      before(:each) do
+        controller.stub(:logged_in?).and_return true
+      end
+      
+      it "should get to the edit page" do
+        two_rest
+        get :edit, :restname => 'cumin'
+        response.should render_template :edit
+      end
+
+      it "should prepare to edit the correct restaurant" do
+        rs = two_rest
+        get :edit, :restname => 'theBristol'
+        assigns(:restaurant).should eq rs.first
+      end
     end
   end
 
@@ -157,63 +179,85 @@ describe RestaurantsController do
                   :longitude => -87.956501
                }
     end
+    
+    context "when not logged in" do
+      before(:each) do
+        request.env["HTTP_REFERER"] = restaurants_path
+      end
 
-    context "with valid attributes" do
-
-      it "should create a new restaurant given valid attributes" do
+      it "should not save to db" do
         expect {
-          post :create, restaurant: @attr
-        }.to change(Restaurant, :count).by(1)
+            post :create, restaurant: @attr
+          }.not_to change(Restaurant, :count)
       end
 
-      it "should route to the new restaurant" do
-        post :create, restaurant: @attr
-        response.should redirect_to "/#{Restaurant.last.url}/dishes"
-      end
-
-      describe "url naming" do
-        it "should be given the correct url" do
-          post :create, restaurant: @attr_t
-          Restaurant.last.url.should eq 'cumin'
-        end
-
-        it "should be given the correct url when another restaurant exists" do
-          c = Restaurant.create(@attr)
-          c.url = 'cumin'
-          c.save
-          post :create, restaurant: @attr_t
-          Restaurant.last.url.should eq 'cumin2'
-        end
+      it "should redirect to restaurants page" do
+        expect {post :create, restaurant: @attr}.should
+        redirect_to restaurants_path
       end
     end
 
-    context 'with invalid attributes' do
-      describe "without a name" do
-        before(:each) do
-          @attr[:name] = ""
-          post :create, :restaurant => @attr
+    context "while logged-in" do
+      before(:each) do 
+        controller.stub(:logged_in?).and_return true
+      end
+
+      describe "with valid attributes" do
+        it "should create a new restaurant given valid attributes" do
+          expect {
+            post :create, restaurant: @attr
+          }.to change(Restaurant, :count).by(1)
         end
-        
-        it "should generate a no-name error if name is missing" do
-          flash.now[:error].should =~ /Needs a Name/
+
+        it "should route to the new restaurant" do
+          post :create, restaurant: @attr
+          response.should redirect_to "/#{Restaurant.last.url}/dishes"
+        end
+
+        describe "url naming" do
+          it "should be given the correct url" do
+            post :create, restaurant: @attr_t
+            Restaurant.last.url.should eq 'cumin'
+          end
+
+          it "should be given the correct url when another restaurant exists" do
+            c = Restaurant.create(@attr)
+            c.url = 'cumin'
+            c.save
+            post :create, restaurant: @attr_t
+            Restaurant.last.url.should eq 'cumin2'
+          end
+        end
+      end
+
+      describe 'with invalid attributes' do
+        describe "without a name" do
+          before(:each) do
+            @attr[:name] = ""
+            post :create, :restaurant => @attr
+          end
+          
+          it "should generate a no-name error if name is missing" do
+            flash.now[:error].should =~ /Needs a Name/
+          end
+
+          it "should render the new template" do
+            response.should render_template 'new'
+          end
+        end
+
+        it "should deny a new restaurant" do
+          @attr.delete(:address)
+          expect {
+            post :create, restaurant: @attr
+          }.not_to change(Restaurant, :count)
         end
 
         it "should render the new template" do
+          @attr.delete(:address)
+          post :create, restaurant: @attr
           response.should render_template 'new'
         end
-      end
-
-      it "should deny a new restaurant" do
-        @attr.delete(:address)
-        expect {
-          post :create, restaurant: @attr
-        }.not_to change(Restaurant, :count)
-      end
-
-      it "should render the new template" do
-        @attr.delete(:address)
-        post :create, restaurant: @attr
-        response.should render_template 'new'
       end
     end
   end
@@ -221,6 +265,7 @@ describe RestaurantsController do
   describe 'DELETE #destroy' do
     before(:each) do
       @r = one_rest
+      controller.stub(:logged_in?).and_return true
     end
 
     context "with previously created restaurant" do
@@ -283,7 +328,7 @@ describe RestaurantsController do
 
     it "sets coords given lat, long, and url" do
       post :setcoords, @attr_url
-      @r.latitude.should eq 1
+      Restaurant.find(@r.id).latitude.should eq 1.0
     end
   end
 end
