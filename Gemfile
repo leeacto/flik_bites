@@ -67,6 +67,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'better_errors'
 gem 'coveralls', require: false
+gem 'will_paginate', '~> 3.0.5'
 # Use unicorn as the app server
 # gem 'unicorn'
 

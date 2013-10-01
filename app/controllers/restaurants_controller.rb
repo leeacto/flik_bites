@@ -1,3 +1,4 @@
+
 class RestaurantsController < ApplicationController
 	include RestaurantsHelper
 
@@ -7,6 +8,7 @@ class RestaurantsController < ApplicationController
 			render :partial => "live_search", :layout => false
 		else
 			@restaurants = Restaurant.all.includes(:dishes)
+			# @restaurants2 = Restaurant.order('created_at DESC').page(params[:page])
 		end
 	end
 
