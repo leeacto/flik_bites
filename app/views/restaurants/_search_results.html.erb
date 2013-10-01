@@ -1,0 +1,9 @@
+<ul id='restlist'>
+	<% @restaurants.each_with_index do |r, i| %>
+	 		<div id='restcar'>
+			<%= render partial: 'rest_flip', :locals => {:restaurant => r, :index => i } %>
+		</div>
+	<% end %>
+</ul>
+
+
