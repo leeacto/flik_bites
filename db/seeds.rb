@@ -90,7 +90,7 @@ class Menu
   end
 end
 
-# SCRAPING COMMANDS - SHOULD NOT NEED TO RUN AGAIN
+## SCRAPING COMMANDS - SHOULD NOT NEED TO RUN AGAIN
 # url = 'http://www.allmenus.com/il/chicago/-/'
 # chicago_500 = RestaurantList.new(url)
 # chicago_500.get_menus
@@ -99,7 +99,7 @@ end
 
 ## READ IN FROM OUR CSVS
 CSV.foreach("db/restaurants.csv") do |row|
-	p Restaurant.create( :name => row[1],
+	Restaurant.create( :name => row[1],
 		                 :address => row[2],
 		                 :city => row[3],
 		                 :state => row[4],
@@ -110,7 +110,7 @@ CSV.foreach("db/restaurants.csv") do |row|
 end
 
 CSV.foreach("db/menus.csv") do |row|
-	p Dish.create( :restaurant_id => row[0],
+	Dish.create( :restaurant_id => row[0],
 								 :category => row[1],
 								 :name => row[2], 
 								 :price => row[3],
