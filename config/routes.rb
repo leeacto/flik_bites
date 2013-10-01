@@ -37,6 +37,7 @@ FinalProject::Application.routes.draw do
   
   resources :dishes, only: [:update, :destroy]
   resources :photos
+  resources :comments
   
 
   post '/:restname/dishes/destroy', to: 'dishes#destroy'

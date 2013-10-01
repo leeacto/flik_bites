@@ -20,6 +20,7 @@ class DishesController < ApplicationController
   def show
     for_url = params[:dishname].gsub(" ", "").downcase
     @dish = Dish.where(:url => for_url).first
+    @comment = Comment.where(:dish_id => @dish.id)
     if @dish.nil?
       render 'not_found'
     else

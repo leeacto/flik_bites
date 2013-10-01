@@ -1,3 +1,4 @@
+<body>
 <div class="show_dish">
 <div id='dishdesc'>
   <h1 class="dish_name">Name: <%= @dish.name.titleize %></h1>
@@ -25,6 +26,8 @@
       <% end %>
     </div>
   </div>
+
+  <button id="review_button" type="review_button">Reviews</button>
 
   <%= form_for(@photo) do |f| %>
     <div class="field">
@@ -57,6 +60,58 @@
     </table>
   <% end %>
 </div>
+
+
+
+<nav id="tab">
+  <div id="review_form">
+    <a> <button id="close_button" type="review_button">Close</button> </a>
+    <ul id="hide">
+      <%= form_for(:comments, :url => comments_path, :method => :post) do |f| %>
+        <p>
+          <%= f.label :content %><br>
+          <%= f.text_area :content, :size => "33x5" %>
+          <%= hidden_field_tag 'comments[dish_id]', @dish.id %>
+        </p>
+        <p>
+          <%= f.label :rating %><br>
+          <%= f.radio_button :rating, '1', :checked => true %> 1
+          <%= f.radio_button :rating, '2' %> 2
+          <%= f.radio_button :rating, '3' %> 3
+          <%= f.radio_button :rating, '4' %> 4
+          <%= f.radio_button :rating, '5' %> 5
+          <%= f.radio_button :rating, '6' %> 6
+          <%= f.radio_button :rating, '7' %> 7
+          <%= f.radio_button :rating, '8' %> 8
+          <%= f.radio_button :rating, '9' %> 9
+          <%= f.radio_button :rating, '10' %> 10
+        </p>
+        <p>
+          <%= f.submit "Post Review" %>
+        </p>
+      <% end %>
+    </ul>
+  </div>
+  <div id="review_show">
+    <table>
+      <tr>
+        <tr><p><h2>Last Review</h2></p></tr>
+        <tr><p>username</p></tr>
+        <tr><p><%= @comment.last.content %></p></tr>
+        <tr><p> 
+          <% average = []%>
+          <% @comment.each do |x| %>
+          <% average << x.rating %>
+          <% end %>
+          <% avr = (average.inject(:+))/ average.length %>
+          Rating Count: <%= average.length %><br>
+          Average Rating: <%= avr %> / 10
+        </p></tr>
+      </tr>
+    </table>
+  </div>
+</nav>
+</body>
 
 
 

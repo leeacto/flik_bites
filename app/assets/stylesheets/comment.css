@@ -1,0 +1,81 @@
+nav {
+  background-color: black;
+  position: fixed;
+  height: 0%;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  border-right: 2px solid black;
+  z-index: 2;
+  color: white;
+}
+ 
+ 
+ul a {
+  color: black;
+  text-decoration: none;
+}
+ 
+ 
+ul li {
+  border-bottom: 1px solid grey;
+  list-style: none;
+  padding-top: 5px;
+}
+ 
+ 
+ul {
+  padding-left: 20px;
+}
+ 
+ 
+#review_form {
+  opacity: 0;
+  display: none;
+}
+
+
+#review_show {
+  opacity: 0;
+  background-color: white;
+  color: black; 
+  display: none;
+  height: 100%;
+}
+
+#review_button{
+  background-color:#ee7836;
+  color: white;
+  border: none;
+  text-indent:0px;
+  display:inline-block;
+  font-family:arial;
+  font-size:21px;
+  font-weight:bold;
+  font-style:normal;
+  height:45px;
+  line-height:45px;
+  width:200px;
+  text-decoration:none;
+  text-align:center;
+}
+
+
+
+#close_button{
+  background-color:#ee7836;
+  color: white;
+  border: none;
+  text-indent:0px;
+  display:inline-block;
+  font-family:arial;
+  font-size:21px;
+  font-weight:bold;
+  font-style:normal;
+  height:45px;
+  line-height:45px;
+  width:100%;
+  text-decoration:none;
+  text-align:center;
+}
+
