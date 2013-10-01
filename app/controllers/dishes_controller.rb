@@ -1,4 +1,5 @@
 class DishesController < ApplicationController
+  before_action :require_login, :except => [:index, :show]
 
   def index
     @restaurant = Restaurant.where(:url => params[:restname].downcase).first
@@ -7,13 +8,13 @@ class DishesController < ApplicationController
 
   def new
     @restaurant = Restaurant.where(:url => params[:restname].downcase).first
-    @curr_dishes = @restaurant.dishes
-    if current_user
+    
+    if @restaurant
+      @curr_dishes = @restaurant.dishes
       @dish = Dish.new
       render 'new'
     else
-      flash[:error] = "You must be signed in to add a dish"
-      redirect_to "/#{@restaurant.url}"
+      flash[:error]
     end
   end
 
