@@ -1,9 +1,5 @@
-<div id='restlist'>
-	<% @restaurants.each_with_index do |r, i| %>
-	 		<div class='restcar'>
-			<%= render partial: 'rest_flip', :locals => {:restaurant => r, :index => i } %>
-		</div>
-	<% end %>
-</div>
+<% @restaurants.each_with_index do |r, i| %>
+		<%= render partial: 'rest_flip', :locals => {:restaurant => r, :index => i } %>
+<% end %>
 
 
