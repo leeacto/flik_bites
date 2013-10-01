@@ -4,11 +4,9 @@ class RestaurantsController < ApplicationController
 	def index
 		if request.xhr?
 			@restaurants = Restaurant.search(params[:search]).includes(:dishes)
-			p "@restaurants is now #{@restaurants.count}" + "*"*20
-			render :partial => "search_results", :layout => false
+			render :partial => "live_search", :layout => false
 		else
-			@restaurants = Restaurant.limit(50)
-			p "@restaurants is now #{@restaurants.count}" + "*"*20
+			@restaurants = Restaurant.all.includes(:dishes)
 		end
 	end
 
