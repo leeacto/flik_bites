@@ -22,8 +22,8 @@ var Card = function(el, url) {
   this.el.find('.side').on('click', function(event) {
     event.stopPropagation();
     $(event.target).closest('.card').toggleClass('active');
-    //self.addMap();
-    //self.el.find(".gmap").toggleClass('hidden');
+    self.addMap();
+    self.el.find(".gmap").toggleClass('hidden');
   });
 
   this.el.find('a').on('click', function(event) {
