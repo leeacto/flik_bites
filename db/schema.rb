@@ -88,11 +88,11 @@ ActiveRecord::Schema.define(version: 20130930200314) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "zipcode"
-    t.boolean  "is_active",        default: true
+    t.boolean  "is_active",                    default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
-    t.string   "uid"
+    t.string   "uid",              limit: nil
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
