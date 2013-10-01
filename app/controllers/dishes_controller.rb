@@ -2,8 +2,7 @@ class DishesController < ApplicationController
 
   def index
     @restaurant = Restaurant.where(:url => params[:restname].downcase).first
-    @dishes = @restaurant.dishes
-    @cats = ["starters", "entrees", "desserts"]
+    @dishes = @restaurant.dishes.includes(:photos)
   end
 
   def new
@@ -87,11 +86,6 @@ class DishesController < ApplicationController
     end
     redirect_to @restaurant
   end
-  
-  def photo_new
-    puts "*******************************************"
-    @what = params
-  end 
   
   private
 

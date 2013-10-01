@@ -1,10 +1,21 @@
 <div class="show_dish">
-  
-  <p class="dish_name">Name: <%= @dish.name.titleize %></p>
-  <p class="dish_price">Price: <%= @dish.price %></p>
-  <p class="dish_description">Description: <%= @dish.description %></p>
-      <%= @photos.count %>
+<div id='dishdesc'>
+  <h1 class="dish_name">Name: <%= @dish.name.titleize %></h1>
+  <h3 class="dish_price">Price: <%= @dish.price %></h3>
+  <h2 class="dish_description">Description: <%= @dish.description %></h2>
+  <p> There are  <%= @photos.count %> photos for this dish </p>
+</div>
 
+ <div class="pure-g" id='photogrid'>   
+  <% @photos.each do |photo| %>
+  <div class="pure-u-1-3">
+       <a id='dish_photo'class='gallery' href='<%=photo.image.url(:original)%>'><%= image_tag photo.image.url(:medium), class: "dish_photo" %></a>
+  </div>
+  <%end%>
+  <script>
+    $('a.gallery').colorbox({maxWidth:'80%',maxHeight:'80%'});
+  </script>
+</div>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <% @photos.each do |photo| %>
@@ -20,13 +31,33 @@
       <%= hidden_field_tag 'photo[dish_id]', @dish.id %>
       <%= f.file_field :image, id: "take-picture", accept: "image/*"%>
     </div>
-    
-    <div id="save_to_db">
-      <%= f.submit 'Save to database'%>
-    </div>
+    <table>
+      <tr>
+        <td>
+          <div id="save_to_db">
+            <%= f.submit 'Save to database'%>
+          </div>
+        </td>
+        <td>
+          <div id="floatingBarst">.........</div>
+        </td>
+        <td> 
+          <div id="floatingBarsG">
+            <div class="blockG" id="rotateG_01"></div>
+            <div class="blockG" id="rotateG_02"></div>
+            <div class="blockG" id="rotateG_03"></div>
+            <div class="blockG" id="rotateG_04"></div>
+            <div class="blockG" id="rotateG_05"></div>
+            <div class="blockG" id="rotateG_06"></div>
+            <div class="blockG" id="rotateG_07"></div>
+            <div class="blockG" id="rotateG_08"></div>
+          </div>
+        </td>
+      </tr>
+    </table>
   <% end %>
-
 </div>
+
 
 
 

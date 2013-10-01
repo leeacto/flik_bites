@@ -46,7 +46,11 @@ var List = function(el, tab) {
 	this.tab = tab;
 }
 
-$(document).on("page:load", function(){
+function setup() {
 	menu = new Menu('.menu');
 	menu.init();
-});
+}
+
+
+$(document).on('ready', setup);
+$(document).on('page:load', setup);
