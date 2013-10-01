@@ -1,10 +1,9 @@
-<%= form_for [restaurant, dish] do |f| %>
+<%= form_for [restaurant, dish],:html => {class: 'pure-form', id: 'dishnew'}  do |f|%>
 	<%= render partial: 'shared/error_messages', :locals => {:dish => dish }%>
 
 	<%= f.label :name %>
 	<%= f.text_field :name %><br>
 	
-	<%= f.label :category %>
 	<%= f.radio_button :category, 'Starter', :checked => true %>
 	<%= f.label :starter, 'Starter' %>
 	<%= f.radio_button :category, 'Entree' %>
