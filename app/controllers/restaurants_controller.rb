@@ -7,8 +7,7 @@ class RestaurantsController < ApplicationController
 			@restaurants = Restaurant.search(params[:search]).includes(:dishes)
 			render :partial => "search_results", :layout => false
 		else
-			@restaurants = Restaurant.all.includes(:dishes)
-			# @restaurants2 = Restaurant.order('created_at DESC').page(params[:page])
+			@restaurants = Restaurant.all.includes(:dishes).paginate(:page => params[:page], :per_page => 20)
 		end
 	end
 
