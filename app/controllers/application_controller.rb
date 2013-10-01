@@ -39,4 +39,12 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
   helper_method :logged_in?
+  
+  def require_login
+    unless logged_in?
+      flash[:error] = "Please log in first"
+      redirect_to :back
+    end
+  end
+
 end
