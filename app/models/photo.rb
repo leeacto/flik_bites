@@ -1,7 +1,7 @@
 class Photo < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :dish
-	
+
   has_attached_file :image, 
    styles: {
       medium: {
@@ -24,6 +24,7 @@ class Photo < ActiveRecord::Base
       }
     },
     processors: [:thumbnail, :compression]
+
 
   validates_attachment_presence :image
 end
