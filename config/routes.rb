@@ -2,10 +2,10 @@ FinalProject::Application.routes.draw do
 
   match 'auth/:provider/callback', to: 'sessions#createoauth', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
-	root 'landing#index'
-	
-	mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
-	resources :users, only: [:index,:new,:create,:edit,:update,:destroy]
+  root 'landing#index'
+  
+  mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
+  resources :users
 
   get '/users/:user', to: 'users#show'
   

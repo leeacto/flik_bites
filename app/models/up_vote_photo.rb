@@ -1,6 +1,6 @@
 class UpVotePhoto < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :photo
-	has_one :restaurant, through: :photo
+  belongs_to :user
+  belongs_to :photo
+  has_one :restaurant, through: :photo
 
 end
