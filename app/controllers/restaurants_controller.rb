@@ -4,7 +4,7 @@ class RestaurantsController < ApplicationController
 	def index
 		if request.xhr?
 			@restaurants = Restaurant.search(params[:search]).includes(:dishes)
-			render :partial => "live_search", :layout => false
+			render :partial => "search_results", :layout => false
 		else
 			@restaurants = Restaurant.all.includes(:dishes)
 		end
