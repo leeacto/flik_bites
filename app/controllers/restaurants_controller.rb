@@ -90,6 +90,7 @@ class RestaurantsController < ApplicationController
       coords[:latitude] = @rest.latitude
       coords[:longitude] = @rest.longitude
       coords[:address] = street_city(@rest)
+      coords[:gsearch] = gsearch(@rest)
       render :json => coords
     end
   end
