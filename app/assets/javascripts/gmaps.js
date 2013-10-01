@@ -46,7 +46,6 @@ Card.prototype.addMap = function() {
     data: this.url,
     dataType: 'json'
   }).done(function(coordsBack) {
-    console.log(coordsBack);
     if (coordsBack.latitude != null) {
       lat = coordsBack.latitude;
       lon = coordsBack.longitude;
@@ -68,9 +67,9 @@ Card.prototype.addMap = function() {
     else {
       self.geocoder.geocode( { 'address': coordsBack.address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-
-          lat = results[0].geometry.location.nb;
-          lon = results[0].geometry.location.ob;
+          console.log(results);
+          lat = results[0].geometry.location.lat();
+          lon = results[0].geometry.location.lng();
 
           pkg = { 
             lat:  lat,
@@ -112,8 +111,8 @@ function codeAddress(srchString) {
   geocoder.geocode( { 'address': srchString.address}, function(results, status) {
     
     if (status === google.maps.GeocoderStatus.OK) {
-      var lat = results[0].geometry.location.nb;
-      var lng = results[0].geometry.location.ob;
+      var lat = results[0].geometry.location.lat();
+      var lng = results[0].geometry.location.lng();
       
       pkg = { 
             lat:  lat,
