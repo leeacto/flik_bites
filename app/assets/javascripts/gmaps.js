@@ -25,7 +25,6 @@ var Card = function(el, url) {
     self.el.find(".gmap").toggleClass('hidden');
     if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1 )
     {
-      setTimeout(function(){},2000);
       self.addMap();
     }
   });
