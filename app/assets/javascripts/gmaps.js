@@ -45,45 +45,60 @@ Card.prototype.addMap = function() {
     data: this.url,
     dataType: 'json'
   }).done(function(coordsBack) {
-    if (coordsBack.latitude != "") {
+    if (coordsBack.latitude != null) {
       lat = coordsBack.latitude;
       lon = coordsBack.longitude;
+      var coords = new google.maps.LatLng(lat,lon);
+      var mapOptions = {
+        zoom: 11,
+        center: coords,
+        disableDefaultUI: true,
+        zoomControl: true,
+        scaleControl: true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
+      self.gmap.setMarker(coords);
+      $("#map-canvas-"+mapNum).on('click', function(event) {
+        event.stopPropagation();
+      });
     }
     else {
-      self.geocoder.geocode( { 'address': address}, function(results, status) {
+      self.geocoder.geocode( { 'address': coordsBack.address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-          lat = results[0].geometry.location.ob;
-          lng = results[0].geometry.location.pb;
+
+          lat = results[0].geometry.location.nb;
+          lon = results[0].geometry.location.ob;
 
           pkg = { 
             lat:  lat,
-            lon:  lng,
+            lon:  lon,
             url:  self.url
           };
 
           $.ajax({
-            url: '/setcoords',
-            data: pkg,
-            method: 'post'
+            url: "/restaurants/setcoords",
+            method: 'POST',
+            data: pkg
+          });
+          var coords = new google.maps.LatLng(lat,lon);
+          var mapOptions = {
+            zoom: 11,
+            center: coords,
+            disableDefaultUI: true,
+            zoomControl: true,
+            scaleControl: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          }
+          self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
+          self.gmap.setMarker(coords);
+          $("#map-canvas-"+mapNum).on('click', function(event) {
+            event.stopPropagation();
           });
         }
       });
     }
-      
-    var coords = new google.maps.LatLng(lat,lon);
-    var mapOptions = {
-      zoom: 11,
-      center: coords,
-      disableDefaultUI: true,
-      zoomControl: true,
-      scaleControl: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    self.gmap = new google.maps.Map(document.getElementById("map-canvas-"+mapNum), mapOptions);
-    self.gmap.setMarker(coords);
-    $("#map-canvas-"+mapNum).on('click', function(event) {
-      event.stopPropagation();
-    });
+    
   });
 };
 
@@ -97,13 +112,12 @@ function codeAddress(srchString) {
     if (status === google.maps.GeocoderStatus.OK) {
       var lat = results[0].geometry.location.nb;
       var lng = results[0].geometry.location.ob;
-      console.log(results[0]);
+      
       pkg = { 
             lat:  lat,
             lon:  lng,
             id:  srchString.id
           };
-
       $.ajax({
         url: '/restaurants/setcoords',
         method: 'POST',

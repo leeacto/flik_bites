@@ -16,6 +16,7 @@ FinalProject::Application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   post '/restaurants/create', to: 'restaurants#create'
+  post '/restaurants/setcoords', to: 'restaurants#setcoords'
 
   resources :restaurants do
     resources :dishes
@@ -24,7 +25,6 @@ FinalProject::Application.routes.draw do
   get '/:restname/edit', to: 'restaurants#edit'
   get '/:restname/desc', to: 'restaurants#desc'
   get '/:restname/coords', to: 'restaurants#coords'
-  post '/:restname/setcoords', to: 'restaurants#setcoords'
   
 
   get '/:restname/dishes', to: 'dishes#index'
