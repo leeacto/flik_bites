@@ -248,7 +248,8 @@ describe RestaurantsController do
 		it "should return the correct coordinates" do
 			@expected = { 
 				:latitude 	=>    41.921109,
-    		:longitude  => 		-87.677845
+    		:longitude  => 		-87.677845,
+    		:address		=>		"2152 N. Damen Ave Chicago"
     	}.to_json
 			
 			xhr :get, :coords, restname: @r.url
