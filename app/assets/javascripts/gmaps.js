@@ -45,6 +45,7 @@ Card.prototype.addMap = function() {
     data: this.url,
     dataType: 'json'
   }).done(function(coordsBack) {
+    console.log(coordsBack);
     if (coordsBack.latitude != "") {
       lat = coordsBack.latitude;
       lon = coordsBack.longitude;
@@ -52,6 +53,7 @@ Card.prototype.addMap = function() {
     else {
       self.geocoder.geocode( { 'address': address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
+          console.log('no coords');
           lat = results[0].geometry.location.ob;
           lng = results[0].geometry.location.pb;
 
