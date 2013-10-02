@@ -1,8 +1,8 @@
 class Photo < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :dish
-  has_many :up_vote_photos
-  has_many :down_vote_photos
+
+  belongs_to :user
+  belongs_to :dish
+
 
   has_attached_file :image, 
    styles: {

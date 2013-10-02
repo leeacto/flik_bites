@@ -4,11 +4,9 @@ class RestaurantsController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :destroy]
 
   def index
-    if request.xhr?
-      @restaurants = Restaurant.search(params[:search]).includes(:dishes)
-      render :partial => "search_results", :layout => false
-    else
-      @restaurants = Restaurant.all.includes(:dishes).paginate(:page => params[:page], :per_page => 20)
+    @restaurants = Restaurant.search(params[:search]).includes(:dishes).paginate(:page => params[:page], :per_page => 24)
+    if @restaurants.empty?
+      flash[:error] = "Sorry no matches for '#{params[:search]}' were found"
     end
   end
 

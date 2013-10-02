@@ -30,6 +30,7 @@
   margin: auto;
 } 
 
+
 .front {
   height: 100%;
   width: 100%;    
@@ -101,7 +102,6 @@
         filter: FlipH;
         -ms-filter: "FlipH";
 }
-
 .active {
   -webkit-transform:rotateY(180deg);
   -moz-transform:rotateY(180deg);
@@ -120,6 +120,21 @@
 .curr_menu {
   border: 1px solid black;
   float: left;
+}
+
+#error_explanation {
+  border: 2px solid red;
+  margin-bottom: .5%;
+}
+
+#error_explanation h4 {
+  border-bottom: 2px solid red;
+  text-align: center;
+  margin-top: 0;
+}
+
+#error_explanation ul li {
+  list-style-type: circle;
 }
 
 .hidden {

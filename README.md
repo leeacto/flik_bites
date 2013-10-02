@@ -18,17 +18,17 @@ A better menu
 * System dependencies
 
 * Configuration
-	- The database runs on Postgresql, port 5432 in testing and development
-	-localhost is 3000
+  - The database runs on Postgresql, port 5432 in testing and development
+  -localhost is 3000
 
 * Database creation
-	- Upon cloning the repo, run <tt>bundle install</tt> to prepare the gems for use
+  - Upon cloning the repo, run <tt>bundle install</tt> to prepare the gems for use
 
 * Database initialization
-	-Then, run 'rake db:create' to create the database
-	-Finally, run <tt>rake db:migrate</tt> to build all necessary tables
+  -Then, run 'rake db:create' to create the database
+  -Finally, run <tt>rake db:migrate</tt> to build all necessary tables
 
 * How to run the test suite
-	- ##### runs tests through Rspec. Running <tt>rake spec</tt> will cycle through all tests.
+  - ##### runs tests through Rspec. Running <tt>rake spec</tt> will cycle through all tests.
 
 * Services
