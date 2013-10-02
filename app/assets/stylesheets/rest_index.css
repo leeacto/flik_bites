@@ -38,9 +38,11 @@ ul.tab {
 	border-left: 2px solid black;
 }
 
-.side{
+.side {
   -webkit-backface-visibility: hidden;
   -webkit-box-shadow: 0 2px 5px #666;
+  backface-visibility: hidden;
+  box-shadow: 0 2px 5px #666;
 }
 
 .card_pic {
@@ -88,6 +90,7 @@ ul.tab {
   top: 0;
   left: 0;
 	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 	-webkit-box-sizing: border-box; 
    -moz-box-sizing: border-box; 
     -ms-box-sizing: border-box; 
@@ -99,12 +102,14 @@ ul.tab {
 	width: 50%;
 	float: left;
 	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 .card .back .rest_text .rest_top {
 	height: 10%;
 	width: 100%;
 	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 .card .back .rest_text .rest_mid {
@@ -116,6 +121,7 @@ ul.tab {
 	height: 80%;
 	width: 100%;
 	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 .card .back .gmap {
@@ -125,6 +131,7 @@ ul.tab {
 	float: right;
 	margin: auto;
 	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 .gmap img {
