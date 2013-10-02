@@ -7,7 +7,13 @@ restTable.prototype.initialize = function(){
   var self = this;
   $('.card').each(function(){
     var urlPrep = $(this).find(".card_url")[0].innerHTML.replace("<a href",'');
-    this.url = urlPrep.substring(3,urlPrep.indexOf("/dishes"));
+    if (urlPrep.indexOf("/dishes") === "-1")
+    {
+      this.url = urlPrep.substring(3,urlPrep.indexOf("/dishes"));
+    }
+    else {
+      this.url = ""
+    }
     var card = new Card(this.id, this.url);
     self.cards.push(card);
   });
@@ -18,14 +24,12 @@ var Card = function(el, url) {
   this.url = url;
   var self = this;
   this.geocoder = new google.maps.Geocoder();
-
   this.el.find('.side').on('click', function(event) {
     event.stopPropagation();
     $(event.target).closest('.card').toggleClass('active');
     self.el.find(".gmap").toggleClass('hidden');
-    if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1 )
+    if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1 && self.url != "")
     {
-      setTimeout(function(){},2000);
       self.addMap();
     }
   });
@@ -106,7 +110,6 @@ Card.prototype.addMap = function() {
         }
       });
     }
-    
   });
 };
 
@@ -134,13 +137,6 @@ function codeAddress(srchString) {
   });
 }
 
-google.maps.Map.prototype.setMarker = function (coordObj) {
-  var self = this;
-  var marker = new google.maps.Marker({
-    position: coordObj,
-    map: self
-  });
-}
 function setup() {
   var rTable = new restTable('.restaurant_list');
   rTable.initialize();

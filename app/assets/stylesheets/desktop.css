@@ -1,4 +1,24 @@
 @media (min-width:920px){ 
+	.counter {
+		padding-left: 8px;
+	}
+	.voting {
+		border: 1px solid black;
+		width:25px;
+		background-color: black;
+		z-index: 3; 
+		bottom: 15px;
+	}
+
+	.gallery {
+		float: left; position: relative;
+		z-index: 1;
+	}
+
+	#dishnew {
+		letter-spacing: none;
+
+	}
 	.mobilepag {
 		display:none;
 	}
