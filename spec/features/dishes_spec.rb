@@ -68,7 +68,6 @@ feature "Search Bar" do
 
     context "when no search is submitted" do
       it "should show the first category of dishes" do
-        save_and_open_page
         page.should have_content "Asian"
       end
     end
