@@ -7,6 +7,6 @@ class Dish < ActiveRecord::Base
   validates_uniqueness_of :restaurant_id, scope: :name
   
   scope :starters, -> { where(category: 'Starter') }
-	scope :entrees, -> { where(category: 'Entree') }
-	scope :desserts, -> { where(category: 'Dessert') }
+  scope :entrees, -> { where(category: 'Entree') }	
+  scope :desserts, -> { where(category: 'Dessert') }
 end
