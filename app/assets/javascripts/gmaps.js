@@ -32,10 +32,6 @@ var Card = function(el, url) {
     event.stopPropagation();
     $(event.target).closest('.card').removeClass('active');
     self.el.find(".gmap").addClass('hidden');
-    if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1)
-    {
-      self.addMap();
-    }
   });
 
   this.el.find('a').on('click', function(event) {
