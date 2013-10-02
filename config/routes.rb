@@ -15,10 +15,10 @@ FinalProject::Application.routes.draw do
   get '/login',  to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
-  post '/restaurants/create', to: 'restaurants#create'
-  post '/restaurants/setcoords', to: 'restaurants#setcoords'
 
   resources :restaurants do
+    post '/restaurants/create', to: 'restaurants#create'
+    post '/restaurants/setcoords', to: 'restaurants#setcoords'
     resources :dishes
   end
   get '/:restname', to: 'restaurants#show'

@@ -14,6 +14,7 @@ ul.dish_categories {
   width: 10%;
   float: left;
   position: fixed;
+  max-height: 100%;
 }
 
 ul.dish_categories li {
