@@ -54,5 +54,4 @@ class ApplicationController < ActionController::Base
       redirect_to default
     end
   end
-  
 end
