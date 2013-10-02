@@ -17,5 +17,4 @@ describe AccountsController do
 		@user.reload.is_active?.should eq true
 		response.should redirect_to(login_path)
 	end
-
 end
