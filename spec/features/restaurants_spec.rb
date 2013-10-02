@@ -90,6 +90,15 @@ feature "Interacting with /:restaurant/dishes page" do
       end
     end
 
+    describe "dish cards" do
+      it "should display the correct dishes" do
+        page.should have_content "pad thai"
+      end
+
+      it "should not display dishes it doesn't carry" do
+        page.should_not have_content "squash"
+      end
+    end
     # Not Working - I think it may be due to TinyBox
     # it "should show restaurant info upon clicking name" do
     #   find('#rest_show_name').click
