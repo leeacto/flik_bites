@@ -19,8 +19,8 @@ module RestaurantHelper
     a
   end
 
-	def two_rest
-		@attr = { :name => "The Bristol", 
+  def two_rest
+    @attr = { :name => "The Bristol", 
               :address => "2152 N. Damen Ave",
               :city => "Chicago",
               :state => "IL",
@@ -41,14 +41,14 @@ module RestaurantHelper
                 :url => 'cumin'
                }
     @dish_attr = { :name => "pad thai",
-               :category => "Entree",
+               :category => "Asian",
                :description => "Thai noodles with peanuts and stuff",
                :price => "10.00",
                :url => "padthai"
               }
 
     @dish_attr2 = { :name => "pizza",
-               :category => "Entree",
+               :category => "Pizza",
                :description => "Slice of heaven",
                :price => "2.00",
                :url => "pizza"
@@ -63,5 +63,5 @@ module RestaurantHelper
     b.dishes.create(@dish_attr2)
 
     [a, b]
-	end
+  end
 end

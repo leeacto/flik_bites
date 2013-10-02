@@ -1,20 +1,20 @@
 <%= form_for [restaurant, dish],:html => {class: 'pure-form', id: 'dishnew'}  do |f|%>
-	<%= render partial: 'shared/error_messages', :locals => {:dish => dish }%>
+  <%= render partial: 'shared/error_messages', :locals => {:dish => dish }%>
 
-	<%= f.label :name %>
-	<%= f.text_field :name %><br>
-	
-	<%= f.radio_button :category, 'Starter', :checked => true %>
-	<%= f.label :starter, 'Starter' %>
-	<%= f.radio_button :category, 'Entree' %>
-	<%= label :entree, 'Entree' %>
-	<%= f.radio_button :category, 'Dessert' %>
-	<%= label :dessert, 'Dessert' %><br>
-	
-	<%= f.label :description %>
-	<%= f.text_area :description %><br>
-	<%= f.label :price %>
-	<%= f.text_field :price %><br>
-	<%= f.hidden_field :restname, :value => restaurant.url %>
-	<%= f.submit %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  
+  <%= f.radio_button :category, 'Starter', :checked => true %>
+  <%= f.label :starter, 'Starter' %>
+  <%= f.radio_button :category, 'Entree' %>
+  <%= label :entree, 'Entree' %>
+  <%= f.radio_button :category, 'Dessert' %>
+  <%= label :dessert, 'Dessert' %><br>
+  
+  <%= f.label :description %>
+  <%= f.text_area :description %><br>
+  <%= f.label :price %>
+  <%= f.text_field :price %><br>
+  <%= f.hidden_field :restname, :value => restaurant.url %>
+  <%= f.submit %>
 <% end %>

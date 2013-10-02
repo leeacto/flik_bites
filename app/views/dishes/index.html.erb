@@ -1,6 +1,28 @@
-<div id="rest_show_name"><%= @restaurant.name	 %></div>
+<div class="rest_header" >
+  <div id="rest_show_name"><%= @restaurant.name   %></div>
+
+  <%= form_tag restaurants_path, :id => "search_form", :method => 'get', class: "pure-form" do %>
+    <fieldset>
+      <%= text_field_tag :search, params[:search], :id => "search_field" %>
+      <%= submit_tag "Search", :class => "pure-button ", :name => nil %>
+    </fieldset>
+  <% end %>
+</div>
+
+
 <div>
   <%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
 </div>
+<ul class="dish_categories">
+  <% @categories.each_with_index do |c, i| %>
+    <li id="category_<%= i %>" >
+      <%= c %>
+    </li>
+  <% end %>
+</ul>
 
+<div class="dish_layout">
+  <% @dishes.each do |d| %>
+    <%= render partial: 'flip', :locals => {:dish => d} %>
+  <% end %>
 </div>
