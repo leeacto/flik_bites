@@ -95,6 +95,7 @@
   <div id="review_show">
     <table>
       <tr>
+        <% if @comment.length > 0 %>
         <tr><p><h2>Last Review</h2></p></tr>
         <tr><p>username</p></tr>
         <tr><p><%= @comment.last.content %></p></tr>
@@ -107,6 +108,14 @@
           Rating Count: <%= average.length %><br>
           Average Rating: <%= avr %> / 10
         </p></tr>
+        <% else %>
+          <tr><p><h2>Last Review</h2></p></tr>
+          <tr><p>username</p></tr>
+          <tr><p> 
+            Rating Count: 0 <br>
+            Average Rating: 10/10
+          </p></tr>
+        <% end %>
       </tr>
     </table>
   </div>
