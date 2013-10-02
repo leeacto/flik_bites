@@ -1,10 +1,9 @@
-
 <div class="pure-g-r">
   <div class="pure-u-1">
     <h1 class='list'>Restaurant List (Please Rename Me) </h1>
     <%= form_tag restaurants_path, :id => "search_form", :method => 'get', class: "pure-form" do %>
     <fieldset>
-      <%= text_field_tag :search, params[:search], :id => "search_field" %>
+      <%= text_field_tag :search, params[:search], :id => "search_field", :placeholder => "Restaurant name, cuisine, zip" %>
       <%= submit_tag "Search", :class => "pure-button ", :name => nil %>
     </fieldset>
     <% end %>

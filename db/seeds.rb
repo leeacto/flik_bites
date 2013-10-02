@@ -114,7 +114,8 @@ CSV.foreach("db/menus.csv") do |row|
 								 :category => row[1],
 								 :name => row[2], 
 								 :price => row[3],
-								 :description => row[4])
+								 :description => row[4],
+                 :url => row[2].gsub(/\W/, "").downcase)
 end
 
 
