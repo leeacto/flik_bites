@@ -25,12 +25,12 @@ class DishesController < ApplicationController
   def show
     for_url = params[:dishname].gsub(" ", "").downcase
     @dish = Dish.find_by(:url => for_url)
-    @comment = Comment.where(:dish_id => @dish.id)
     if @dish.nil?
       render 'not_found'
     else
       @photo = Photo.new
       @photos = Photo.where(:dish_id => @dish.id)
+      @comment = Comment.where(:dish_id => @dish.id)
     end
   end
 
