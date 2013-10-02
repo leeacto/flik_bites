@@ -33,7 +33,6 @@ describe("Card", function(){
   });
 
   it("should be added to table's list upon init", function(){
-    
     rTable.initialize();
     console.log(rTable);
     expect restTable.cards[0].toBe(card);

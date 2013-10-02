@@ -14,8 +14,8 @@
   <%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
 </div>
 <ul class="dish_categories">
-  <% @categories.each do |c| %>
-    <li>
+  <% @categories.each_with_index do |c, i| %>
+    <li id="category_<%= i %>" >
       <%= c %>
     </li>
   <% end %>

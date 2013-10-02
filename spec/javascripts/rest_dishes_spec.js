@@ -2,67 +2,55 @@
 //= require jquery_ujs
 //= require dishes_index
 
-describe("Menu", function() {
-  beforeEach(function() {
-    menu = new Menu('.menu');
-  })
-
-  it("should have the menu class selector", function() {
-    expect(menu.el).toEqual($('.menu'));
-  })
-
-  it("should load tabs upon init function", function(){
-    menu.init();
-    expect(menu.tabs.length).toBe(3);
+describe("catList", function(){
+  beforeEach(function(){
+    catBoard = new catList('.catList');
   });
 
-  it("should add tabs on init", function(){
-    spyOn(menu, "addTab");
-    menu.init();
-    expect(menu.addTab).toHaveBeenCalled();
+  it("should have the correct el", function(){
+    expect(catBoard.el.selector).toBe('.catList');
   });
 
-  describe("Tab Selection", function(){
+  it("should have an array of categories", function(){
+    expect(catBoard.categories.length).toBe(0);
+  });
+
+  it("should have an initialize function", function(){
+    spyOn(catBoard, "addCat");
+    catBoard.initialize();
+    expect(catBoard.addCat).toHaveBeenCalled();
+  });
+
+  describe("initialize()", function(){
     beforeEach(function(){
-      menu.init();
-      testTab = menu.tabs[0];
-      standByTab = menu.tabs[1];
-    });
-    
-    it("should select tabs when told to", function(){
-      spyOn(testTab.list.el, "removeClass");
-
-      menu.selectTab(testTab);
-      expect(testTab.list.el.removeClass).toHaveBeenCalled();
+      var spy = jasmine.createSpy(window, "cat").andCallThrough();
+      catBoard.initialize();
     });
 
-    it("should unselect standby tabs", function(){
-      spyOn(standByTab.list.el, "addClass");
-
-      menu.selectTab(testTab);
-      expect(standByTab.list.el.addClass).toHaveBeenCalled();
-    });    
-  })
+    it("should add categories to its array", function(){
+      expect(catBoard.categories.length).toBe(1);
+    });
+  });
 });
 
-describe("Tab", function(){
-  beforeEach(function() {
-    menu = new Menu('.menu');
-    menu.init();
-    tab = menu.tabs[0];
+describe("Category", function(){
+  beforeEach(function(){
+    catBoard = new catList('.catList');
+    category = new Category('#category_0');
   });
 
-  it("should have the correct selector", function(){
-    expect(tab.el).toEqual($('#starters_tab'));
+  it("should have the correct el", function(){
+    expect(category.el.selector).toBe('#category_0');
   });
 
-  it("should have a List object", function(){
-    expect(tab.list.el.selector).toBe('.starters');
+  it("should have an initialize function", function(){
+    spyOn(category.el, "on");
+    category.initialize();
+    expect(category.el.on).toHaveBeenCalledWith('click', category.clicked);
   });
 
-  it("clicking should activate Menu selectTab method", function(){
-    spyOn(tab.el, "removeClass");
-    tab.el.trigger('click');
-    expect(tab.el.removeClass).toHaveBeenCalled;
+  it("should react when button is clicked", function(){
+    category.el.trigger('click');
+    expect(category.buttonDown).toBe(true);
   });
 });

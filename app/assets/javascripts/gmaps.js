@@ -112,8 +112,6 @@ Card.prototype.addMap = function() {
 };
 
 function codeAddress(srchString) {
-  var lat;
-  var lng;
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': srchString.address}, function(results, status) {
     
@@ -152,8 +150,5 @@ function setup() {
   });
 }
 
-
 $(document).on('ready', setup);
-
 $(document).on('page:load', setup);
-
