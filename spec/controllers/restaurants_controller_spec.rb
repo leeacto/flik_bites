@@ -12,7 +12,7 @@ describe RestaurantsController do
     it "should populate an array of restaurants" do
       @rs = two_rest
       get :index
-      assigns(:restaurants).should eq(@rs)
+      assigns(:restaurants).should =~ @rs
     end
   end
 
