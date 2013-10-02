@@ -78,7 +78,6 @@ describe PhotosController do
       end
 
       it "should redirect you to root path" do
-        save_and_open_page
         response.should redirect_to root_path
       end
 
