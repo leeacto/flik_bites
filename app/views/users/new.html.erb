@@ -9,14 +9,14 @@
 <%=link_to image_tag("twitter.png",:size => "176x31",id: 'twlog'), "/auth/twitter" %>
 <br><br>
 <div>
-	Or fill out the form below
+  Or fill out the form below
 </div><br>
 <%= form_for :user, url: users_path,:html => {class: 'pure-form'} do |f| %>
   <fieldset class="pure-group", id="signupsecond">
       <%= f.text_field :username,placeholder: 'username' %>
       <%= f.email_field :email,placeholder:'email' %>
       <%= f.password_field :password,placeholder: 'password'%>
-  		<%= f.password_field :password_confirmation,placeholder: 'password confirmation'%> 
+      <%= f.password_field :password_confirmation,placeholder: 'password confirmation'%> 
   </fieldset>
       <%= f.submit "Create User", class: 'createuser' %>
 <% end %><br>
