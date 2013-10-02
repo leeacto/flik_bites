@@ -8,6 +8,7 @@ class Restaurant < ActiveRecord::Base
   validates_presence_of :state
   validates_presence_of :url
 
+
   def self.search(term)
     if term
       where('lower(name)    LIKE ? OR 
