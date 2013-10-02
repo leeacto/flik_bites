@@ -5,6 +5,13 @@
 describe("catList", function(){
   beforeEach(function(){
     catBoard = new catList('.catList');
+    list = $("<ul class='catList'><li id='category_0'></li></ul>");
+    $(document.body).append(list);
+  });
+
+  afterEach(function(){
+    list.remove();
+    list = null;
   });
 
   it("should have the correct el", function(){
@@ -16,7 +23,7 @@ describe("catList", function(){
   });
 
   it("should have an initialize function", function(){
-    spyOn(catBoard, "addCat");
+    spyOn(catBoard, 'addCat');
     catBoard.initialize();
     expect(catBoard.addCat).toHaveBeenCalled();
   });

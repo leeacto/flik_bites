@@ -23,6 +23,10 @@ ul.dish_categories li {
   background-color: #4cc534;
 }
 
+ul.dish_categories li.button_down {
+  background-color: #5aaa4b;
+}
+
 ul.dish_categories li:hover {
   background-color: #5aaa4b;
 }
