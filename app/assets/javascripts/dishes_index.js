@@ -1,3 +1,22 @@
+var searchBar = function(el) {
+  this.el = $(el);
+  this.search = "";
+}
+
+searchBar.prototype.setSearch = function(text) {
+  this.search = text;
+  this.el.value = text;
+  var url = $('#url').text() + "/dishes";
+  
+  $.ajax({
+    url: url,
+    method: "GET"
+  }).done(function(results){
+    $('.dish_layout').html('');
+    $('.dish_layout').append(results);
+  });
+}
+
 var catList = function(el) {
   this.el = $(el);
   this.categories = [];
@@ -5,6 +24,7 @@ var catList = function(el) {
 
 catList.prototype.initialize = function(){
   var self = this;
+  this.searchBar = new searchBar('#search_field');
 
   $.each(this.el.find('li'), function(){
     var newCat = new Category(this.id, self);
@@ -30,7 +50,8 @@ Category.prototype.initialize = function(){
     $(self.list.categories).each(function(){
       this.buttonDown = false;
       $(this.el).removeClass('button_down');
-    })
+    })  
+    self.list.searchBar.setSearch(self.el.text());
     self.buttonDown = true;
     $(this).addClass('button_down');
   });
@@ -45,4 +66,4 @@ function setup() {
 }
 
 $(document).on('ready', setup);
-$(document).on('page:load', setup);
+  $(document).on('page:load', setup);

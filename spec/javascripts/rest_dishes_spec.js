@@ -41,7 +41,9 @@ describe("catList", function(){
 
 describe("Category", function(){
   beforeEach(function(){
-    list = $("<ul class='catList'><li id='category_0'></li><li id='category_1'></li></ul>");
+    searcher = new searchBar('#search_field');
+    list = $("<ul class='catList'><li id='category_0'>Appetizers</li><li id='category_1'></li></ul>");
+    $(document.body).append(searcher);
     $(document.body).append(list);
     catBoard = new catList('.catList');
     catBoard.initialize();
@@ -52,6 +54,7 @@ describe("Category", function(){
   afterEach(function(){
     list.remove();
     list = null;
+    search_bar = null;
   });
 
   it("should have the correct el", function(){
@@ -81,6 +84,12 @@ describe("Category", function(){
       category_1.el.trigger('click');
       expect(category_1.buttonDown).toBe(true);
       expect(category.buttonDown).toBe(false);
-    })
+    });
+
+    describe("functionality", function(){
+      it("should set the search bar object's text",function(){
+        expect(catBoard.searchBar.search).toBe('Appetizers');
+      });
+    });
   });
 });

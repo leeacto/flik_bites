@@ -17,10 +17,10 @@ FinalProject::Application.routes.draw do
 
 
   resources :restaurants do
-    post '/restaurants/create', to: 'restaurants#create'
-    post '/restaurants/setcoords', to: 'restaurants#setcoords'
     resources :dishes
   end
+    post '/restaurants/create', to: 'restaurants#create'
+    post '/restaurants/setcoords', to: 'restaurants#setcoords'
   get '/:restname', to: 'restaurants#show'
   get '/:restname/edit', to: 'restaurants#edit'
   get '/:restname/desc', to: 'restaurants#desc'
