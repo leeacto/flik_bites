@@ -1,59 +1,49 @@
-var Menu = function(el) {
+var catList = function(el) {
   this.el = $(el);
-  this.tabs = [];
-};
-
-Menu.prototype.init = function() {
-  var starter = new Tab('#starters_tab', this);
-  var entrees = new Tab('#entrees_tab', this);
-  var desserts = new Tab('#desserts_tab', this);
-
-  this.addTab(starter);
-  this.addTab(entrees);
-  this.addTab(desserts);
-};
-
-Menu.prototype.addTab = function(tab) {
-  this.tabs.push(tab);
+  this.categories = [];
 }
 
-Menu.prototype.selectTab = function(tab) {
+catList.prototype.initialize = function(){
   var self = this;
-  for(var i in this.tabs) {
-    if(self.tabs[i] === tab) {
-      tab.el.removeClass('unselected_tab');
-      tab.list.el.removeClass('hidden');
-    }
-    else {
-      self.tabs[i].el.addClass('unselected_tab');
-      self.tabs[i].list.el.addClass('hidden');
-    }
-  }
+
+  $.each(this.el.find('li'), function(){
+    var newCat = new Category(this.id);
+    self.addCat(newCat);
+  })
 }
 
-var Tab = function(el, menu) {
-  this.el = $(el);
-  this.menu = menu;
+catList.prototype.addCat = function(cat) {
+  this.categories.push(cat);
+}
+
+var Category = function(el) {
+  this.el = $('#'+el);
+  this.buttonDown = false;
+  this.initialize();
+}
+
+Category.prototype.initialize = function(){
   var self = this;
-  this.list = new List("."+el.substring(1,el.length-4), this);
-  this.el.on('click', function(event) {
-    self.menu.selectTab(self);
+
+  this.el.on("click", function(event) {
+    event.stopPropagation();
+
+    $('li').each(function(){
+      $(this).removeClass('button_down');
+    })
+    console.log(self.buttonDown);
+    self.buttonDown = true;
+    console.log(self.buttonDown);
+    $(this).addClass('button_down');
   });
 }
 
-var List = function(el, tab) {
-  this.el = $(el);
-  this.tab = tab;
+Category.prototype.clicked = function(event) {
 }
 
 function setup() {
-$('#rest_show_name').on('click', function() {
-    var url = window.location.pathname.replace("/dishes","").replace("/","");
-    TINY.box.show({url:'desc', get:'url=' + url });
-  });
-
-  menu = new Menu('.menu');
-  menu.init();
+  catBoard = new catList('.dish_categories');
+  catBoard.initialize();
 }
 
 $(document).on('ready', setup);
