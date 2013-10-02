@@ -1,0 +1,16 @@
+ul.dish_categories {
+  list-style-type: none;
+  padding-left: 3%;
+}
+
+ul.dish_categories li {
+  border: 1px solid black;
+  width: 20%;
+  padding: 1%;
+  border-radius: 1em;
+  background-color: #4cc534;
+}
+
+ul.dish_categories li:hover {
+  background-color: #5aaa4b;
+}

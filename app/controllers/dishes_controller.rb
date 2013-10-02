@@ -5,6 +5,7 @@ class DishesController < ApplicationController
   def index
     if @restaurant
       @dishes = @restaurant.dishes.includes(:photos)
+      @categories = @dishes.pluck(:category).uniq.map!{|c| c.titleize}
     else
       flash[:error] = "Restaurant not found"
       redirect_to_back

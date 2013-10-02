@@ -1,36 +1,23 @@
-<div id="rest_show_name"><%= @restaurant.name	 %></div>
+<div id="rest_show_name"><%= @restaurant.name   %></div>
 <div>
   <%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
 </div>
 
-<div class="menu">
-  <ul class="tab_header" >
-    <li id="starters_tab">Starters</li>
-    <li id="entrees_tab" class = "unselected_tab">Entrees</li>
-    <li id="desserts_tab" class = "unselected_tab">Desserts</li>
-  </ul>
+<%= form_tag restaurants_path, :id => "search_form", :method => 'get', class: "pure-form" do %>
+  <fieldset>
+    <%= text_field_tag :search, params[:search], :id => "search_field" %>
+    <%= submit_tag "Search", :class => "pure-button ", :name => nil %>
+  </fieldset>
+<% end %>
 
-  <ul class = "starters tab">
-    <% @dishes.starters.each do |d| %>
-      <li class = "card">
-        <%= render partial: 'flip', :locals => {:dish => d } %>
-      </li>
-    <% end %>
-  </ul>
+<ul class="dish_categories">
+  <% @categories.each do |c| %>
+    <li>
+      <%= c %>
+    </li>
+  <% end %>
+</ul>
 
-  <ul class = "entrees hidden tab">
-    <% @dishes.entrees.each do |d| %>
-      <li class = "card" >
-        <%= render partial: 'flip', :locals => {:dish => d } %>
-      </li>
-    <% end %>
-  </ul>
-
-  <ul class = "desserts hidden tab">
-    <% @dishes.desserts.each do |d| %>
-      <li class = "card" >
-        <%= render partial: 'flip', :locals => {:dish => d } %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<% @dishes.each do |d| %>
+  <%= render partial: 'flip', :locals => {:dish => d} %>
+<% end %>

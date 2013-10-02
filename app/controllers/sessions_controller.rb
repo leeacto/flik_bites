@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
-	def create
-  	@user = User.find_by_username(params[:session][:username])
+  def create
+    @user = User.find_by_username(params[:session][:username])
     if @user == nil
       flash[:error] = "The user you have entered does not exist"
       redirect_to login_path
