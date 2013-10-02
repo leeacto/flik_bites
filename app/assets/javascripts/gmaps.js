@@ -7,13 +7,7 @@ restTable.prototype.initialize = function(){
   var self = this;
   $('.card').each(function(){
     var urlPrep = $(this).find(".card_url")[0].innerHTML.replace("<a href",'');
-    if (urlPrep.indexOf("/dishes") === "-1")
-    {
-      this.url = urlPrep.substring(3,urlPrep.indexOf("/dishes"));
-    }
-    else {
-      this.url = ""
-    }
+    this.url = urlPrep.substring(3,urlPrep.indexOf("/dishes"));
     var card = new Card(this.id, this.url);
     self.cards.push(card);
   });
@@ -28,8 +22,9 @@ var Card = function(el, url) {
     event.stopPropagation();
     $(event.target).closest('.card').toggleClass('active');
     self.el.find(".gmap").toggleClass('hidden');
-    if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1 && self.url != "")
+    if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1)
     {
+      console.log("adding");
       self.addMap();
     }
   });
