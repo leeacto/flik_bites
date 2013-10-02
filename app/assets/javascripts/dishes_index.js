@@ -7,6 +7,7 @@ catList.prototype.initialize = function(){
   var self = this;
 
   $.each(this.el.find('li'), function(){
+    console.log(this.id);
     var newCat = new Category(this.id);
     self.addCat(newCat);
   })
@@ -27,7 +28,7 @@ Category.prototype.initialize = function(){
 
   this.el.on("click", function(event) {
     event.stopPropagation();
-
+    console.log(this);
     $('li').each(function(){
       $(this).removeClass('button_down');
     })

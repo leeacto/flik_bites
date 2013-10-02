@@ -4,9 +4,9 @@
 
 describe("catList", function(){
   beforeEach(function(){
-    catBoard = new catList('.catList');
     list = $("<ul class='catList'><li id='category_0'></li></ul>");
     $(document.body).append(list);
+    catBoard = new catList('.catList');
   });
 
   afterEach(function(){
@@ -41,8 +41,15 @@ describe("catList", function(){
 
 describe("Category", function(){
   beforeEach(function(){
+    list = $("<ul class='catList'><li id='category_0'></li></ul>");
+    $(document.body).append(list);
     catBoard = new catList('.catList');
     category = new Category('category_0');
+  });
+  
+  afterEach(function(){
+    list.remove();
+    list = null;
   });
 
   it("should have the correct el", function(){
@@ -56,7 +63,7 @@ describe("Category", function(){
   });
 
   it("should have button down status when clicked", function(){
-    category.el.trigger('click');
+    $('#category_0').trigger('click');
     expect(category.buttonDown).toBe(true);
   });
 });
