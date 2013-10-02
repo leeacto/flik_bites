@@ -68,31 +68,28 @@ feature "Search Bar" do
 
     context "when no search is submitted" do
       it "should show the first category of dishes" do
-        pending
-        # page.should_have content "Entree"
+        save_and_open_page
+        page.should have_content "Asian"
       end
     end
     
     context "when a search is submitted" do
       it "should return dish matches based on dish name" do
-        pending
-        # fill_in "search", with: "piz"
-        # click_button "Search"
-        # page.should have_content "Pizza"
+        fill_in "search", with: "piz"
+        click_button "Search"
+        page.should have_content "pizza"
       end
 
       it "should return dish matches based on dish category" do
-        pending
-        # fill_in "search", with: "entree"
-        # click_button "Search"
-        # page.should have_content "Pizza"
+        fill_in "search", with: "asian"
+        click_button "Search"
+        page.should have_content "pad thai"
       end
 
       it "should not return non-match results" do
-        pending
-        # fill_in "search", with: "piz"
-        # click_button "Search"
-        # page.should_not have_content "Pad Thai"
+        fill_in "search", with: "piz"
+        click_button "Search"
+        page.should_not have_content "Pad Thai"
       end
     end   
   end
