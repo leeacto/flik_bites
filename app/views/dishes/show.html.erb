@@ -66,7 +66,7 @@
 
 
 
-<nav id="tab">
+<div id="tab">
   <div id="review_form">
     <a> <button id="close_button" type="review_button">Close</button> </a>
     <ul id="hide">
@@ -99,30 +99,17 @@
     <table>
       <tr>
         <% if @comment.length > 0 %>
-        <tr><p><h2>Last Review</h2></p></tr>
-        <tr><p>username</p></tr>
-        <tr><p><%= @comment.last.content %></p></tr>
-        <tr><p> 
-          <% average = []%>
-          <% @comment.each do |x| %>
-          <% average << x.rating %>
-          <% end %>
-          <% avr = (average.inject(:+))/ average.length %>
-          Rating Count: <%= average.length %><br>
-          Average Rating: <%= avr %> / 10
-        </p></tr>
+          Last Comment: <%= @comment_content %><br>
+          Commenter: <%= @usercommenter.first.username %><br>
+          Rating Count: <%= @averagerating.length %><br>
+          Average Rating: <%= @avr %>
         <% else %>
-          <tr><p><h2>Last Review</h2></p></tr>
-          <tr><p>username</p></tr>
-          <tr><p> 
-            Rating Count: 0 <br>
-            Average Rating: 10/10
-          </p></tr>
+          <%= @norating %>
         <% end %>
       </tr>
     </table>
   </div>
-</nav>
+</div>
 </body>
 
 
