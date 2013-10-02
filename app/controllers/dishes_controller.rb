@@ -4,7 +4,7 @@ class DishesController < ApplicationController
   
   def index
     if @restaurant
-      @dishes = @restaurant.dishes.includes(:photos)
+      @dishes = Dish.where(restaurant_id: @restaurant.id).search(params[:search]).includes(:photos)
       @categories = @dishes.pluck(:category).uniq.map!{|c| c.titleize}
     else
       flash[:error] = "Restaurant not found"

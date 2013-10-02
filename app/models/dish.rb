@@ -11,6 +11,8 @@ class Dish < ActiveRecord::Base
              lower(category) LIKE ?', 
              "%#{term.downcase.strip}%",
              "%#{term.downcase.strip}%",)
+    else
+      all
     end
   end
 end
