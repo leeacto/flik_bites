@@ -58,3 +58,19 @@ feature "Adding a Dish" do
 		end
 	end
 end
+
+feature "Search Bar" do
+	context "on the dishes index" do
+		context "when no search is submitted" do
+			it "should show the first category of dishes"
+		end
+		
+		context "when a search is submitted" do
+			it "should return dish matches based on dish name" 
+
+			it "should return dish matches based on dish category"
+
+			it "should not return non-match results"
+		end		
+	end
+end
