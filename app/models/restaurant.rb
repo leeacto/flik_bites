@@ -8,6 +8,7 @@ class Restaurant < ActiveRecord::Base
   validates_presence_of :state
   validates_presence_of :url
 
+  # REVIEW(RCB): Is it even possible to get to the else in this? I don't see a test for it.
   def self.search(term)
     if term
       where('lower(name) LIKE ?', "%#{term.downcase.strip}%")

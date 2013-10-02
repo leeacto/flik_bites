@@ -59,6 +59,7 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
+    # REVIEW(RCB): this seems like code I'd put in the model and execute via a before save callback
     if params[:restaurant][:name] && params[:restaurant][:name] != @restaurant.name
       potential = params[:restaurant][:name].downcase.gsub(' ','')
       @restaurant.url = make_url(@restaurant, potential)

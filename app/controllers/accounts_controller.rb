@@ -1,3 +1,5 @@
+# REVIEW(RCB): why can't the code that appears here be a member method of the users resource
+#   and live in the UsersController?
 class AccountsController < ApplicationController
 	def update
 		user = User.find(params[:format])

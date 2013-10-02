@@ -42,6 +42,7 @@ class DishesController < ApplicationController
     end
   end
 
+  # REVIEW(RCB): this will throw an execption if restaurant isn't found.
   def create
     @restaurant = Restaurant.find_by(:url => params["dish"]["restname"])
     @curr_dishes = @restaurant.dishes
@@ -49,6 +50,7 @@ class DishesController < ApplicationController
     @dish = @restaurant.dishes.new(dish_attributes)
     unless @dish.name.nil?
       potential = @dish.name.downcase.gsub(' ','')
+      # REVIEW(RCB): like my comments about restaurants, making urls for dishes should be done in the model via callback
       @dish.url = make_url(@dish, potential)
       if @dish.save
         flash[:success] = "New Dish Added!"

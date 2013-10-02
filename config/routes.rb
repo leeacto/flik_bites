@@ -9,13 +9,19 @@ FinalProject::Application.routes.draw do
 
   get '/users/:user', to: 'users#show'
   
+  # REVIEW(RCB): I think this should be `resources :accounts, only: [:update]` (plural)
+  #   This would make the path helper `accounts_path(@account)`, the url /accounts/:id and
+  #   the user id would come through in params[:id]. Using params[:format] is a gross-looking hack
   resource :accounts, only: [:update]
 
   resources :sessions, only: [:create]
   get '/login',  to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
+  # REVIEW(RCB): what do you get from this that you don't get from POSTing to restaurants_path?
   post '/restaurants/create', to: 'restaurants#create'
+  # REVIEW(RCB): this should be a "member action" of the restaurants resource. Then a path helper
+  #   of `setcoords_restaurant_path(@restaurant)` would be available and it would route to POST /restaurants/:id/setcoords
   post '/restaurants/setcoords', to: 'restaurants#setcoords'
 
   resources :restaurants do
