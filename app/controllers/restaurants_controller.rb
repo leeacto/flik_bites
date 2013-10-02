@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.search(params[:search]).includes(:dishes).paginate(:page => params[:page], :per_page => 24)
+    @dishes = Dish.search(params[:search]).paginate(:page => params[:page], :per_page => 24)
     if @restaurants.empty?
       flash[:error] = "Sorry no matches for '#{params[:search]}' were found"
     end
