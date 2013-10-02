@@ -110,6 +110,63 @@ feature "Interacting with /:restaurant/dishes page" do
 
   end
 
-  context "As a Visitor" do
-  end
+	context "As a Visitor" do
+	end
+end
+
+feature "Search Bar" do
+	context "on the restaurant index" do
+		before(:each) do
+			two_rest
+			visit restaurants_path
+		end
+
+		context "when no search is submitted" do
+			it "should show a default list of restaurants" do
+				page.should have_content("The Bristol")
+				page.should have_content("Cumin")
+			end
+		end
+		
+		context "when a search is submitted" do
+			
+			it "should return restaraurant matches" do
+				fill_in "search", with: "bri"
+				click_button "Search"
+				page.should have_content("The Bristol")
+				page.should_not have_content("Cumin")
+			end
+
+			it "should return dish matches based on name" do
+				# fill_in "search", with: "pizza"
+				# click_button "Search"
+				# save_and_open_page
+				# page.should have_content("Pizza")
+			end
+
+			it "should return restaurant matches based on cuisine type" do
+				fill_in "search", with: "indian"
+				click_button "Search"
+				page.should have_content("Cumin")
+			end
+
+			it "should return restaurant matches based on zip code" do 
+				fill_in "search", with: "60647"
+				click_button "Search" 
+				page.should have_content("The Bristol")
+			end
+
+			it "should return both restaurant and dish matches" do
+				# fill_in "search", with: "pad thai"
+				# click_button "Search"
+				# page.should have_content("Pad Thai")
+			end
+
+			it "should not return non-match results" do
+				fill_in "search", with: "this is not a freakin restaurant"
+				click_button "Search"
+				page.should have_content("Sorry no matches")
+			end
+		end
+	end
 end

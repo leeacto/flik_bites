@@ -110,13 +110,10 @@ CSV.foreach("db/restaurants.csv") do |row|
 end
 
 CSV.foreach("db/menus.csv") do |row|
-  Dish.create( :restaurant_id => row[0],
-                 :category => row[1],
-                 :name => row[2], 
-                 :price => row[3],
-                 :description => row[4])
+	Dish.create( :restaurant_id => row[0],
+								 :category => row[1],
+								 :name => row[2], 
+								 :price => row[3],
+								 :description => row[4],
+                 :url => row[2].gsub(/\W/, "").downcase)
 end
-
-
-
-
