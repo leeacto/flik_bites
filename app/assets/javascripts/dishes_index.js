@@ -7,7 +7,6 @@ catList.prototype.initialize = function(){
   var self = this;
 
   $.each(this.el.find('li'), function(){
-    var el;
     var newCat = new Category(this.id);
     self.addCat(newCat);
   })
@@ -29,11 +28,12 @@ Category.prototype.initialize = function(){
   this.el.on("click", function(event) {
     event.stopPropagation();
 
-    self.buttonDown = true;
     $('li').each(function(){
       $(this).removeClass('button_down');
     })
-
+    console.log(self.buttonDown);
+    self.buttonDown = true;
+    console.log(self.buttonDown);
     $(this).addClass('button_down');
   });
 }

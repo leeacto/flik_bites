@@ -23,14 +23,13 @@ describe("catList", function(){
   });
 
   it("should have an initialize function", function(){
-    spyOn(catBoard, 'addCat');
+    spyOn(catBoard, 'initialize');
     catBoard.initialize();
-    expect(catBoard.addCat).toHaveBeenCalled();
+    expect(catBoard.initialize).toHaveBeenCalled();
   });
 
   describe("initialize()", function(){
     beforeEach(function(){
-      var spy = jasmine.createSpy(window, "cat").andCallThrough();
       catBoard.initialize();
     });
 
@@ -43,7 +42,7 @@ describe("catList", function(){
 describe("Category", function(){
   beforeEach(function(){
     catBoard = new catList('.catList');
-    category = new Category('#category_0');
+    category = new Category('category_0');
   });
 
   it("should have the correct el", function(){
@@ -51,12 +50,12 @@ describe("Category", function(){
   });
 
   it("should have an initialize function", function(){
-    spyOn(category.el, "on");
+    spyOn(category, "initialize");
     category.initialize();
-    expect(category.el.on).toHaveBeenCalledWith('click', category.clicked);
+    expect(category.initialize).toHaveBeenCalled;
   });
 
-  it("should react when button is clicked", function(){
+  it("should have button down status when clicked", function(){
     category.el.trigger('click');
     expect(category.buttonDown).toBe(true);
   });
