@@ -7,7 +7,10 @@ class Dish < ActiveRecord::Base
   
   def self.search(term)
     if term
-      where('lower(name) LIKE ?', "%#{term.downcase.strip}%")
+      where('lower(name) LIKE ? OR
+             lower(category) LIKE ?', 
+             "%#{term.downcase.strip}%",
+             "%#{term.downcase.strip}%",)
     end
   end
 end
