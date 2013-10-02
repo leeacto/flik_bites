@@ -5,11 +5,16 @@ var searchBar = function(el) {
 
 searchBar.prototype.setSearch = function(text) {
   this.search = text;
-  this.el.value = text;
-  var url = $('#url').text() + "/dishes";
-  
-  $.ajax({
+  var url = $('#url').text();
+
+  var pkg = {
     url: url,
+    search: text.replace('      ','').replace('    ','').replace(/(\r\n|\n|\r)/gm,"")
+  }
+
+  $.ajax({
+    url: "/" + url + "/dishes",
+    data: pkg,
     method: "GET"
   }).done(function(results){
     $('.dish_layout').html('');
@@ -66,4 +71,3 @@ function setup() {
 }
 
 $(document).on('ready', setup);
-  $(document).on('page:load', setup);

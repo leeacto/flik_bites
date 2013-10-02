@@ -13,9 +13,11 @@
 <div>
   <%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
 </div>
+
 <ul class="dish_categories">
+  <li id="category_0">All Dishes</li>
   <% @categories.each_with_index do |c, i| %>
-    <li id="category_<%= i %>">
+    <li id="category_<%= i+1 %>">
       <%= c.chomp %>
     </li>
   <% end %>

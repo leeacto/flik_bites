@@ -20,7 +20,7 @@ ul.dish_categories {
 ul.dish_categories li {
   border: 1px solid black;
   padding: 1%;
-  border-radius: 1em;
+  border-radius: .5em;
   background-color: #4cc534;
 }
 
