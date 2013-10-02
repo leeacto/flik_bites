@@ -3,10 +3,9 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-
     @dish = Dish.find(params[:photo][:dish_id])
     
-    if @dish 
+    if @dish
       @restaurant = @dish.restaurant
       if @photo.save 
         @photo.update(user_id: current_user.id)
@@ -17,7 +16,7 @@ class PhotosController < ApplicationController
       redirect_to "/#{@restaurant.url}/#{@dish.url}"
     else
       flash[:error] = "Dish was not found"
-      redirect_to "/#{@restaurant.url}/#{@dish.url}"
+      redirect_to_back
     end
   end 
 
