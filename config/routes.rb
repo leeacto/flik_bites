@@ -1,14 +1,17 @@
 FinalProject::Application.routes.draw do
+  root 'landing#index'
 
   match 'auth/:provider/callback', to: 'sessions#createoauth', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
-  root 'landing#index'
   
+  get '/favorite/dish/:dish_id', to: 'users#favdish'
+  get '/favorite/restaurant/:rest_id', to: 'users#favrest'
+
   mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
   resources :users
 
   get '/users/:user', to: 'users#show'
-  
+  get '/'
   resource :accounts, only: [:update]
 
   resources :sessions, only: [:create]

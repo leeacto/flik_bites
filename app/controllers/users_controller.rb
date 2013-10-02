@@ -40,6 +40,30 @@ class UsersController < ApplicationController
     end
   end
 
+  def favdish
+    @dish = Dish.find(params[:dish_id])
+    @favorite = UserFavorite.find_by_user_id_and_dish_id(current_user.id,@dish.id)
+    if @favorite
+      UserFavorite.delete(@favorite)
+      redirect_to :back
+    else
+      UserFavorite.create(user_id: current_user.id,restaurant_id: @dish.restaurant.id,dish_id: @dish.id )
+      redirect_to :back
+    end
+  end
+
+  def favrest
+    @rest = Restaurant.find(params[:rest_id])
+    @favorite = UserFavorite.find_by_user_id_and_restaurant_id(current_user.id,@rest.id)
+    if @favorite
+      UserFavorite.delete(@favorite)
+      redirect_to :back
+    else
+      UserFavorite.create(user_id: current_user.id,restaurant_id: @rest.id,dish_id: 0 )
+      redirect_to :back
+    end
+  end
+
   private
 
   def user_attributes

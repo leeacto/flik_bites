@@ -1,6 +1,7 @@
 class Restaurant < ActiveRecord::Base
   has_many :dishes
   has_many :photos, through: :dishes
+  has_many :user_favorites
   validates_uniqueness_of :name, scope: :address
   validates_presence_of :name
   validates_presence_of :address

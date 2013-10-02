@@ -1,19 +1,54 @@
 @media (min-width:920px){ 
-	.counter {
-		padding-left: 8px;
+
+	#photogrid {
+		width:80%;
+		margin:0 10%;
 	}
-	.voting {
-		border: 1px solid black;
-		width:25px;
-		background-color: black;
-		z-index: 3; 
-		bottom: 15px;
+	.upvote {
+		position: absolute;
+		left:0;
+		height:30px;
 	}
 
-	.gallery {
-		float: left; position: relative;
-		z-index: 1;
+	.up-vote-arrow{
+		position: absolute;
+		left:20px;
 	}
+	.downvote {
+		position: relative;
+	}
+	
+	.down-vote-arrow {
+		position: absolute;
+		right:159px;
+	}
+	
+	.counter{
+		position: absolute;
+		right:3px;
+		margin: 5px;
+		color:white;
+		height:100%;
+	}
+	.dish {
+		border:5px double #086055;
+		background-color: #137c79;
+		width:310px;
+		margin:1% 1%;
+		height:268px;
+		position: relative;
+	}
+	
+	.voting{
+		height:30px;
+		text-align: center;
+		position: absolute;
+		bottom:-1px;
+		padding-top: 2px;
+		background-color:black;
+		width:100%;
+	}
+
 
 	#dishnew {
 		letter-spacing: none;

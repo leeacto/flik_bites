@@ -1,4 +1,53 @@
 @media (min-width:481px) and (max-width: 919px) {
+  .up-vote-arrow,.down-vote-arrow {
+    height:25px;
+  }
+  .upvote {
+    position: absolute;
+    left:0;
+    height:30px;
+  }
+
+  .up-vote-arrow{
+    position: absolute;
+    left:20px;
+  }
+  .downvote {
+    position: relative;
+  }
+  
+  .down-vote-arrow {
+    position: absolute;
+    right:125px;
+  }
+  .counter{
+    position: absolute;
+    right:2px;
+    margin-top: 1%;
+    color:white;
+    height:100%;
+  }
+  .dish {
+    width:230px;
+    border:5px double #086055;
+    background-color: #137c79;
+    margin:1% 1%;
+    position: relative;
+    height:178px;
+  }
+  .dish_photo {
+    width:230px;
+  }
+  
+  .voting{
+    height:25px;
+    text-align: center;
+    position: absolute;
+    bottom:-1px;
+    padding-top: 2px;
+    background-color:black;
+    width:100%;
+  }
   .mobilepag {
     display:none;
   }
@@ -44,9 +93,8 @@
   }
 
   .dish_photo {
-    width: 80%;
-    height: 80%;
-    padding: 5% 5%;
+    width: 100%;
+    height: 90%;
   }
   #take-picture{
     text-align: center;
