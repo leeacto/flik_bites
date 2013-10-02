@@ -61,16 +61,35 @@ end
 
 feature "Search Bar" do
 	context "on the dishes index" do
+		before(:each) do
+			two_rest
+			visit "cumin/dishes"
+		end
+
 		context "when no search is submitted" do
-			it "should show the first category of dishes"
+			it "should show the first category of dishes" do
+				# page.should_have content "Entree"
+			end
 		end
 		
 		context "when a search is submitted" do
-			it "should return dish matches based on dish name" 
+			it "should return dish matches based on dish name" do
+				# fill_in "search", with: "piz"
+				# click_button "Search"
+				# page.should have_content "Pizza"
+			end
 
-			it "should return dish matches based on dish category"
+			it "should return dish matches based on dish category" do
+				# fill_in "search", with: "entree"
+				# click_button "Search"
+				# page.should have_content "Pizza"
+			end
 
-			it "should not return non-match results"
+			it "should not return non-match results" do
+				# fill_in "search", with: "piz"
+				# click_button "Search"
+				# page.should_not have_content "Pad Thai"
+			end
 		end		
 	end
 end

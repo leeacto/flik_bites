@@ -142,14 +142,17 @@ feature "Search Bar" do
 				page.should have_content("The Bristol")
 			end
 
-			it "should return both restaurant and dish matches"
+			it "should return both restaurant and dish matches" do
+				# fill_in "search", with: "pad thai"
+				# click_button "Search"
+				# page.should have_content("Pad Thai")
+			end
 
 			it "should not return non-match results" do
 				fill_in "search", with: "this is not a freakin restaurant"
 				click_button "Search"
 				page.should have_content("Sorry no matches")
 			end
-
 		end
 	end
 end
