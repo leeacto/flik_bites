@@ -63,24 +63,28 @@ describe PhotosController do
         end
 
         it "should redirect to the same page" do
-          response.should redirect_to("/#{@restaurant.url}/#{@dish.url}")
+          response.should redirect_to restaurants_path
         end
 
-        it "should flash error message" 
-
+        it "should flash error message" do
+          flash.now[:error].should =~ /Dish was not found/
+        end
       end
-
     end
 
     context "when logged out" do
       before(:each) do
-        # controller.stub(:logged_in?).and_return false
+        post :create, photo: { :dish_id => @dish.id, :user_id => 1 }
       end
 
-      it "should redirect you to the same page" 
+      it "should redirect you to root path" do
+        save_and_open_page
+        response.should redirect_to root_path
+      end
 
-      it "should flash error asking user to log in" 
+      it "should flash error asking user to log in" do
+        flash.now[:error].should =~ /Please log in/
+      end
     end
   end
-
 end
