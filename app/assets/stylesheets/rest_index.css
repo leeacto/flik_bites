@@ -50,14 +50,16 @@ ul.tab {
 	margin: auto;
 	margin-top: 2%;
 	overflow: hidden;
+	background-color: #444;
 }
 
 .card_pic img {
-	max-width: 99%;
-	max-height: 99%;
+	max-width: 266px;
+	max-height: 146px;
 	display: block;
 	margin: auto;
-	margin-top: 5%;
+	width: auto;
+	height: auto;
 }
 
 .card_desc {
