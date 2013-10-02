@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.colorbox-min.js
 //= require jquery_ujs
 //= require turbolinks
 //= require idangerous.swiper-2.2.min
