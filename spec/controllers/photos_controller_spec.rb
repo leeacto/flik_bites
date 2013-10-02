@@ -74,7 +74,7 @@ describe PhotosController do
 
     context "when logged out" do
       before(:each) do
-        post :create, photo: { :dish_id => @dish.id, :user_id => 1 }
+        post :create, photo: { :dish_id => @dish.id, :user_id => nil }
       end
 
       it "should redirect you to root path" do
