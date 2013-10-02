@@ -23,6 +23,10 @@ describe DishesController do
     it "populates an array of dishes" do   
       assigns(:dishes).should eq(@restaurant.dishes)
     end
+
+    it "lists the categories for the dishes" do
+      assigns(:categories).should eq(@restaurant.dishes.pluck(:category).uniq)
+    end
   end
 
   describe "GET #new" do

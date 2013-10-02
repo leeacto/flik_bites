@@ -32,10 +32,6 @@ var Card = function(el, url) {
     event.stopPropagation();
     $(event.target).closest('.card').removeClass('active');
     self.el.find(".gmap").addClass('hidden');
-    if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1)
-    {
-      self.addMap();
-    }
   });
 
   this.el.find('a').on('click', function(event) {
@@ -50,7 +46,6 @@ Card.prototype.addMap = function() {
   var url = this.url;
   var self = this;
   var mapNum = el.selector.replace('#card-','');
-  var deferreds = [];
 
   $.ajax({
     url: "/"+this.url+"/coords",
@@ -117,8 +112,6 @@ Card.prototype.addMap = function() {
 };
 
 function codeAddress(srchString) {
-  var lat;
-  var lng;
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': srchString.address}, function(results, status) {
     
@@ -157,8 +150,5 @@ function setup() {
   });
 }
 
-
 $(document).on('ready', setup);
-
 $(document).on('page:load', setup);
-
