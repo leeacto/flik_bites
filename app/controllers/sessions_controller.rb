@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
           redirect_to restaurants_path
         else
           flash[:error] = "Username or Password is incorrect"
-          redirect_to login_path, :notice => "Signed in!"
+          redirect_to login_path
         end
       else
         @error = "Your account is not active"

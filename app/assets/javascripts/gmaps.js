@@ -18,19 +18,24 @@ var Card = function(el, url) {
   this.url = url;
   var self = this;
   this.geocoder = new google.maps.Geocoder();
-  this.el.find('.front').on('click', function(event) {
+
+  $('body').on('click', "#" + el + " .front",function(event) {
     event.stopPropagation();
     $(event.target).closest('.card').addClass('active');
     self.el.find(".gmap").removeClass('hidden');
-    if(self.el.find("img").length === 1)
+    self.el.find(".favrest").addClass('hidden');
+    self.el.find(".favdish").addClass('hidden');
+    if(self.el.find(".gmap img").length === 0 && self.el.find(".gmap").length > 0 )
     {
       self.addMap();
     }
   });
 
-  this.el.find('.back').on('click', function(event) {
+  $('body').on('click', "#" + el + " .back",function(event) {
     event.stopPropagation();
     $(event.target).closest('.card').removeClass('active');
+    self.el.find(".favrest").removeClass('hidden');
+    self.el.find(".favdish").removeClass('hidden');
     self.el.find(".gmap").addClass('hidden');
   });
 
@@ -139,17 +144,17 @@ function setup() {
   var rTable = new restTable('.restaurant_list');
   rTable.initialize();
   
-  $('#new_restaurant').on('submit', function(event){
-    event.preventDefault();
-    $.ajax({
-      url: '/restaurants/create',
-      method: 'post',
-      data: $(this).serialize(),
-      dataType: 'json'
-    }).done(function(addr){
-      codeAddress(addr);
-    });
-  });
+  // $('#new_restaurant').on('submit', function(event){
+  //   event.preventDefault();
+  //   $.ajax({
+  //     url: '/restaurants/create',
+  //     method: 'post',
+  //     data: $(this).serialize(),
+  //     dataType: 'json'
+  //   }).done(function(addr){
+  //     codeAddress(addr);
+  //   });
+  // });
 }
 
 $(document).on('ready', setup);
