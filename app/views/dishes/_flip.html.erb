@@ -20,15 +20,15 @@
           <% end %>
         <% end %>
       </div>
+    </div>
 
-      <div class="back side">
+    <div class="back side">
       <div class="dish_back">
         <%= dish.restaurant.name %><br>
         <%= dish.name %><br><br>
         <%= dish.description %><br>
         <%= link_to "View More Images", "/#{@restaurant.url}/#{dish.url}" %>
       </div>
-    </div>
     </div>
   </div>
 </div>
