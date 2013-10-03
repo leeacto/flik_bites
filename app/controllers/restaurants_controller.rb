@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
       if logged_in? && current_user.restaurants.count > 0
         favs = current_user.restaurants
         others = Restaurant.all - favs
-        @restaurants = (favs + others).paginate(:page => params[:page], :per_page => 24)
+        @restaurants = (favs + others).uniq.paginate(:page => params[:page], :per_page => 24)
       else
         @restaurants = Restaurant.all.paginate(:page => params[:page], :per_page => 24)
       end
