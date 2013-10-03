@@ -1,32 +1,124 @@
 @media (min-width:481px) and (max-width: 919px) {
-  .up-vote-arrow,.down-vote-arrow {
-    height:25px;
-  }
-  .upvote {
+  ul.dish_categories {
+  list-style-type: none;
+  padding-left: 2%;
+  width: 15%;
+  float: left;
+  position: fixed;
+  max-height: 100%;
+}
+  .dish_layout {
     position: absolute;
-    left:0;
-    height:30px;
+    right:7%;
   }
 
-  .up-vote-arrow{
-    position: absolute;
-    left:20px;
+  .addrest {
+    background-color: #5AAA4B;
+    width:80px;
+    padding: 1% 1%;
+    border: 1px solid black;
+    border-radius: 5PX;
   }
-  .downvote {
+
+  .addrest:hover {
+    background-color: #48913a;
+  }
+
+  #addr {
+    position: absolute;
+    left:15px;
+    top:75px;
+    color:white;
+    text-decoration: none;
+  }
+ .dishpages {
+    width:100%;
+    text-align: center;
+  }
+  .favrest,.favdish  {
+   position: relative;
+  }
+
+  .favrest img {
+    position: absolute;
+    right:5px;
+    bottom: -10px;
+  }
+
+  .favdish img {
+    position: absolute;
+    right:5px;
+    bottom: -25px;
+  }
+  #ipreview {
+    width:430px;
+    height:368px; 
+    border:2px solid black; 
+    margin-left: 1px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+  }
+
+  #preview {
+    margin-top: 5px;
+  }
+  #uploadform {
+    background-color: red;
+    width:95%;
+    height:100%;
+    margin:0 2.5%;
+    text-align: center;
     position: relative;
   }
-  
-  .down-vote-arrow {
+
+  #take-picture {
     position: absolute;
-    right:125px;
+    right:30px;
+    margin-top: 2px;
   }
-  .counter{
-    position: absolute;
-    right:2px;
-    margin-top: 1%;
-    color:white;
-    height:100%;
+  #save_to_db {
+    margin-top: 2px;
   }
+  #description {
+    width:70%;
+    margin:0 15%;
+  }
+  #uploadbox {
+  width: 100%;
+  text-align: center;
+  }
+  a#upload {
+    position: relative;
+    top:1px;
+    background-color:#ee7836;
+    color: white;
+    border: 1px solid black;
+    text-indent:0px;
+    font-family:arial;
+    font-size:21px;
+    font-weight:bold;
+    font-style:normal;
+    height:51px;    
+    padding: 14px 20px 12px;
+    line-height:45px;
+    text-decoration:none;
+    text-align:center;
+  }
+  #review_button{
+    background-color:#ee7836;
+    color: white;
+    border: 1px solid black;
+    text-indent:0px;
+    font-family:arial;
+    font-size:21px;
+    font-weight:bold;
+    font-style:normal;
+    height:51px;
+    line-height:45px;
+    width:200px;
+    text-decoration:none;
+    text-align:center;
+}
   .dish {
     width:230px;
     border:5px double #086055;

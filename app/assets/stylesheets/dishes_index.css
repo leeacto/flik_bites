@@ -6,16 +6,7 @@
   font-size: 2em;
 }
 
-ul.dish_categories {
-  list-style-type: none;
-  margin: 0;
-  margin-top: 2%;
-  padding-left: 2%;
-  width: 10%;
-  float: left;
-  position: fixed;
-  max-height: 100%;
-}
+
 
 ul.dish_categories li button{
   border: 1px solid black;
