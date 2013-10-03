@@ -21,7 +21,7 @@ describe DishesController do
     end
 
     it "populates an array of dishes" do   
-      assigns(:dishes).should eq(@restaurant.dishes)
+      assigns(:dishes).should =~ @restaurant.dishes
     end
 
     it "lists the categories for the dishes" do

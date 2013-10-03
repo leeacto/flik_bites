@@ -18,12 +18,12 @@ FinalProject::Application.routes.draw do
   get '/login',  to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
-  post '/restaurants/create', to: 'restaurants#create'
-  post '/restaurants/setcoords', to: 'restaurants#setcoords'
 
   resources :restaurants do
     resources :dishes
   end
+    post '/restaurants/create', to: 'restaurants#create'
+    post '/restaurants/setcoords', to: 'restaurants#setcoords'
   get '/:restname', to: 'restaurants#show'
   get '/:restname/edit', to: 'restaurants#edit'
   get '/:restname/desc', to: 'restaurants#desc'
@@ -40,6 +40,7 @@ FinalProject::Application.routes.draw do
   
   resources :dishes, only: [:update, :destroy]
   resources :photos
+  resources :comments
   
 
   post '/:restname/dishes/destroy', to: 'dishes#destroy'

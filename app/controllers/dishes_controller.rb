@@ -3,12 +3,23 @@ class DishesController < ApplicationController
   before_action :set_restaurant, :only => [:index, :new]
   
   def index
-    if @restaurant
-      @dishes = @restaurant.dishes.includes(:photos)
-      @categories = @dishes.pluck(:category).uniq.map!{|c| c.titleize}
+    if request.xhr?
+      @restaurant = Restaurant.find_by_url(params[:url])
+      if params[:search] == "All Dishes"
+        @dishes =  Dish.where(restaurant_id: @restaurant.id).includes(:photos)
+      else
+        @dishes = Dish.where(restaurant_id: @restaurant.id).includes(:photos)
+        @dishes.map!{|d| d.category.titleize == params[:search] ? d:nil}.compact!
+      end
+      render 'index_xhr', :layout => false
     else
-      flash[:error] = "Restaurant not found"
-      redirect_to_back
+      if @restaurant
+        @dishes = Dish.where(restaurant_id: @restaurant.id).search(params[:search]).includes(:photos)
+        @categories = Dish.where(restaurant_id: @restaurant.id).pluck(:category).uniq.map!{|c| c.titleize}
+      else
+        flash[:error] = "Restaurant not found"
+        redirect_to_back
+      end
     end
   end
 
@@ -29,8 +40,22 @@ class DishesController < ApplicationController
     if @dish.nil?
       render 'not_found'
     else
+      @norating = "No current rating"
       @photo = Photo.new
       @photos = Photo.where(:dish_id => @dish.id)
+      @comment = Comment.where(:dish_id => @dish.id)
+      if @comment.length > 0
+        @comment_content = @comment.last.content
+        @commenter = @comment.last
+        @usercommenter = User.where(:id => @commenter.user_id)
+      else
+        @norating
+      end
+      @averagerating = [ ] 
+      @comment.each do |x|
+        @averagerating << x.rating
+        @avr = (@averagerating.inject(:+))/ @averagerating.length
+      end
     end
   end
 

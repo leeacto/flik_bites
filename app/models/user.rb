@@ -9,10 +9,15 @@ class User < ActiveRecord::Base
 
 
   has_many :photos
+
   has_many :user_favorites
   has_many :dishes, through: :user_favorites
   has_many :restaurants, through: :user_favorites
   
+
+  has_many :comments
+
+>
   def activate_account!
     update_attribute :is_active, true
   end

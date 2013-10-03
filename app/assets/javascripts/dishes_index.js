@@ -1,3 +1,30 @@
+var searchBar = function(el) {
+  this.el = $(el);
+  this.search = "";
+}
+
+searchBar.prototype.setSearch = function(text) {
+  if(this.search != text)
+  {
+    this.search = text;
+    var url = $('#url').text();
+    var search_phrase = text.replace('      ','').replace('    ','').replace(/(\r\n|\n|\r)/gm,"");
+    var pkg = {
+      url: url,
+      search: search_phrase
+    }
+
+    $.ajax({
+      url: "/" + url + "/dishes",
+      data: pkg,
+      method: "GET"
+    }).done(function(results){
+      $('.dish_layout').html('');
+      $('.dish_layout').append(results);
+    });
+  }
+}
+
 var catList = function(el) {
   this.el = $(el);
   this.categories = [];
@@ -5,9 +32,10 @@ var catList = function(el) {
 
 catList.prototype.initialize = function(){
   var self = this;
+  this.searchBar = new searchBar('#search_field');
 
   $.each(this.el.find('li'), function(){
-    var newCat = new Category(this.id);
+    var newCat = new Category(this.id, self);
     self.addCat(newCat);
   })
 }
@@ -16,24 +44,23 @@ catList.prototype.addCat = function(cat) {
   this.categories.push(cat);
 }
 
-var Category = function(el) {
+var Category = function(el, list) {
   this.el = $('#'+el);
+  this.list = list;
   this.buttonDown = false;
   this.initialize();
 }
 
 Category.prototype.initialize = function(){
   var self = this;
-
   this.el.on("click", function(event) {
     event.stopPropagation();
-
-    $('li').each(function(){
-      $(this).removeClass('button_down');
-    })
-    console.log(self.buttonDown);
+    $(self.list.categories).each(function(){
+      this.buttonDown = false;
+      $(this.el).removeClass('button_down');
+    })  
+    self.list.searchBar.setSearch(self.el.text());
     self.buttonDown = true;
-    console.log(self.buttonDown);
     $(this).addClass('button_down');
   });
 }
