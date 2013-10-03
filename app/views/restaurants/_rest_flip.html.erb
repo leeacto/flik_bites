@@ -14,9 +14,9 @@
       <div class='favrest'>
         <% if current_user != nil %>
           <% if UserFavorite.find_by_user_id_and_restaurant_id(current_user.id,restaurant.id) %>
-           <%= link_to image_tag('full_star.png', class: 'fstar cf'), "/favorite/restaurant/#{restaurant.id}",class: 'favorite_on'%>
+           <%= link_to image_tag('full_star.png', class: 'fstar cf'), "/favorite/restaurant/#{restaurant.id}", class: 'favorite_on'%>
           <% else %>
-           <%= link_to image_tag('empty_star.png', class: 'ustar cf'), "/favorite/restaurant/#{restaurant.id}",class: 'favorite_off'%>
+           <%= link_to image_tag('empty_star.png', class: 'ustar cf'), "/favorite/restaurant/#{restaurant.id}", class: 'favorite_off'%>
           <% end %>
         <% end %>
       </div>
