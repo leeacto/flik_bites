@@ -35,7 +35,6 @@ catList.prototype.initialize = function(){
   this.searchBar = new searchBar('#search_field');
 
   $.each(this.el.find('li'), function(){
-    console.log(this);
     var newCat = new Category($(this).find('button'), self);
     self.addCat(newCat);
   })
@@ -55,7 +54,6 @@ var Category = function(el, list) {
 
 Category.prototype.initialize = function(){
   var self = this;
-  console.log(this.el);
   this.el.on("click", function(event) {
     console.log('clicked');
     event.stopPropagation();
