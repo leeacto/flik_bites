@@ -29,8 +29,22 @@ class DishesController < ApplicationController
     if @dish.nil?
       render 'not_found'
     else
+      @norating = "No current rating"
       @photo = Photo.new
       @photos = Photo.where(:dish_id => @dish.id)
+      @comment = Comment.where(:dish_id => @dish.id)
+      if @comment.length > 0
+        @comment_content = @comment.last.content
+        @commenter = @comment.last
+        @usercommenter = User.where(:id => @commenter.user_id)
+      else
+        @norating
+      end
+      @averagerating = [ ] 
+      @comment.each do |x|
+        @averagerating << x.rating
+        @avr = (@averagerating.inject(:+))/ @averagerating.length
+      end
     end
   end
 
