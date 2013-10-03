@@ -1,4 +1,31 @@
 @media(max-width: 480px) {
+  .mobilepag {
+    text-align: center;
+  }
+  #search_button {
+    margin-right: 25%;
+  }
+  #search_form {
+    margin-left: 70px;
+  }
+  .favrest,.favdish  {
+   position: relative;
+  }
+
+  .favrest img {
+    position: absolute;
+    right:5px;
+    bottom: -10px;
+  }
+
+  .favdish img {
+    position: absolute;
+    right:5px;
+    bottom: -25px;
+  }
+  ul.dish_categories, .dishpages {
+    display: none;
+  }
   .pag {
     display:none;
   }

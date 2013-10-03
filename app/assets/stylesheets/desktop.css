@@ -1,20 +1,136 @@
 @media (min-width:920px){ 
-	.counter {
-    padding-left: 8px;
+  #userfavorites {
+    text-align: center;
   }
-  .voting {
-    border: 1px solid black;
-    width:25px;
-    background-color: black;
-    z-index: 3; 
-    bottom: 15px;
+  ul.dish_categories {
+  list-style-type: none;
+  padding-left: 2%;
+  width: 10%;
+  float: left;
+  position: fixed;
+  max-height: 100%;
+}
+  .addrest {
+  background-color: #5AAA4B;
+  margin-left: 19%;
+  width:80px;
+  padding: 1% 1%;
+  border: 1px solid black;
+  border-radius: 5PX;
   }
 
+  .addrest:hover {
+    background-color: #48913a;
+  }
+
+  #addr {
+    color:white;
+    text-decoration: none;
+  }
+ .dishpages {
+    width:100%;
+    text-align: center;
+  }
+  .favrest,.favdish  {
+   position: relative;
+  }
+
+  .favrest img {
+    position: absolute;
+    right:5px;
+    bottom: -10px;
+  }
+
+  .favdish img {
+    position: absolute;
+    right:5px;
+    bottom: -25px;
+  }
+  #ipreview {
+    width:95%;
+    height:388px; 
+    border:2px solid black; 
+    margin:2.5% 2.5% ;
+
+  }
+
+  #preview {
+    margin-top: 5px;
+  }
+  #uploadform {
+    background-color: red;
+    width:95%;
+    height:100%;
+    margin:0 2.5%;
+    text-align: center;
+    position: relative;
+  }
+
+  #take-picture {
+    position: absolute;
+    right:30px;
+    margin-top: 2px;
+  }
+  #save_to_db {
+    margin-top: 2px;
+  }
+  #upload {
+    position: relative;
+    top:1px;
+    background-color:#ee7836;
+    color: white;
+    border: 1px solid black;
+    text-indent:0px;
+    font-family:arial;
+    font-size:21px;
+    font-weight:bold;
+    font-style:normal;
+    height:51px;    
+    padding: 14px 20px 12px;
+    line-height:45px;
+    text-decoration:none;
+    text-align:center;
+  }
+  #review_button{
+    background-color:#ee7836;
+    color: white;
+    border: 1px solid black;
+    text-indent:0px;
+    font-family:arial;
+    font-size:21px;
+    font-weight:bold;
+    font-style:normal;
+    height:51px;
+    line-height:45px;
+    width:200px;
+    text-decoration:none;
+    text-align:center;
+}
+
+  #upload:hover, #review_button:hover {
+    background-color: #ce7c2f;
+  }
+  #uploadbox {
+    text-align: center;
+  }
+
+  #dishbuttons {
+    width:80%;
+    margin:0 10%;
+    text-align: center;
+  }
+
+  #dishdesc > p {
+    text-align: center;
+   }
+  #description {
+    width:70%;
+    margin:0 15%;
+  }
   .gallery {
     float: left; position: relative;
     z-index: 1;
   }
-
   #dishnew {
     letter-spacing: none;
 
@@ -54,32 +170,6 @@
 		width:80%;
 		margin:0 10%;
 	}
-	.upvote {
-		position: absolute;
-		left:0;
-		height:30px;
-	}
-
-	.up-vote-arrow{
-		position: absolute;
-		left:20px;
-	}
-	.downvote {
-		position: relative;
-	}
-	
-	.down-vote-arrow {
-		position: absolute;
-		right:159px;
-	}
-	
-	.counter{
-		position: absolute;
-		right:3px;
-		margin: 5px;
-		color:white;
-		height:100%;
-	}
 	.dish {
 		border:5px double #086055;
 		background-color: #137c79;
@@ -89,17 +179,6 @@
 		position: relative;
 	}
 	
-	.voting{
-		height:30px;
-		text-align: center;
-		position: absolute;
-		bottom:-1px;
-		padding-top: 2px;
-		background-color:black;
-		width:100%;
-	}
-
-
 	#dishnew {
 		letter-spacing: none;
 
@@ -143,7 +222,7 @@
 	  font-size: 13px;
 	  display: inline-block;
 	  float: left;
-	  margin: 1.5% 1.5% 0 1.5%;
+	  margin: 1.5% 1%;
 	  
 	  -webkit-transform-style: preserve-3d;
 	  -webkit-transition: -webkit-transform 0.5s;

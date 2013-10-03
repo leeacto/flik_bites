@@ -118,6 +118,12 @@ class DishesController < ApplicationController
     end
     redirect_to @restaurant
   end
+
+  def upload
+    @photo = Photo.new
+    @dish = Dish.find(params[:dish_id])
+    render 'upload', :layout => false
+  end
   
   private
 

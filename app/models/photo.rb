@@ -29,8 +29,4 @@ class Photo < ActiveRecord::Base
 
 
   validates_attachment_presence :image
-
-  def total_votes 
-    up_vote_photos.count + down_vote_photos.count
-  end
 end

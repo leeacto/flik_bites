@@ -1,0 +1,10 @@
+<div id='uploadform'>
+  <%= form_for (@photo) do |f| %>
+      <%= hidden_field_tag 'photo[dish_id]', @dish.id %>
+      <%= f.file_field :image, id: "take-picture", accept: "image/*"%><br>
+      <div id='ipreview'>
+        <%= image_tag 'no_photos.png', id: "preview",size: '420x340' %><br>
+      </div>
+      <%= f.submit 'Save to database',id: 'save_to_db',class: 'pure-button', :remote => true%>
+  <% end %>
+</div>
