@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class DishesController < ApplicationController
   before_action(:except => [:index, :show]) { |controller| controller.require_login(restaurants_path) }
   before_action :set_restaurant, :only => [:index, :new]
@@ -9,8 +11,12 @@ class DishesController < ApplicationController
         if params[:search] == "All Dishes"
           @dishes =  Dish.where(restaurant_id: @restaurant.id).includes(:photos).paginate(:page => params[:page], :per_page => 24)
         else
-          @dishes = Dish.where(restaurant_id: @restaurant.id).includes(:photos).paginate(:page => params[:page], :per_page => 24)
-          @dishes.map!{|d| d.category.titleize == params[:search] ? d:nil}.compact!
+          @dishes = Dish.where(restaurant_id: @restaurant.id).includes(:photos)
+          @dish_cat = []
+          @dishes.each do |d|
+            @dish_cat << d if d.category.titleize == params[:search]
+          end
+          @dishes = @dish_cat.paginate(:page => params[:page], :per_page => 24)
         end
         render 'index_xhr', :layout => false
       else
@@ -121,5 +127,6 @@ class DishesController < ApplicationController
 
   def set_restaurant
     @restaurant = Restaurant.find_by(:url => params[:restname].downcase)
+    @restaurant ||= Restaurant.find_by(:url => params[:url])
   end
 end
