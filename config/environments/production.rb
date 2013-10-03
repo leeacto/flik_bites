@@ -23,6 +23,16 @@ FinalProject::Application.configure do
   config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
+  class NoCompression
+    def compress(string)
+      string
+    end
+  end
+  
+  config.assets.compress = true
+  config.assets.js_compressor = NoCompression.new
+  config.assets.css_compressor = NoCompression.new
+
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
