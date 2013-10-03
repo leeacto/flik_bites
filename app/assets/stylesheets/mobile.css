@@ -1,4 +1,13 @@
 @media(max-width: 480px) {
+  .mobilepag {
+    text-align: center;
+  }
+  #search_button {
+    margin-right: 25%;
+  }
+  #search_form {
+    margin-left: 70px;
+  }
   .favrest,.favdish  {
    position: relative;
   }
@@ -14,7 +23,7 @@
     right:5px;
     bottom: -25px;
   }
-  ul.dish_categories {
+  ul.dish_categories, .dishpages {
     display: none;
   }
   .pag {
