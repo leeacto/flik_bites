@@ -150,11 +150,12 @@ feature "Search Bar" do
       end
 
       it "should return matches for restaurants and associated restaurants through dishes" do
-        # p Dish.create(name: "Awesome cumin dish", category: "entree", restaurant_id:1)
-        # fill_in "search", with: "cumin"
-        # click_button "Search"
-        # page.should have_content("Cumin")
-        # page.should have_content("The Bristol")
+        @restaurant = Restaurant.find_by(name: "The Bristol")
+        Dish.create(name: "Awesome cumin dish", category: "entree", restaurant_id: @restaurant.id)
+        fill_in "search", with: "cumin"
+        click_button "Search"
+        page.should have_content("Cumin")
+        page.should have_content("The Bristol")
       end
 
       it "should not return non-match results" do
