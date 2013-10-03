@@ -234,7 +234,9 @@
   
   #screenshotpic {
   margin: 5% 5%;
-  width:90%;  
+  width:90%; 
+  border-top: solid 2px;
+  margin-top: 0px;
   }
   #twlog, #glog{
     height:31px;
@@ -252,10 +254,24 @@
     top:15px;
     margin:20px 0 20px;
     padding:15px 100px 15px;
-    background-color: #46DB56;
+    background-color: #00C746;
     border-radius: 5px;
     text-decoration: none;
     color:white;
+    font-family: baumans, sans-serif;
+  }
+
+
+  #signupnow:hover{
+    position: relative;
+    top:15px;
+    margin:20px 0 20px;
+    padding:15px 100px 15px;
+    background-color: #009C36;
+    border-radius: 5px;
+    text-decoration: none;
+    color:white;
+    font-family: baumans, sans-serif;
   }
 
   .landingpage {

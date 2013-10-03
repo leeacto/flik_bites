@@ -1,0 +1,35 @@
+.landingpage{
+    background-image: url("../assets/backgroundimg1.jpg");
+	background-attachment: relative;
+	background-position: center;
+	background-repeat:no-repeat;
+	color: white;
+	font-size: 1em;
+}
+
+.titlepage{
+	color: white;
+	font-family: vibur, cursive;
+	font-family: yesteryear, sans-serif;
+}
+
+.pure-menu-horizontal li {
+	display: inline-block;
+	zoom: 1;
+	vertical-align: middle;
+	border: none;
+	position: relative;
+	font-family: vibur, cursive;
+	font-family: baumans, sans-serif;
+	color: white;
+}
+
+
+.pure-menu-horizontal li:hover {
+	color: black;
+}
+
+.frontext{
+	font-family: vibur, cursive;
+	font-family: baumans, sans-serif;
+}
