@@ -11,7 +11,7 @@ feature 'Create comment for dish' do
 
 		it "visit dish view page comment" do
 			visit '/thebristol/pizza'
-			page.should have_content('Name: Pizza')
+			page.should have_content('Pizza')
 			click_button 'review_button'
 			expect {
 				fill_in 'comments_content', with: 'what is this'
@@ -29,7 +29,7 @@ feature 'Unable to create comment, user not logged in' do
 
 		it "visit dish view page comment" do
 			visit '/thebristol/pizza'
-			page.should have_content('Name: Pizza')
+			page.should have_content('Pizza')
 			click_button 'review_button'
 			expect {
 				fill_in 'comments_content', with: 'what is this'
@@ -48,14 +48,14 @@ feature 'Not create more than one comment per user' do
 
 		it "visit dish view page comment" do
 			visit '/thebristol/pizza'
-			page.should have_content('Name: Pizza')
+			page.should have_content('Pizza')
 			click_button 'review_button'
 			expect {
 				fill_in 'comments_content', with: 'what is this'
 				click_button 'Post Review'
 			}.to change(Comment, :count).by(1)
 			visit '/thebristol/pizza'
-			page.should have_content('Name: Pizza')
+			page.should have_content('Pizza')
 			click_button 'review_button'
 			expect {
 				fill_in 'comments_content', with: 'what is this'

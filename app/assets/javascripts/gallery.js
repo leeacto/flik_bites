@@ -4,7 +4,7 @@ window.onload = function() {
     mode:'horizontal',
     loop: false
   });  
-}
+};
 
 /*
 Or with jQuery/Zepto
@@ -16,4 +16,4 @@ $(document).on('page:load', function(){
     loop: false
 
   });
-})
+});

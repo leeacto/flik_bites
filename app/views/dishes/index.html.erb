@@ -5,14 +5,14 @@
   <%= form_tag "/#{@restaurant.url}/dishes", :id => "search_form", :method => 'get', class: "pure-form" do %>
     <fieldset>
       <%= text_field_tag :search, params[:search], :id => "search_field", placeholder: "dish name, or category"%>
-      <%= submit_tag "Search", :class => "pure-button ", :name => nil %>
+      <%= submit_tag "Search", :class => "pure-button ",id: 'search_button', :name => nil %>
     </fieldset>
   <% end %>
 </div>
 
 
-<div>
-  <%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new" %>
+<div >
+  <%= link_to 'Add a Dish', "/#{@restaurant.url}/dishes/new",id: 'addr',class: 'addrest' %>
 </div>
 
 <ul class="dish_categories">
@@ -24,12 +24,13 @@
   <% end %>
 </ul>
 
+<%= will_paginate @dishes, class: 'pagination dishpages' %>
+<%= will_paginate @dishes, :page_links => false, class: 'mobilepag' %>
 <div class="dish_layout">
   <% @dishes.each do |d| %>
     <%= render partial: 'flip', :locals => {:dish => d} %>
   <% end %>
 </div>
-<%= will_paginate @dishes %>
 
 <div class="js_data">
   <div id="url"><%= @restaurant.url if @restaurant %></div>
