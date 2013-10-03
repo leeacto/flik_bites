@@ -140,22 +140,10 @@ function codeAddress(srchString) {
   });
 }
 
-function setup() {
+function cardSetup() {
   var rTable = new restTable('.restaurant_list');
   rTable.initialize();
-  
-  // $('#new_restaurant').on('submit', function(event){
-  //   event.preventDefault();
-  //   $.ajax({
-  //     url: '/restaurants/create',
-  //     method: 'post',
-  //     data: $(this).serialize(),
-  //     dataType: 'json'
-  //   }).done(function(addr){
-  //     codeAddress(addr);
-  //   });
-  // });
 }
 
-$(document).on('ready', setup);
-$(document).on('page:load', setup);
+$(document).on('ready', cardSetup);
+$(document).on('page:load', cardSetup);

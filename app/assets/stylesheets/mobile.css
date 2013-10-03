@@ -104,7 +104,29 @@
   }
   .card a {
     color: #444;
-  }  
+  }
+
+.card .back .gmap {
+  z-index: 1000;
+  height: 100%;
+  width: 50%;
+  float: right;
+  margin: auto;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.gmap img {
+  max-height: 100%;
+  max-width: 100%;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+}
+
   #screenshotpic {
     width:50%;  
   }

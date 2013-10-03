@@ -1,7 +1,10 @@
 <div class='pure-g-r'>
   <div class="pure-u-1-2" id='description'>
     <div id='dishdesc'>
-      <h1 class="dish_name"><%= @dish.restaurant.name.titleize %>: <%= @dish.name.titleize %></h1>
+      <h1 class="dish_name">
+        <%= link_to @dish.restaurant.name.titleize, "/#{@dish.restaurant.url}/dishes" %>: 
+        <%= @dish.name.titleize %>
+      </h1>
       <h3 class="dish_price">Price: <%= @dish.price %></h3>
       <h2 class="dish_description"><%= @dish.description.capitalize %></h2>
       <p> There are  <%= @photos.count %> photos for this dish </p>
