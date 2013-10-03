@@ -11,15 +11,16 @@
       <div class="card_desc">
         <div class="card_url"><%= link_to dish.name, "/#{@restaurant.url}/#{dish.url}" %></div>
           <div class='favdish'>
-          <% if current_user != nil %>
-          <% if  UserFavorite.find_by_user_id_and_dish_id(current_user.id,dish.id) %>
-          <%= link_to image_tag('full_star.png', class: 'fstar'), "/favorite/dish/#{dish.id}",class: 'favorite_on'%>
-          <% else %>
-          <%= link_to image_tag('empty_star.png', class: 'ustar'), "/favorite/dish/#{dish.id}",class: 'favorite_off'%>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+            <% if current_user != nil %>
+              <% if  UserFavorite.find_by_user_id_and_dish_id(current_user.id,dish.id) %>
+                <%= link_to image_tag('full_star.png', class: 'fstar'), "/favorite/dish/#{dish.id}",class: 'favorite_on'%>
+              <% else %>
+                <%= link_to image_tag('empty_star.png', class: 'ustar'), "/favorite/dish/#{dish.id}",class: 'favorite_off'%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+    </div> 
 
     <div class="back side">
       <div class="dish_back">

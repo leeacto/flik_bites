@@ -20,12 +20,13 @@ var Card = function(el, url) {
   this.geocoder = new google.maps.Geocoder();
 
   $('body').on('click', '.front',function(event) {
+    console.log('click');
     event.stopPropagation();
     $(event.target).closest('.card').addClass('active');
     self.el.find(".gmap").removeClass('hidden');
-    // && self.el.find(".gmap").length > 0
-    if(self.el.find("img").length === 1)
+    if(self.el.find("img").length === 1 && self.el.find(".gmap").length > 0 )
     {
+      console.log('getting map');
       self.addMap();
     }
   });

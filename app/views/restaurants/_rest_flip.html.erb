@@ -7,6 +7,7 @@
         <%= image_tag 'no_photos.png' %>
       <% end %>
     </div>
+
     <div class="card_desc">
       <div class="card_url"><%=link_to restaurant.name, "/#{restaurant.url}/dishes" %></div> - 
       <%= restaurant.cuisine %>
@@ -28,6 +29,7 @@
         <%= restaurant.name %><br>
         <%= restaurant.cuisine %><br><br>
       </div>
+
       <div class = "rest_bot">
         <%= restaurant.address %><br>
         <%= restaurant.city %>, <%= restaurant.state %><br>
@@ -35,9 +37,9 @@
         <%= link_to "View Menu", "/#{restaurant.url}/dishes" %>
       </div>
     </div>
+
     <div class = "gmap hidden" id="map-canvas-<%= index %>"></div>
-    <div class="actions">
-        </div>
+    <div class="actions"></div>
   </div>
 </div>
 
