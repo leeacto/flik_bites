@@ -98,22 +98,22 @@ end
 # test = Menu.new(restaurant_url, 1)
 
 ## READ IN FROM OUR CSVS
-CSV.foreach("db/restaurants.csv") do |row|
-  Restaurant.create( :name => row[1],
-                     :address => row[2],
-                     :city => row[3],
-                     :state => row[4],
-                     :zip => row[5],
-                     :cuisine => row[6],
-                     :url => row[7]
-   )
-end
+# CSV.foreach("db/restaurants.csv") do |row|
+#   Restaurant.create( :name => row[1],
+#                      :address => row[2],
+#                      :city => row[3],
+#                      :state => row[4],
+#                      :zip => row[5],
+#                      :cuisine => row[6],
+#                      :url => row[7]
+#    )
+# end
 
-CSV.foreach("db/menus.csv") do |row|
-	Dish.create( :restaurant_id => row[0],
-								 :category => row[1],
-								 :name => row[2], 
-								 :price => row[3],
-								 :description => row[4],
-                 :url => row[2].gsub(/\W/, "").downcase)
-end
+# CSV.foreach("db/menus.csv") do |row|
+# 	Dish.create( :restaurant_id => row[0],
+# 								 :category => row[1],
+# 								 :name => row[2], 
+# 								 :price => row[3],
+# 								 :description => row[4],
+#                  :url => row[2].gsub(/\W/, "").downcase)
+# end
