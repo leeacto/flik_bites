@@ -1,20 +1,24 @@
 @media (min-width:920px){ 
-	.counter {
-    padding-left: 8px;
+  #dishbuttons {
+    width:80%;
+    margin:0 10%;
+    text-align: center;
   }
-  .voting {
-    border: 1px solid black;
-    width:25px;
-    background-color: black;
-    z-index: 3; 
-    bottom: 15px;
+  #uploadbox{
+    border: 2px solid black;
   }
 
+  #dishdesc > p {
+    text-align: center;
+   }
+  #description {
+    width:70%;
+    margin:0 15%;
+  }
   .gallery {
     float: left; position: relative;
     z-index: 1;
   }
-
   #dishnew {
     letter-spacing: none;
 

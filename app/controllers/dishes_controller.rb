@@ -112,6 +112,9 @@ class DishesController < ApplicationController
     end
     redirect_to @restaurant
   end
+
+  def upload
+  end
   
   private
 

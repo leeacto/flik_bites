@@ -1,31 +1,7 @@
 @media (min-width:481px) and (max-width: 919px) {
-  .up-vote-arrow,.down-vote-arrow {
-    height:25px;
-  }
-  .upvote {
-    position: absolute;
-    left:0;
-    height:30px;
-  }
-
-  .up-vote-arrow{
-    position: absolute;
-    left:20px;
-  }
-  .downvote {
-    position: relative;
-  }
-  
-  .down-vote-arrow {
-    position: absolute;
-    right:125px;
-  }
-  .counter{
-    position: absolute;
-    right:2px;
-    margin-top: 1%;
-    color:white;
-    height:100%;
+  #description {
+    width:70%;
+    margin:0 15%;
   }
   .dish {
     width:230px;

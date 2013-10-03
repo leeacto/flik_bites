@@ -13,7 +13,7 @@ $( document ).ready(function() {
     
     $("#review_button").click(function(event) {
       $('#tab').animate({
-        height: "100%"
+        height: "50%"
       }, 500, function() {
         $('#review_form').css("opacity", "1");
         $('#review_show').css("opacity", "1");
