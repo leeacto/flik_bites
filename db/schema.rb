@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20131001135057) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "comments", force: true do |t|
     t.integer  "user_id"
     t.integer  "dish_id"
@@ -24,22 +21,6 @@ ActiveRecord::Schema.define(version: 20131001135057) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "dishes", force: true do |t|
     t.string   "name"
@@ -75,7 +56,6 @@ ActiveRecord::Schema.define(version: 20131001135057) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.boolean  "processing"
   end
 
   create_table "restaurants", force: true do |t|

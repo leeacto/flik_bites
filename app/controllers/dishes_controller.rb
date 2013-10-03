@@ -3,12 +3,23 @@ class DishesController < ApplicationController
   before_action :set_restaurant, :only => [:index, :new]
   
   def index
-    if @restaurant
-      @dishes = Dish.where(restaurant_id: @restaurant.id).search(params[:search]).includes(:photos)
-      @categories = @dishes.pluck(:category).uniq.map!{|c| c.titleize}
+    if request.xhr?
+      @restaurant = Restaurant.find_by_url(params[:url])
+      if params[:search] == "All Dishes"
+        @dishes =  Dish.where(restaurant_id: @restaurant.id).includes(:photos)
+      else
+        @dishes = Dish.where(restaurant_id: @restaurant.id).includes(:photos)
+        @dishes.map!{|d| d.category.titleize == params[:search] ? d:nil}.compact!
+      end
+      render 'index_xhr', :layout => false
     else
-      flash[:error] = "Restaurant not found"
-      redirect_to_back
+      if @restaurant
+        @dishes = Dish.where(restaurant_id: @restaurant.id).search(params[:search]).includes(:photos)
+        @categories = Dish.where(restaurant_id: @restaurant.id).pluck(:category).uniq.map!{|c| c.titleize}
+      else
+        flash[:error] = "Restaurant not found"
+        redirect_to_back
+      end
     end
   end
 
