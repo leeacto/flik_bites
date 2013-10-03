@@ -4,9 +4,18 @@ class RestaurantsController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :destroy]
 
   def index
-    @restaurants = Restaurant.search(params[:search]).includes(:dishes)
-    @restaurants << Dish.search(params[:search]).pluck(:restaurant_id).uniq.map { |rest_id| Restaurant.find(rest_id) }
+    # @restaurants = Restaurant.search(params[:search]).includes(:dishes)
+    # a = @restaurants.count
+    
+    @restaurants = Dish.search(params[:search]).pluck(:restaurant_id).uniq.map { |rest_id| Restaurant.find(rest_id) }
+    # b = @restaurants.count
+    
     @restaurants = @restaurants.uniq.paginate(:page => params[:page], :per_page => 24)
+    # c = @restaurants.count
+
+    # puts a
+    # puts b
+    # puts c
 
     if @restaurants.empty?
       flash[:error] = "Sorry no matches for '#{params[:search]}' were found"
