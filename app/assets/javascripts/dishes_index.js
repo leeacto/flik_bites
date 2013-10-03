@@ -67,7 +67,8 @@ Category.prototype.initialize = function(){
 }
 
 function setup() {
-  catBoard = new catList('.dish_categories'),catBoard.initialize()
+  catBoard = new catList('.dish_categories');
+  catBoard.initialize();
 }
 
 $(document).on('ready', setup);
