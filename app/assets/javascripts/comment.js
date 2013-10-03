@@ -7,7 +7,7 @@ $( document ).ready(function() {
         $('#review_form').css("opacity", "0");
         $('#review_show').css("opacity", "0");
         $('#review_form').css("display", "none");
-        $('#review_show').css("display", "none")
+        $('#review_show').css("display", "none");
       });
     });
     
@@ -18,7 +18,7 @@ $( document ).ready(function() {
         $('#review_form').css("opacity", "1");
         $('#review_show').css("opacity", "1");
         $('#review_form').css("display", "block");
-        $('#review_show').css("display", "block")
+        $('#review_show').css("display", "block");
       });
-    })
+    });
 });

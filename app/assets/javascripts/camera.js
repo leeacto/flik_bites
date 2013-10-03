@@ -52,8 +52,8 @@ $(document).ready(function() {
             }
             
             reader.readAsDataURL(input.files[0]);
-        }
-    }
+                }
+            }
     
       $("#take-picture").change(function(){
           readURL(this);
