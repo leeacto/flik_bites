@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001135057) do
+ActiveRecord::Schema.define(version: 20131002173236) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20131001135057) do
 
   add_index "up_vote_photos", ["photo_id"], name: "index_up_vote_photos_on_photo_id", using: :btree
   add_index "up_vote_photos", ["user_id"], name: "index_up_vote_photos_on_user_id", using: :btree
+
+  create_table "user_favorites", force: true do |t|
+    t.integer "user_id"
+    t.integer "restaurant_id"
+    t.integer "dish_id"
+  end
+
+  add_index "user_favorites", ["dish_id"], name: "index_user_favorites_on_dish_id", using: :btree
+  add_index "user_favorites", ["restaurant_id"], name: "index_user_favorites_on_restaurant_id", using: :btree
+  add_index "user_favorites", ["user_id"], name: "index_user_favorites_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

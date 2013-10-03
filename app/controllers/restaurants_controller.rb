@@ -1,4 +1,3 @@
-
 class RestaurantsController < ApplicationController
   include RestaurantsHelper
   before_action :require_login, only: [:new, :create, :edit, :destroy]
