@@ -16,10 +16,10 @@
 </div>
 
 <ul class="dish_categories">
-  <li id="category_0">All Dishes</li>
+  <li id="category_0"><button type="button" value="All Dishes" >All Dishes</button></li>
   <% @categories.each_with_index do |c, i| %>
     <li id="category_<%= i+1 %>">
-      <%= c.chomp %>
+      <button type="button" value="<%=c.chomp%>" ><%=c.chomp%></button>
     </li>
   <% end %>
 </ul>
