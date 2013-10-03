@@ -39,9 +39,27 @@ $(document).ready(function() {
       };
     }
   })();
- 
-  $('#upload').click(function(e){  
-     
+  $('#upload').click(function(e){
+    e.preventDefault();
+    var url = $(this).attr('href');
+    $.colorbox({width:"550px", height:"550px",  href: url,onComplete:function(){
+       function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+      $("#take-picture").change(function(){
+          readURL(this);
+      });
+    }});
+    $('#save_to_db').submit();
   });
 });
 

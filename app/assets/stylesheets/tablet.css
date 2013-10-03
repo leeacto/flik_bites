@@ -1,8 +1,73 @@
 @media (min-width:481px) and (max-width: 919px) {
+  #ipreview {
+    width:430px;
+    height:368px; 
+    border:2px solid black; 
+    margin-left: 1px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+  }
+
+  #preview {
+    margin-top: 5px;
+  }
+  #uploadform {
+    background-color: red;
+    width:95%;
+    height:100%;
+    margin:0 2.5%;
+    text-align: center;
+    position: relative;
+  }
+
+  #take-picture {
+    position: absolute;
+    right:30px;
+    margin-top: 2px;
+  }
+  #save_to_db {
+    margin-top: 2px;
+  }
   #description {
     width:70%;
     margin:0 15%;
   }
+  #uploadbox {
+  width: 100%;
+  text-align: center;
+  }
+  a#upload {
+    position: relative;
+    top:1px;
+    background-color:#ee7836;
+    color: white;
+    border: 1px solid black;
+    text-indent:0px;
+    font-family:arial;
+    font-size:21px;
+    font-weight:bold;
+    font-style:normal;
+    height:51px;    
+    padding: 14px 20px 12px;
+    line-height:45px;
+    text-decoration:none;
+    text-align:center;
+  }
+  #review_button{
+    background-color:#ee7836;
+    color: white;
+    border: 1px solid black;
+    text-indent:0px;
+    font-family:arial;
+    font-size:21px;
+    font-weight:bold;
+    font-style:normal;
+    height:51px;
+    line-height:45px;
+    width:200px;
+    text-decoration:none;
+    text-align:center;
+}
   .dish {
     width:230px;
     border:5px double #086055;

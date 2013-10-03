@@ -3,8 +3,12 @@
     <div id='dishdesc'>
       <h1 class="dish_name"><%= @dish.name.titleize %></h1>
       <h3 class="dish_price">Price: <%= @dish.price %></h3>
-      <h2 class="dish_description"><%= @dish.description.capitalize %>.</h2>
+      <h2 class="dish_description"><%= @dish.description.capitalize %></h2>
       <p> There are  <%= @photos.count %> photos for this dish </p>
+      <div id='uploadbox'>
+        <button id="review_button" type="review_button">Reviews</button>
+        <%= link_to 'Upload A Photo', "/uploads/#{@dish.id}",id: 'upload'%>
+    </div>
     </div>
   </div>
 </div>
@@ -28,17 +32,6 @@
     <% end %>
   </div>
 </div>
-
-<div class='pure-g'>
-  <div class='pure-u-1-2' id='dishbuttons'>
-    <div id='uploadbox'>
-      <button id="review_button" type="review_button">Reviews</button>
-      <a id='upload' href='/uploads'>Upload A Photo</a>
-    </div>
-  </div>
-</div>
-
-
 
 <div id="tab">
   <div id="review_form">

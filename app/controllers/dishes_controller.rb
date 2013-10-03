@@ -120,6 +120,9 @@ class DishesController < ApplicationController
   end
 
   def upload
+    @photo = Photo.new
+    @dish = Dish.find(params[:dish_id])
+    render 'upload', :layout => false
   end
   
   private

@@ -1,11 +1,76 @@
 @media (min-width:920px){ 
+  #ipreview {
+    width:95%;
+    height:388px; 
+    border:2px solid black; 
+    margin:2.5% 2.5% ;
+
+  }
+
+  #preview {
+    margin-top: 5px;
+  }
+  #uploadform {
+    background-color: red;
+    width:95%;
+    height:100%;
+    margin:0 2.5%;
+    text-align: center;
+    position: relative;
+  }
+
+  #take-picture {
+    position: absolute;
+    right:30px;
+    margin-top: 2px;
+  }
+  #save_to_db {
+    margin-top: 2px;
+  }
+  #upload {
+    position: relative;
+    top:1px;
+    background-color:#ee7836;
+    color: white;
+    border: 1px solid black;
+    text-indent:0px;
+    font-family:arial;
+    font-size:21px;
+    font-weight:bold;
+    font-style:normal;
+    height:51px;    
+    padding: 14px 20px 12px;
+    line-height:45px;
+    text-decoration:none;
+    text-align:center;
+  }
+  #review_button{
+    background-color:#ee7836;
+    color: white;
+    border: 1px solid black;
+    text-indent:0px;
+    font-family:arial;
+    font-size:21px;
+    font-weight:bold;
+    font-style:normal;
+    height:51px;
+    line-height:45px;
+    width:200px;
+    text-decoration:none;
+    text-align:center;
+}
+
+  #upload:hover, #review_button:hover {
+    background-color: #ce7c2f;
+  }
+  #uploadbox {
+    text-align: center;
+  }
+
   #dishbuttons {
     width:80%;
     margin:0 10%;
     text-align: center;
-  }
-  #uploadbox{
-    border: 2px solid black;
   }
 
   #dishdesc > p {
