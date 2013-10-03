@@ -11,7 +11,7 @@ describe "Sessions" do
       fill_in 'session_username', with: 'username'
       fill_in 'session_password', with: 'password'
       click_button 'Login'
-      page.should have_content 'username'
+      page.should have_content 'Username'
     end
   end
 

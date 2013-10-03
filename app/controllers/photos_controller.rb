@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
 
     redirect_to "/#{@restaurant.url}/#{@dish.url}"
   end 
-
+  
   private 
 
   def photo_params
