@@ -1,4 +1,22 @@
 @media(max-width: 480px) {
+  .favrest,.favdish  {
+   position: relative;
+  }
+
+  .favrest img {
+    position: absolute;
+    right:5px;
+    bottom: -10px;
+  }
+
+  .favdish img {
+    position: absolute;
+    right:5px;
+    bottom: -25px;
+  }
+  ul.dish_categories {
+    display: none;
+  }
   .pag {
     display:none;
   }

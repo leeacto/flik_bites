@@ -1,7 +1,7 @@
 FinalProject::Application.routes.draw do
   get '/uploads/:dish_id', to: 'dishes#upload'
   post '/favorite/dish/:dish_id', to: 'users#favdish', as: "favorite"
-  get '/favorite/restaurant/:rest_id', to: 'users#favrest'
+  post '/favorite/restaurant/:rest_id', to: 'users#favrest'
   get '/users/:user_id/favorites', to: 'users#favorites'
   match 'auth/:provider/callback', to: 'sessions#createoauth', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
