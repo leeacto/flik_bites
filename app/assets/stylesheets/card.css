@@ -37,6 +37,7 @@
   width: 100%;    
   border: solid black 1px;
 }
+
 .outer-card {
   perspective: 800px;
 }
