@@ -1,5 +1,7 @@
 #headeritems {
-  background-color:#21262E;
+  background-color:#171717;
+  height: 70px;
+  border-bottom: solid #F7F7F7 1.5px;
 }
 
 #std-menu-items a{
@@ -7,7 +9,7 @@
 }
 
 body {
-  background-color: #72C4C0;
+  background-color: #F7F7F7;
 }
 
 #redpanda{
@@ -15,10 +17,13 @@ body {
 }
 
 .l-box {
-  width:33%;
+/*  width: 90%;*/
+  box-shadow: 10px 10px 2px #E3E3E3;
+  margin-right: 10%;
+
 }
 .l-box:first-child {
-margin-left: 33%;
+  margin-left: 10%;
 }
 
 #error_explanation {
