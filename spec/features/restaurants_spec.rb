@@ -137,13 +137,6 @@ feature "Search Bar" do
         page.should_not have_content("Cumin")
       end
 
-      it "should return dish matches based on name" do
-        # fill_in "search", with: "pizza"
-        # click_button "Search"
-        # save_and_open_page
-        # page.should have_content("Pizza")
-      end
-
       it "should return restaurant matches based on cuisine type" do
         fill_in "search", with: "indian"
         click_button "Search"
@@ -156,10 +149,12 @@ feature "Search Bar" do
         page.should have_content("The Bristol")
       end
 
-      it "should return both restaurant and dish matches" do
-        # fill_in "search", with: "pad thai"
+      it "should return matches for restaurants and associated restaurants through dishes" do
+        # Dish.create(name: "Awesome cumin dish", category: "entree", restaurant_id:1)
+        # fill_in "search", with: "cumin"
         # click_button "Search"
-        # page.should have_content("Pad Thai")
+        # page.should have_content("Cumin")
+        # page.should have_content("The Bristol")
       end
 
       it "should not return non-match results" do
