@@ -3,9 +3,9 @@ class DishesController < ApplicationController
   before_action :set_restaurant, :only => [:index, :new]
   
   def index
-    @restaurant = Restaurant.find_by_url(params[:url])
     if @restaurant
       if request.xhr?
+        @restaurant = Restaurant.find_by_url(params[:url])
         if params[:search] == "All Dishes"
           @dishes =  Dish.where(restaurant_id: @restaurant.id).includes(:photos)
         else
