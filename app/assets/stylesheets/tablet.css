@@ -9,21 +9,17 @@
     position: realtive;
     margin-left:40%;   
   }
-
-
   body {
-  background-color: #F7F7F7;
+    background-color: #F7F7F7;
   }
-  
-
   ul.dish_categories {
-  list-style-type: none;
-  padding-left: 2%;
-  width: 15%;
-  float: left;
-  position: fixed;
-  max-height: 100%;
-}
+    list-style-type: none;
+    padding-left: 2%;
+    width: 15%;
+    float: left;
+    position: fixed;
+    max-height: 100%;
+  }
   .dish_layout {
     position: absolute;
     right:7%;
@@ -342,9 +338,6 @@
     color:white;
   }
 
-  body {
-    background-color: #72C4C0;
-    
   }
 /*
  * Swiper - Mobile Touch Slider CSS
