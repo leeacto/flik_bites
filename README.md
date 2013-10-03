@@ -25,10 +25,12 @@ A better menu
   - Upon cloning the repo, run <tt>bundle install</tt> to prepare the gems for use
 
 * Database initialization
-  -Then, run 'rake db:create' to create the database
-  -Finally, run <tt>rake db:migrate</tt> to build all necessary tables
+  -Run 'bundle exec rake db:create' to create the database
+  -Run <tt>bundle exec rake db:migrate</tt> to build all necessary tables
 
 * How to run the test suite
-  - ##### runs tests through Rspec. Running <tt>rake spec</tt> will cycle through all tests.
+  - <tt>rspec spec<tt> runs tests through RSpec
+  - Navigating to the /specs route will run the Jasmine tests
 
 * Services
+  - FlikBites allows for users to view crowdsourced photos of restaurant dishes
