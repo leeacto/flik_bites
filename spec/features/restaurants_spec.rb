@@ -150,7 +150,7 @@ feature "Search Bar" do
       end
 
       it "should return matches for restaurants and associated restaurants through dishes" do
-        # Dish.create(name: "Awesome cumin dish", category: "entree", restaurant_id:1)
+        # p Dish.create(name: "Awesome cumin dish", category: "entree", restaurant_id:1)
         # fill_in "search", with: "cumin"
         # click_button "Search"
         # page.should have_content("Cumin")
