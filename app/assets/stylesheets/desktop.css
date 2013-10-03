@@ -1,4 +1,13 @@
 @media (min-width:920px){ 
+  #dishcreate {
+    position: relative;
+    left:-10%;
+  }
+
+  #submitdish {
+    position: realtive;
+    margin-left:18%;   
+  }
   #userfavorites {
     text-align: center;
   }
@@ -175,12 +184,11 @@
 		background-color: #137c79;
 		width:310px;
 		margin:1% 1%;
-		height:268px;
+		height:420px;
 		position: relative;
 	}
 	
 	#dishnew {
-		letter-spacing: none;
 
 	}
 	.mobilepag {

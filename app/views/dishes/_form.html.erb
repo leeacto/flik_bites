@@ -1,17 +1,23 @@
-<%= form_for [restaurant, dish],:html => {class: 'pure-form', id: 'dishnew'}  do |f|%>
-  <%= render partial: 'shared/error_messages', :locals => {:dish => dish }%>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-
-  <%= f.label :category %>
-  <%= f.text_field :category %><br>
-  
-  <%= f.label :description %>
-  <%= f.text_area :description %><br>
-
-  <%= f.label :price %>
-  <%= f.text_field :price %><br>
-  <%= f.hidden_field :restname, :value => restaurant.url %>
-  <%= f.submit %>
+<%= form_for [restaurant, dish],:html => {class: 'pure-form pure-form-aligned', id: 'dishnew'}  do |f|%>
+  <fieldset id='dishcreate'>
+    <%= render partial: 'shared/error_messages', :locals => {:dish => dish }%>
+    <div class="pure-control-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %><br>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :category %>
+      <%= f.text_field :category %><br>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :description %>
+      <%= f.text_area :description %><br>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :price %>
+      <%= f.text_field :price %><br>
+    </div>
+      <%= f.hidden_field :restname, :value => restaurant.url %>
+      <button type="submit" class="pure-button pure-button-primary" id='submitdish'>Create Dish</button>
+  </fieldset>
 <% end %>

@@ -42,7 +42,7 @@ $(document).ready(function() {
   $('#upload').click(function(e){
     e.preventDefault();
     var url = $(this).attr('href');
-    $.colorbox({width:"550px", height:"550px",  href: url,onComplete:function(){
+    $.colorbox({width:"99%", height:"99%",  href: url,onComplete:function(){
        function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
