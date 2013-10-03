@@ -19,21 +19,23 @@ var Card = function(el, url) {
   var self = this;
   this.geocoder = new google.maps.Geocoder();
 
-  $('body').on('click', '.front',function(event) {
-    console.log('click');
+  $('body').on('click', "#" + el + " .front",function(event) {
     event.stopPropagation();
     $(event.target).closest('.card').addClass('active');
     self.el.find(".gmap").removeClass('hidden');
-    if(self.el.find("img").length === 1 && self.el.find(".gmap").length > 0 )
+    self.el.find(".favrest").addClass('hidden');
+    self.el.find(".favdish").addClass('hidden');
+    if(self.el.find(".gmap img").length === 0 && self.el.find(".gmap").length > 0 )
     {
-      console.log('getting map');
       self.addMap();
     }
   });
 
-  $('body').on('click', '.back',function(event) {
+  $('body').on('click', "#" + el + " .back",function(event) {
     event.stopPropagation();
     $(event.target).closest('.card').removeClass('active');
+    self.el.find(".favrest").removeClass('hidden');
+    self.el.find(".favdish").removeClass('hidden');
     self.el.find(".gmap").addClass('hidden');
   });
 
