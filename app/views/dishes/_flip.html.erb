@@ -1,6 +1,7 @@
 <div class = "outer-card">
   <div class = "card" id="card_<%= dish.url %>">
     <div class="front side">
+
       <div class = "card_pic">
           <% if dish.photos.count > 0 %>
             <%= image_tag dish.photos.first.image.url(:medium), class: "dish_photo" %>
@@ -8,10 +9,26 @@
             <%= image_tag 'no_photos.png' %>
           <% end %>
       </div>
+
       <div class="card_desc">
-        <div class="card_url"><%= link_to dish.name, "/#{dish.restaurant.url}/#{dish.url}" %></div>
+        <div class="card_url"><%= link_to dish.name, "/#{@restaurant.url}/#{dish.url}" %></div>
+        <% if current_user != nil %>
+          <% if  UserFavorite.find_by_user_id_and_dish_id(current_user.id,dish.id) %>
+           <%= link_to image_tag('full_star.png', class: 'fstar'), "/favorite/dish/#{dish.id}",class: 'favorite_on'%>
+          <% else %>
+           <%= link_to image_tag('empty_star.png', class: 'ustar'), "/favorite/dish/#{dish.id}",class: 'favorite_off'%>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="back side">
+      <div class="dish_back">
+        <%= dish.restaurant.name %><br>
+        <%= dish.name %><br><br>
+        <%= dish.description %><br>
+        <%= link_to "View More Images", "/#{@restaurant.url}/#{dish.url}" %>
       </div>
     </div>
-
+    </div>
   </div>
 </div>

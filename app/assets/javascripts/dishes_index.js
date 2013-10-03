@@ -35,7 +35,7 @@ catList.prototype.initialize = function(){
   this.searchBar = new searchBar('#search_field');
 
   $.each(this.el.find('li'), function(){
-    var newCat = new Category(this.id, self);
+    var newCat = new Category($(this).find('button'), self);
     self.addCat(newCat);
   })
 }
@@ -45,7 +45,8 @@ catList.prototype.addCat = function(cat) {
 }
 
 var Category = function(el, list) {
-  this.el = $('#'+el);
+  this.el = $(el);
+  
   this.list = list;
   this.buttonDown = false;
   this.initialize();
@@ -53,6 +54,7 @@ var Category = function(el, list) {
 
 Category.prototype.initialize = function(){
   var self = this;
+  
   this.el.on("click", function(event) {
     event.stopPropagation();
     $(self.list.categories).each(function(){

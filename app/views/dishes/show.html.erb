@@ -1,25 +1,23 @@
 <body>
 <div class="show_dish">
-<div id='dishdesc'>
-  <h1 class="dish_name">Name: <%= @dish.name.titleize %></h1>
-  <h3 class="dish_price">Price: <%= @dish.price %></h3>
-  <h2 class="dish_description">Description: <%= @dish.description %></h2>
-  <p> There are  <%= @photos.count %> photos for this dish </p>
-</div>
+  <div id='dishdesc'>
+    <h1 class="dish_name">Name: <%= @dish.name.titleize %></h1>
+    <h3 class="dish_price">Price: <%= @dish.price %></h3>
+    <h2 class="dish_description">Description: <%= @dish.description %></h2>
+    <p> There are  <%= @photos.count %> photos for this dish </p>
+  </div>
 
  <div class="pure-g" id='photogrid'>   
-  <% @photos.each do |photo| %>
-  <div class="pure-u-1-3 dish">
-       <a class='gallery' href='<%=photo.image.url(:original)%>'><%= image_tag photo.image.url(:medium), class: "dish_photo" %></a>
-        <div class='voting'>
-        <%= image_tag 'up.png',class: 'upvote'%><span class='counter'>0</span><%= image_tag 'down.png',class: 'down'%>
-      </div>
+    <% @photos.each do |photo| %>
+    <div class="pure-u-1-3 dish">
+         <a class='gallery' href='<%=photo.image.url(:original)%>'><%= image_tag photo.image.url(:medium), class: "dish_photo" %></a>
+    </div>
+    <%end%>
+    <script>
+      $('a.gallery').colorbox({maxWidth:'80%',maxHeight:'80%'});
+    </script>
   </div>
-  <%end%>
-  <script>
-    $('a.gallery').colorbox({maxWidth:'80%',maxHeight:'80%'});
-  </script>
-</div>
+
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <% @photos.each do |photo| %>

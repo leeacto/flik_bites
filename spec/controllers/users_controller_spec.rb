@@ -1,4 +1,6 @@
 require 'spec_helper'
+include UserHelper
+include RestaurantHelper
 feature UsersController do
   describe User do
     describe "Create User" do
@@ -108,4 +110,95 @@ feature UsersController do
       end
     end
   end
+  describe "User Favorites Page" do
+    before(:each) do
+      @user = one_user
+      session[:user_id] = @user.id
+      request.env["HTTP_REFERER"] = 'http://test.host/restaurant'
+    end
+
+    it 'should show all the item user has starred if they have stared any' do
+      @rest = one_rest
+      @dish = @rest.dishes.first
+      post :favdish, :dish_id => @dish.id
+      get 'favorites'
+      assigns(:dishes).should eq(@user.dishes)
+      assigns(:restaurants).should eq(@user.restaurants)
+      response.should render_template :favorites
+    end
+
+    it 'should show nothing if they havent stared anything' do
+      get 'favorites'
+      assigns(:dishes).should eq(@user.dishes)
+      assigns(:restaurants).should eq(@user.restaurants)
+      response.should render_template :favorites
+    end
+  end
+
+  describe "Users Favorites Restaurant" do
+    before(:each) do
+      @user = one_user
+      @rest = one_rest
+      request.env["HTTP_REFERER"] = 'http://test.host/restaurant'
+    end
+
+    it 'should be able to star a restaurant' do
+      session[:user_id] = @user.id
+      expect {
+              post :favrest, :rest_id => @rest.id
+              }.to change(UserFavorite, :count).by(1)
+      response.should redirect_to :back
+    end
+
+    it 'should be able to un-star a restaurant' do
+      session[:user_id] = @user.id
+      post :favrest, :rest_id => @rest.id
+      response.should redirect_to :back
+      
+      expect {  
+               post :favrest, :rest_id => @rest.id
+              }.to change(UserFavorite, :count).by(-1)
+      response.should redirect_to :back
+    end
+
+    it 'should not let you favorite if you are not logged in' do  
+      post :favrest, :rest_id => @rest.id
+      flash.now[:error].should eq 'Please log in first'
+    end
+  end
+
+  describe 'User favorite Dishes' do
+    before(:each) do
+      @user = one_user
+      @rest = one_rest
+      @dish = @rest.dishes.first
+      request.env["HTTP_REFERER"] = 'http://test.host/dish'
+    end
+
+    it 'should be able to star a dish if logged in' do
+      session[:user_id] = @user.id
+      expect {
+              post :favdish, :dish_id => @dish.id
+              }.to change(UserFavorite, :count).by(1)
+      response.should redirect_to :back
+    end
+
+    it 'should be able to un-star a dish' do
+      session[:user_id] = @user.id
+      post :favdish, :dish_id => @dish.id
+      response.should redirect_to :back
+      
+      expect {  
+               post :favdish, :dish_id => @dish.id
+              }.to change(UserFavorite, :count).by(-1)
+      response.should redirect_to :back
+    end
+
+    it 'should not let you favorite if you are not logged in' do  
+      post :favdish, :dish_id => @dish.id
+      flash.now[:error].should eq 'Please log in first'
+    end
+  end
+
+
 end
