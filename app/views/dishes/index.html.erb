@@ -1,5 +1,6 @@
 <div class="rest_header" >
-  <div id="rest_show_name"><%= @restaurant.name   %></div>
+  <div id="rest_show_name"><%= @restaurant.name %></div>
+  <div id="rest_show_addr"><%= @restaurant.address %> <%= @restaurant.city %>, <%= @restaurant.state %></div>
 
   <%= form_tag "/#{@restaurant.url}/dishes", :id => "search_form", :method => 'get', class: "pure-form" do %>
     <fieldset>

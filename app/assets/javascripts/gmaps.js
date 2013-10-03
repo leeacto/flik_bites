@@ -46,7 +46,7 @@ Card.prototype.addMap = function() {
   var url = this.url;
   var self = this;
   var mapNum = el.selector.replace('#card-','');
-
+  
   $.ajax({
     url: "/"+this.url+"/coords",
     method: 'get',

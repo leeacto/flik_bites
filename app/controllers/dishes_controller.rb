@@ -4,10 +4,14 @@ class DishesController < ApplicationController
   
   def index
     if request.xhr?
-      # @dishes = Dish.where(restaurant_id: @restaurant.id).where(category: params[:search]).includes(:photos)
       @restaurant = Restaurant.find_by_url(params[:url])
-      @dishes = Dish.where(restaurant_id: @restaurant.id).includes(:photos).map{|d| d.category.titleize == params[:search]}
-      render 'index_xhr', :header => false
+      if params[:search] == "All Dishes"
+        @dishes =  Dish.where(restaurant_id: @restaurant.id).includes(:photos)
+      else
+        @dishes = Dish.where(restaurant_id: @restaurant.id).includes(:photos)
+        @dishes.map!{|d| d.category.titleize == params[:search] ? d:nil}.compact!
+      end
+      render 'index_xhr', :layout => false
     else
       if @restaurant
         @dishes = Dish.where(restaurant_id: @restaurant.id).search(params[:search]).includes(:photos)

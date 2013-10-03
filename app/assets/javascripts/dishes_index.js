@@ -4,22 +4,25 @@ var searchBar = function(el) {
 }
 
 searchBar.prototype.setSearch = function(text) {
-  this.search = text;
-  var url = $('#url').text();
+  if(this.search != text)
+  {
+    this.search = text;
+    var url = $('#url').text();
+    var search_phrase = text.replace('      ','').replace('    ','').replace(/(\r\n|\n|\r)/gm,"");
+    var pkg = {
+      url: url,
+      search: search_phrase
+    }
 
-  var pkg = {
-    url: url,
-    search: text.replace('      ','').replace('    ','').replace(/(\r\n|\n|\r)/gm,"")
+    $.ajax({
+      url: "/" + url + "/dishes",
+      data: pkg,
+      method: "GET"
+    }).done(function(results){
+      $('.dish_layout').html('');
+      $('.dish_layout').append(results);
+    });
   }
-
-  $.ajax({
-    url: "/" + url + "/dishes",
-    data: pkg,
-    method: "GET"
-  }).done(function(results){
-    $('.dish_layout').html('');
-    $('.dish_layout').append(results);
-  });
 }
 
 var catList = function(el) {
@@ -71,3 +74,4 @@ function setup() {
 }
 
 $(document).on('ready', setup);
+$(document).on('page:load', setup);
