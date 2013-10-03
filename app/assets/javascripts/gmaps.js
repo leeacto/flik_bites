@@ -22,7 +22,7 @@ var Card = function(el, url) {
     event.stopPropagation();
     $(event.target).closest('.card').addClass('active');
     self.el.find(".gmap").removeClass('hidden');
-    if(!self.el.find(".gmap").hasClass('hidden') && self.el.find("img").length === 1)
+    if(self.el.find("img").length === 1)
     {
       self.addMap();
     }
