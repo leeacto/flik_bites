@@ -1,14 +1,16 @@
 .landingpage{
-  background-image: url("../assets/backgroundimg1.jpg");
+  background-image: url("../assets/burger.jpg");
+  background-size: 100% 150%;
 	background-attachment: relative;
 	background-position: center;
 	background-repeat:no-repeat;
-	color: white;
-	font-size: 1em;
+	color: #E8E8E8;
+	font-size: 1.5em;
 }
 
 .titlepage{
-	color: white;
+	color: #E8E8E8;
+	text-shadow: 7px 7px black;
 	font-family: vibur, cursive;
 	font-family: yesteryear, sans-serif;
 }
@@ -31,4 +33,13 @@
 .frontext{
 	font-family: vibur, cursive;
 	font-family: baumans, sans-serif;
+}
+
+.pure-menu li a:hover{
+	color: red;
+}
+
+
+.pure-menu li a:hover, .pure-menu li a:focus {
+background: black;
 }

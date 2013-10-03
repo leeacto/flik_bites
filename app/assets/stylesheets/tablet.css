@@ -1,7 +1,7 @@
 @media (min-width:481px) and (max-width: 919px) {
   body {
-  background-color: #F7F7F7;
-  }
+  background-color: white;
+}
   
   ul.dish_categories {
   list-style-type: none;
