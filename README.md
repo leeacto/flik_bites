@@ -4,7 +4,7 @@
 
 # FlikBites
 
-A better menu
+FlikBites allows for users to view crowdsourced photos of restaurant dishes
 
 
 # SETUP AND CONFIGURATION
@@ -31,6 +31,3 @@ A better menu
 * How to run the test suite
   - <tt>rspec spec<tt> runs tests through RSpec
   - Navigating to the /specs route will run the Jasmine tests
-
-* Services
-  - FlikBites allows for users to view crowdsourced photos of restaurant dishes
