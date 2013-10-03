@@ -1,4 +1,14 @@
 @media (min-width:481px) and (max-width: 919px) {
+  #dishcreate {
+    position: relative;
+    left:-10%;
+  }
+
+  #submitdish {
+    position: realtive;
+    margin-left:40%;   
+  }
+
   ul.dish_categories {
   list-style-type: none;
   padding-left: 2%;
