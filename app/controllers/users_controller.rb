@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:favrest,:favdish,:favorite]
+
   def create
     @user = User.new(first_name: params[:user][:first_name],
                      last_name: params[:user][:last_name],
@@ -62,6 +64,11 @@ class UsersController < ApplicationController
       UserFavorite.create(user_id: current_user.id,restaurant_id: @rest.id,dish_id: 0 )
       redirect_to :back
     end
+  end
+
+  def favorites
+    @restaurants = current_user.restaurants.uniq
+    @dishes = current_user.dishes
   end
 
   private

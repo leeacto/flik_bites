@@ -41,7 +41,7 @@
   .pagination a {
     text-decoration: none;
     color: black; }
-  .pagination a:hover, .apple_pagination a:focus {
+  .pagination a:hover,.pagination a:focus {
     text-decoration: underline; }
 
   #restlist{

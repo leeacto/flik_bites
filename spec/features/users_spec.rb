@@ -30,17 +30,17 @@ feature 'Edit user information' do
   end
 
   it "should see a deactivate account link" do
-    click_link 'username'
+    click_link 'Username'
     page.should have_content "Deactivate Account"
   end
 
   it "user should see the edit information link" do
-    click_link 'username'
+    click_link 'Username'
     page.should have_content "Edit Profile "
   end
 
   it 'should be able to edit their own information' do
-    click_link 'username'
+    click_link 'Username'
     click_link 'Edit Profile'
     fill_in 'user_first_name', with: 'change'
     fill_in 'user_last_name', with: "this"
