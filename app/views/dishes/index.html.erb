@@ -29,6 +29,7 @@
     <%= render partial: 'flip', :locals => {:dish => d} %>
   <% end %>
 </div>
+<%= will_paginate @dishes %>
 
 <div class="js_data">
   <div id="url"><%= @restaurant.url if @restaurant %></div>

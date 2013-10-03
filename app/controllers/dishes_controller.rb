@@ -7,14 +7,14 @@ class DishesController < ApplicationController
       if request.xhr?
         @restaurant = Restaurant.find_by_url(params[:url])
         if params[:search] == "All Dishes"
-          @dishes =  Dish.where(restaurant_id: @restaurant.id).includes(:photos)
+          @dishes =  Dish.where(restaurant_id: @restaurant.id).includes(:photos).paginate(:page => params[:page], :per_page => 24)
         else
-          @dishes = Dish.where(restaurant_id: @restaurant.id).includes(:photos)
+          @dishes = Dish.where(restaurant_id: @restaurant.id).includes(:photos).paginate(:page => params[:page], :per_page => 24)
           @dishes.map!{|d| d.category.titleize == params[:search] ? d:nil}.compact!
         end
         render 'index_xhr', :layout => false
       else
-        @dishes = Dish.where(restaurant_id: @restaurant.id).search(params[:search]).includes(:photos)
+        @dishes = Dish.where(restaurant_id: @restaurant.id).search(params[:search]).includes(:photos).paginate(:page => params[:page], :per_page => 24)
         @categories = Dish.where(restaurant_id: @restaurant.id).pluck(:category).uniq.map!{|c| c.titleize}
       end
     else
