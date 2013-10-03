@@ -66,9 +66,6 @@ Category.prototype.initialize = function(){
   });
 }
 
-Category.prototype.clicked = function(event) {
-}
-
 function setup() {
   catBoard = new catList('.dish_categories');
   catBoard.initialize();

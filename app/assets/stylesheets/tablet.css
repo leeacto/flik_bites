@@ -1,4 +1,5 @@
 @media (min-width:481px) and (max-width: 919px) {
+
   #dishcreate {
     position: relative;
     left:-10%;
@@ -8,6 +9,12 @@
     position: realtive;
     margin-left:40%;   
   }
+
+
+  body {
+  background-color: #F7F7F7;
+  }
+  
 
   ul.dish_categories {
   list-style-type: none;
@@ -34,6 +41,25 @@
     background-color: #48913a;
   }
 
+  .card .back .gmap {
+  z-index: 1000;
+  height: 100%;
+  width: 50%;
+  float: right;
+  margin: auto;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.gmap img {
+  max-height: 100%;
+  max-width: 100%;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+  }
   #addr {
     position: absolute;
     left:15px;

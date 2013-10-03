@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20131002173236) do
   add_index "dishes", ["name"], name: "index_dishes_on_name", using: :btree
   add_index "dishes", ["price"], name: "index_dishes_on_price", using: :btree
 
+  create_table "down_vote_photos", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "down_vote_photos", ["photo_id"], name: "index_down_vote_photos_on_photo_id", using: :btree
+  add_index "down_vote_photos", ["user_id"], name: "index_down_vote_photos_on_user_id", using: :btree
+
   create_table "photos", force: true do |t|
     t.integer  "user_id"
     t.integer  "dish_id"
@@ -69,6 +79,16 @@ ActiveRecord::Schema.define(version: 20131002173236) do
   add_index "restaurants", ["city"], name: "index_restaurants_on_city", using: :btree
   add_index "restaurants", ["cuisine"], name: "index_restaurants_on_cuisine", using: :btree
   add_index "restaurants", ["zip"], name: "index_restaurants_on_zip", using: :btree
+
+  create_table "up_vote_photos", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "up_vote_photos", ["photo_id"], name: "index_up_vote_photos_on_photo_id", using: :btree
+  add_index "up_vote_photos", ["user_id"], name: "index_up_vote_photos_on_user_id", using: :btree
 
   create_table "user_favorites", force: true do |t|
     t.integer "user_id"
