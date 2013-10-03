@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
->
   def activate_account!
     update_attribute :is_active, true
   end
