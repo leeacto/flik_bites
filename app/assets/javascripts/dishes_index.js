@@ -56,6 +56,7 @@ Category.prototype.initialize = function(){
   var self = this;
   
   this.el.on("click", function(event) {
+    console.log('clicked');
     event.stopPropagation();
     $(self.list.categories).each(function(){
       this.buttonDown = false;
@@ -75,5 +76,4 @@ function setup() {
   catBoard.initialize();
 }
 
-$(document).on('ready', setup);
 $(document).on('page:load', setup);
