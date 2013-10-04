@@ -33,6 +33,8 @@
   }
 
   #addr {
+    position: absolute;
+    top: 18%;
     color:white;
     text-decoration: none;
   }
@@ -60,7 +62,6 @@
     height:388px; 
     border:2px solid black; 
     margin:2.5% 2.5% ;
-
   }
 
   #preview {
