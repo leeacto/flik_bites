@@ -8,9 +8,9 @@
   </div>
   <div class='pure-u-1-2'>
     <h1>My Starred Dishes</h1>
-    <% @dishes.each do |dish| %>
+    <% @dishes.each_with_index do |dish, i| %>
     	<div class = "outer-card">
-      <div class = "card" id="card_<%= dish.url %>">
+      <div class = "card" id="card_<%= i %>">
         <div class="front side">
 
           <div class = "card_pic">

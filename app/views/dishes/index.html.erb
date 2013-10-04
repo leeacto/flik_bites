@@ -27,8 +27,8 @@
 <%= will_paginate @dishes, class: 'pagination dishpages' %>
 <%= will_paginate @dishes, :page_links => false, class: 'mobilepag' %>
 <div class="dish_layout">
-  <% @dishes.each do |d| %>
-    <%= render partial: 'flip', :locals => {:dish => d} %>
+  <% @dishes.each_with_index do |d, i| %>
+    <%= render partial: 'flip', :locals => {:dish => d,:i => i} %>
   <% end %>
 </div>
 
