@@ -13,12 +13,12 @@ searchBar.prototype.setSearch = function(text) {
       url: url,
       search: search_phrase
     };
-
     $.ajax({
       url: "/" + url + "/dishes",
       data: pkg,
       method: "GET"
     }).done(function(results){
+      console.log('in');
       $('.dish_layout').html('');
       $('.dish_layout').append(results);
     });

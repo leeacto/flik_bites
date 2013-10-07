@@ -18,6 +18,7 @@ class DishesController < ApplicationController
           end
           @dishes = @dish_cat.paginate(:page => params[:page], :per_page => 24)
         end
+        puts @dishes.inspect
         render 'index_xhr', :layout => false
       else
         @dishes = Dish.where(restaurant_id: @restaurant.id).search(params[:search]).includes(:photos).paginate(:page => params[:page], :per_page => 24)
